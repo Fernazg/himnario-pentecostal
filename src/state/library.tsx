@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { IndexedDBRepository } from '../data/idbRepository';
 import { newId, type Repository } from '../data/repository';
-import { DEMO_SONGS } from '../data/seed';
+import { installCatalog, markCatalogDeleted } from '../data/catalog';
 import type { BackupFile, Category, RecentView, Song, SongInput, SongList } from '../data/types';
 import { buildIndex, compareSongs, type SearchEntry } from '../lib/search';
 
@@ -39,7 +39,7 @@ interface LibraryCtx {
 
   exportBackup: () => BackupFile;
   importBackup: (data: unknown) => Promise<ImportSummary>;
-  restoreDemo: () => Promise<number>;
+  restoreCatalog: () => Promise<number>;
 }
 
 const Ctx = createContext<LibraryCtx | null>(null);
@@ -80,11 +80,7 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
     let cancelled = false;
     (async () => {
       try {
-        if (!(await repo.getMeta<boolean>('seeded'))) {
-          const now = Date.now();
-          await repo.putSongs(DEMO_SONGS.map((s, i) => ({ ...s, id: `demo-${i + 1}`, createdAt: now, updatedAt: now })));
-          await repo.setMeta('seeded', true);
-        }
+        await installCatalog(repo);
         const [s, f, l, r] = await Promise.all([repo.getAllSongs(), repo.getFavorites(), repo.getAllLists(), repo.getRecents()]);
         if (cancelled) return;
         setSongs(s.sort(compareSongs));
@@ -136,6 +132,7 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
   const deleteSong = useCallback(
     async (id: string) => {
       await repo.deleteSong(id);
+      await markCatalogDeleted(repo, id);
       setSongs((prev) => prev.filter((s) => s.id !== id));
       setFavorites((prev) => {
         const n = new Map(prev);
@@ -311,15 +308,11 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
     [repo, songsById, lists, favorites],
   );
 
-  const restoreDemo = useCallback(async () => {
-    const now = Date.now();
-    const demo = DEMO_SONGS.map((s, i) => ({ ...s, id: `demo-${i + 1}`, createdAt: now, updatedAt: now }));
-    await repo.putSongs(demo);
-    const merged = new Map(songsById);
-    demo.forEach((s) => merged.set(s.id, s));
-    setSongs([...merged.values()].sort(compareSongs));
-    return demo.length;
-  }, [repo, songsById]);
+  const restoreCatalog = useCallback(async () => {
+    const n = await installCatalog(repo, { force: true });
+    setSongs((await repo.getAllSongs()).sort(compareSongs));
+    return n;
+  }, [repo]);
 
   const value: LibraryCtx = {
     ready,
@@ -343,7 +336,7 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
     moveInList,
     exportBackup,
     importBackup,
-    restoreDemo,
+    restoreCatalog,
   };
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

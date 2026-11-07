@@ -44,7 +44,7 @@ function LinkRow({ to, icon, label, hint }: { to: string; icon: ReactNode; label
 
 export default function Settings() {
   const { settings, update, reset } = useSettings();
-  const { songs, lists, favorites, exportBackup, importBackup, restoreDemo } = useLibrary();
+  const { songs, lists, favorites, exportBackup, importBackup, restoreCatalog } = useLibrary();
   const toast = useToast();
   const install = useInstall();
   const fileRef = useRef<HTMLInputElement>(null);
@@ -185,11 +185,11 @@ export default function Settings() {
             </Button>
           )}
         </Row>
-        <Row label="Canciones de ejemplo" hint="Vuelve a agregar las tres canciones de demostración">
+        <Row label="Restaurar himnario incluido" hint="Vuelve a agregar los himnos, alabanzas y coros que haya eliminado; no modifica los que editó">
           <Button
             onClick={async () => {
-              const n = await restoreDemo();
-              toast(`${n} canciones de ejemplo restauradas`);
+              const n = await restoreCatalog();
+              toast(n ? `${n} canciones restauradas` : 'El himnario ya está completo');
             }}
           >
             Restaurar

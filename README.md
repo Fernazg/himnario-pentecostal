@@ -35,7 +35,12 @@ npm run preview    # servir la compilación (probar PWA/offline)
 
 ## Contenido
 
-Se incluyen solo tres canciones **de demostración** (texto redactado para mostrar el formato, sin autor). Agregue únicamente contenido propio, de dominio público o con autorización, e indique autor/compositor solo cuando estén verificados. Para cargas masivas, importe un JSON desde *Ajustes → Importar* con la forma:
+El himnario incluido (`src/data/catalog.json`) proviene de **Senda Angosta** (sendangosta.wordpress.com): himnos pentecostales numerados, alabanzas antiguas y coros antiguos. Solo trae la letra; no se agregaron autores, tonalidades ni acordes, porque la fuente no los indica. Cada canción registra su origen en «Observaciones».
+
+- Se instala la primera vez que se abre la app y al publicarse una nueva versión del catálogo (`CATALOG_VERSION` en `src/data/catalog.ts`).
+- Las canciones que el usuario edite (por ejemplo, para agregar acordes) no se sobrescriben, y las que elimine no se vuelven a instalar, salvo con *Ajustes → Restaurar himnario incluido*.
+
+Agregue únicamente contenido propio, de dominio público o con autorización, e indique autor/compositor solo cuando estén verificados. Para cargas masivas, importe un JSON desde *Ajustes → Importar* con la forma:
 
 ```json
 { "app": "himnario-pentecostal", "version": 1, "songs": [
