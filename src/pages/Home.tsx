@@ -126,6 +126,7 @@ export default function Home() {
           </p>
         )}
       </section>
+      <footer className="px-4 pb-4 pt-10 text-center text-xs text-muted md:hidden">Creado por Fernando Silva</footer>
     </div>
   );
 }

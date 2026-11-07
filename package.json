@@ -1,7 +1,8 @@
 {
   "name": "himnario-pentecostal",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "author": "Fernando Silva",
   "type": "module",
   "scripts": {
     "dev": "vite",

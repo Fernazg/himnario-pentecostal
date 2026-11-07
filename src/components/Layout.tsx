@@ -49,6 +49,7 @@ export function Layout() {
             </NavLink>
           ))}
         </nav>
+        <p className="mt-auto px-3 text-xs text-muted">Creado por Fernando Silva</p>
       </aside>
 
       <main className={cx('min-w-0 flex-1', !songMode && 'bottom-nav-space md:pb-10')}>

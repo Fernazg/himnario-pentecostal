@@ -1,5 +1,7 @@
 # Himnario Pentecostal
 
+Creado por **Fernando Silva**.
+
 Himnario digital (PWA) con **himnos**, **alabanzas especiales** y **coros pentecostales**: acordes alineados, transposición, buscador instantáneo, favoritos, listas para cultos y funcionamiento sin conexión.
 
 ## Uso

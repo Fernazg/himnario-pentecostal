@@ -16,7 +16,7 @@ export default defineConfig({
       manifest: {
         name: 'Himnario Pentecostal',
         short_name: 'Himnario',
-        description: 'Himnos, alabanzas especiales y coros pentecostales con acordes y transposición.',
+        description: 'Himnos, alabanzas especiales y coros pentecostales con acordes y transposición. Creado por Fernando Silva.',
         lang: 'es',
         start_url: '/',
         scope: '/',
