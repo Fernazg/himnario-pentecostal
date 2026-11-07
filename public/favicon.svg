@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8f3a33"/>
+      <stop offset="1" stop-color="#5e211e"/>
+    </linearGradient>
+    <linearGradient id="f" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#e3a857"/>
+      <stop offset="1" stop-color="#f6d48f"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#g)"/>
+  <!-- Libro abierto -->
+  <path d="M96 318c52-20 106-20 160 6 54-26 108-26 160-6v74c-52-20-106-20-160 6-54-26-108-26-160-6z" fill="#faf7f2"/>
+  <path d="M256 324v74" stroke="#5e211e" stroke-width="8"/>
+  <!-- Llama -->
+  <path d="M256 92c10 44 66 78 66 140 0 40-29 70-66 70s-66-30-66-70c0-34 18-54 34-74 2 22 12 36 26 42-8-38 0-72 6-108z" fill="url(#f)"/>
+</svg>
