@@ -37,6 +37,8 @@ export interface SongList {
   date?: string;
   description?: string;
   songIds: string[];
+  /** Lista de culto publicada para toda la iglesia (sincronizada). */
+  shared?: boolean;
   createdAt: number;
   updatedAt: number;
 }

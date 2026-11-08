@@ -62,11 +62,16 @@ src/
   data/types.ts        modelo (Song, SongList, …)
   data/repository.ts   contrato de almacenamiento
   data/idbRepository.ts implementación IndexedDB
-  data/sync/supabase.ts sincronización opcional (ver docs/supabase.sql)
+  data/sync/            himnario compartido en Supabase (ver docs/supabase.sql)
   state/               contextos: biblioteca, ajustes, avisos
   pages/, components/  interfaz
 ```
 
-Para integrar Supabase: cree el esquema `docs/supabase.sql`, defina `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`, y use `syncSongs(repo, supabaseFromEnv())`.
+### Himnario compartido (Supabase)
+
+- `docs/supabase.sql`: tablas `songs`, `lists` (listas de culto compartidas) y `admins`, con RLS: lectura pública y escritura solo para correos registrados en `admins`.
+- `src/data/sync/`: cliente y conversión de filas; `src/state/sync.tsx`: sesión de administrador, descarga incremental por `synced_at` (al abrir, al recuperar conexión y cada 5 min) y cola de publicación sin conexión.
+- La clave *publishable* de `src/data/sync/config.ts` es pública por diseño (solo lectura); puede sobrescribirse con `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY`.
+- Agregar un administrador (SQL Editor de Supabase): `insert into public.admins (email) values ('correo@ejemplo.com');`
 
 Los íconos PWA se regeneran desde `public/favicon.svg` con `node scripts/icons.cjs` (requiere Playwright).

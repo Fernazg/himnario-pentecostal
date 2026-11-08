@@ -1,6 +1,7 @@
 import { Check, ListMusic, Plus } from 'lucide-react';
 import { useState } from 'react';
 import { useLibrary } from '../state/library';
+import { useSync } from '../state/sync';
 import { useToast } from '../state/toast';
 import { ListFormSheet } from './ListFormSheet';
 import { Sheet, cx } from './ui';
@@ -9,6 +10,7 @@ export function AddToListSheet({ open, onClose, songId }: { open: boolean; onClo
   const { lists, addToList, removeFromList, createList } = useLibrary();
   const toast = useToast();
   const [creating, setCreating] = useState(false);
+  const { isAdmin } = useSync();
 
   const toggle = async (listId: string) => {
     const list = lists.find((l) => l.id === listId)!;
@@ -36,7 +38,7 @@ export function AddToListSheet({ open, onClose, songId }: { open: boolean; onClo
             </span>
             Nueva lista
           </button>
-          {lists.map((l) => {
+          {lists.filter((l) => !l.shared || isAdmin).map((l) => {
             const inList = l.songIds.includes(songId);
             return (
               <button

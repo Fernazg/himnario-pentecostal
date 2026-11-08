@@ -9,6 +9,7 @@ import { allKeys, isChord, isFlatKey, keyName, parseKey } from '../lib/chords';
 import { chordsOverToInline, extractChords, isChordLine } from '../lib/songText';
 import { useLibrary } from '../state/library';
 import { useSettings } from '../state/settings';
+import { useSync } from '../state/sync';
 import { useToast } from '../state/toast';
 
 const EMPTY: SongInput = { title: '', number: '', category: 'himnos', lyrics: '', author: '', composer: '', key: '', notes: '' };
@@ -30,6 +31,7 @@ export default function SongEditor() {
   const toast = useToast();
   const { settings } = useSettings();
   const { songsById, saveSong, deleteSong, ready } = useLibrary();
+  const sync = useSync();
   const existing = !isNew ? songsById.get(id!) : undefined;
 
   const [form, setForm] = useState<SongInput>(EMPTY);
@@ -89,7 +91,7 @@ export default function SongEditor() {
       },
       existing?.id,
     );
-    toast(isNew ? 'Canción agregada' : 'Cambios guardados');
+    toast(sync.isAdmin ? 'Guardado y publicado para la iglesia' : isNew ? 'Canción agregada' : 'Cambios guardados');
     navigate(`/cancion/${song.id}`, { replace: true });
   };
 
@@ -281,6 +283,14 @@ export default function SongEditor() {
             placeholder="Indicaciones para músicos, ritmo, fuente, permisos…"
           />
         </Field>
+
+        {sync.enabled && (
+          <p className={cx('rounded-2xl p-3 text-sm', sync.isAdmin ? 'bg-accent-soft' : 'bg-surface-2 text-muted')}>
+            {sync.isAdmin
+              ? 'Usted es administrador: al guardar, este cambio se publicará para toda la iglesia.'
+              : 'Este cambio se guardará solo en este dispositivo. Para publicarlo para toda la iglesia, inicie sesión como administrador en Ajustes.'}
+          </p>
+        )}
 
         <p className="flex gap-2 rounded-2xl bg-surface-2 p-3 text-xs text-muted">
           <Info size={16} className="shrink-0" />

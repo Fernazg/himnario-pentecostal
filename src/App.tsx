@@ -11,6 +11,7 @@ import SongEditor from './pages/SongEditor';
 import SongPage from './pages/SongPage';
 import { LibraryProvider } from './state/library';
 import { SettingsProvider } from './state/settings';
+import { SyncProvider } from './state/sync';
 import { ToastProvider } from './state/toast';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
     <SettingsProvider>
       <LibraryProvider>
         <ToastProvider>
+          <SyncProvider>
           <BrowserRouter>
             <Routes>
               <Route element={<Layout />}>
@@ -34,6 +36,7 @@ export default function App() {
               </Route>
             </Routes>
           </BrowserRouter>
+          </SyncProvider>
         </ToastProvider>
       </LibraryProvider>
     </SettingsProvider>

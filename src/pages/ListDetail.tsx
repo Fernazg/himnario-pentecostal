@@ -10,6 +10,7 @@ import { searchSongs } from '../lib/search';
 import { shareOrCopy } from '../lib/share';
 import { useLibrary } from '../state/library';
 import { useSettings } from '../state/settings';
+import { useSync } from '../state/sync';
 import { useToast } from '../state/toast';
 import { formatListDate } from './Lists';
 
@@ -64,6 +65,7 @@ export default function ListDetail() {
   const { settings, getTranspose } = useSettings();
   const { lists, songsById, updateList, deleteList, removeFromList, moveInList, ready } = useLibrary();
   const list = lists.find((l) => l.id === id);
+  const { isAdmin } = useSync();
   const [editingOrder, setEditingOrder] = useState(false);
   const [adding, setAdding] = useState(false);
   const [editing, setEditing] = useState(false);
@@ -84,6 +86,7 @@ export default function ListDetail() {
     );
   }
 
+  const canEdit = !list.shared || isAdmin;
   const items = list.songIds.map((sid) => songsById.get(sid)).filter((s) => !!s);
 
   const share = async () => {
@@ -108,7 +111,10 @@ export default function ListDetail() {
         </IconButton>
       </div>
       <header className="px-4 pb-4 pt-2 md:px-8">
-        <p className="text-sm font-medium text-accent">{list.kind === 'culto' ? 'Culto o reunión' : 'Lista personal'}</p>
+        <p className="text-sm font-medium text-accent">
+          {list.kind === 'culto' ? 'Culto o reunión' : 'Lista personal'}
+          {list.shared && ' · Compartida con la iglesia'}
+        </p>
         <h1 className="mt-1 font-serif text-3xl font-semibold tracking-tight">{list.name}</h1>
         <p className="mt-1 text-sm text-muted first-letter:uppercase">
           {list.date ? formatListDate(list.date) + ' · ' : ''}
@@ -119,10 +125,12 @@ export default function ListDetail() {
           <Button variant="primary" disabled={!items.length} onClick={() => navigate(`/cancion/${items[0]!.id}?lista=${list.id}`)}>
             <Play size={17} className="fill-current" /> Comenzar
           </Button>
-          <Button onClick={() => setAdding(true)}>
-            <Plus size={18} /> Agregar
-          </Button>
-          {items.length > 0 && (
+          {canEdit && (
+            <Button onClick={() => setAdding(true)}>
+              <Plus size={18} /> Agregar
+            </Button>
+          )}
+          {canEdit && items.length > 0 && (
             <Button variant={editingOrder ? 'primary' : 'secondary'} onClick={() => setEditingOrder((v) => !v)}>
               {editingOrder ? <Check size={17} /> : <Pencil size={16} />} {editingOrder ? 'Hecho' : 'Ordenar'}
             </Button>
@@ -132,7 +140,9 @@ export default function ListDetail() {
 
       {items.length === 0 ? (
         <EmptyState icon={<ListMusic size={28} />} title="Lista vacía">
-          Agregue canciones con el botón «Agregar» o desde cualquier canción con «Agregar a una lista».
+          {canEdit
+            ? 'Agregue canciones con el botón «Agregar» o desde cualquier canción con «Agregar a una lista».'
+            : 'El responsable aún no ha agregado canciones.'}
         </EmptyState>
       ) : (
         <ol className="px-2 md:px-6">
@@ -165,9 +175,9 @@ export default function ListDetail() {
       <Sheet open={menu} onClose={() => setMenu(false)} title={list.name}>
         <div className="-mx-2 flex flex-col">
           {[
-            { icon: Pencil, label: 'Editar nombre y fecha', action: () => setEditing(true) },
-            { icon: Share2, label: 'Compartir lista', action: share },
-            { icon: Trash2, label: 'Eliminar lista', action: () => setConfirmDelete(true), danger: true },
+            ...(canEdit ? [{ icon: Pencil, label: 'Editar nombre y fecha', action: () => setEditing(true), danger: false }] : []),
+            { icon: Share2, label: 'Compartir lista', action: share, danger: false },
+            ...(canEdit ? [{ icon: Trash2, label: 'Eliminar lista', action: () => setConfirmDelete(true), danger: true }] : []),
           ].map(({ icon: I, label, action, danger }) => (
             <button
               key={label}

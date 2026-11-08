@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import type { ListKind, SongList } from '../data/types';
-import { Button, Field, Segmented, Sheet, inputClass } from './ui';
+import { useSync } from '../state/sync';
+import { Button, Field, Segmented, Sheet, Toggle, inputClass } from './ui';
 
 export interface ListFormValues {
   name: string;
   kind: ListKind;
   date?: string;
   description?: string;
+  shared?: boolean;
 }
 
 export function ListFormSheet({
@@ -24,6 +26,9 @@ export function ListFormSheet({
   const [kind, setKind] = useState<ListKind>('culto');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
+  const [shared, setShared] = useState(true);
+  const { isAdmin } = useSync();
+  const canShare = isAdmin && kind === 'culto' && !initial;
 
   useEffect(() => {
     if (!open) return;
@@ -31,6 +36,7 @@ export function ListFormSheet({
     setKind(initial?.kind ?? 'culto');
     setDate(initial?.date ?? '');
     setDescription(initial?.description ?? '');
+    setShared(true);
   }, [open, initial]);
 
   const submit = async (e?: React.FormEvent) => {
@@ -41,6 +47,7 @@ export function ListFormSheet({
       kind,
       date: kind === 'culto' && date ? date : undefined,
       description: description.trim() || undefined,
+      ...(canShare ? { shared } : {}),
     });
     onClose();
   };
@@ -95,6 +102,15 @@ export function ListFormSheet({
             maxLength={200}
           />
         </Field>
+        {canShare && (
+          <div className="flex items-center justify-between gap-3 rounded-2xl bg-surface-2 p-3">
+            <div>
+              <div className="text-sm font-medium">Compartir con toda la iglesia</div>
+              <div className="text-xs text-muted">Todos verán esta lista en su aplicación</div>
+            </div>
+            <Toggle label="Compartir con toda la iglesia" checked={shared} onChange={setShared} />
+          </div>
+        )}
         <button type="submit" hidden />
       </form>
     </Sheet>

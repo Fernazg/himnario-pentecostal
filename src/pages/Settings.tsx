@@ -1,6 +1,7 @@
 import { ChevronRight, Download, FilePlus2, Library, RotateCcw, ShieldCheck, Smartphone, Upload } from 'lucide-react';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { SharedHymnalSection } from '../components/SharedHymnal';
 import { Button, ConfirmDialog, PageHeader, Segmented, Toggle } from '../components/ui';
 import { useInstall } from '../hooks/useInstall';
 import { downloadFile } from '../lib/share';
@@ -145,6 +146,8 @@ export default function Settings() {
           <Toggle label="Mantener pantalla encendida" checked={settings.keepAwake} onChange={(keepAwake) => update({ keepAwake })} />
         </Row>
       </Section>
+
+      <SharedHymnalSection Section={Section} Row={Row} />
 
       <Section title="Administración">
         <LinkRow to="/ajustes/canciones" icon={<Library size={20} />} label="Administrar canciones" hint={`${songs.length} canciones en el himnario`} />

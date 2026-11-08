@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { IndexedDBRepository } from '../data/idbRepository';
 import { newId, type Repository } from '../data/repository';
 import { installCatalog, markCatalogDeleted } from '../data/catalog';
@@ -12,6 +12,21 @@ export interface ImportSummary {
   songs: number;
   lists: number;
   favorites: number;
+}
+
+/** Cambio hecho por el usuario en este dispositivo (para sincronizar). */
+export type LocalChange =
+  | { type: 'song'; song: Song }
+  | { type: 'songDeleted'; id: string }
+  | { type: 'list'; list: SongList }
+  | { type: 'listDeleted'; list: SongList };
+
+/** Cambios recibidos del servidor. */
+export interface RemoteChanges {
+  songs: Song[];
+  deletedSongIds: string[];
+  lists: SongList[];
+  deletedListIds: string[];
 }
 
 interface LibraryCtx {
@@ -30,7 +45,7 @@ interface LibraryCtx {
   recordView: (id: string) => void;
   clearRecents: () => Promise<void>;
 
-  createList: (data: Pick<SongList, 'name' | 'kind' | 'date' | 'description'> & { songIds?: string[] }) => Promise<SongList>;
+  createList: (data: Pick<SongList, 'name' | 'kind' | 'date' | 'description' | 'shared'> & { songIds?: string[] }) => Promise<SongList>;
   updateList: (id: string, patch: Partial<Omit<SongList, 'id' | 'createdAt'>>) => Promise<void>;
   deleteList: (id: string) => Promise<void>;
   addToList: (listId: string, songId: string) => Promise<boolean>;
@@ -40,6 +55,12 @@ interface LibraryCtx {
   exportBackup: () => BackupFile;
   importBackup: (data: unknown) => Promise<ImportSummary>;
   restoreCatalog: () => Promise<number>;
+
+  repo: Repository;
+  /** Suscribe a cambios locales; devuelve la función para desuscribirse. */
+  onLocalChange: (fn: (c: LocalChange) => void) => () => void;
+  /** Aplica cambios del servidor sin volver a emitirlos. Devuelve cuántos aplicó. */
+  applyRemote: (c: RemoteChanges) => Promise<number>;
 }
 
 const Ctx = createContext<LibraryCtx | null>(null);
@@ -101,6 +122,13 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
     };
   }, [repo]);
 
+  const listeners = useRef(new Set<(c: LocalChange) => void>());
+  const emit = useCallback((c: LocalChange) => listeners.current.forEach((fn) => fn(c)), []);
+  const onLocalChange = useCallback((fn: (c: LocalChange) => void) => {
+    listeners.current.add(fn);
+    return () => void listeners.current.delete(fn);
+  }, []);
+
   const songsById = useMemo(() => new Map(songs.map((s) => [s.id, s])), [songs]);
   const index = useMemo(() => buildIndex(songs), [songs]);
 
@@ -116,23 +144,26 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
       };
       await repo.putSong(song);
       setSongs((prev) => [...prev.filter((s) => s.id !== song.id), song].sort(compareSongs));
+      emit({ type: 'song', song });
       return song;
     },
-    [repo, songsById],
+    [repo, songsById, emit],
   );
 
   const putListLocal = useCallback(
     async (list: SongList) => {
       await repo.putList(list);
       setLists((prev) => [list, ...prev.filter((l) => l.id !== list.id)]);
+      emit({ type: 'list', list });
     },
-    [repo],
+    [repo, emit],
   );
 
   const deleteSong = useCallback(
     async (id: string) => {
       await repo.deleteSong(id);
       await markCatalogDeleted(repo, id);
+      emit({ type: 'songDeleted', id });
       setSongs((prev) => prev.filter((s) => s.id !== id));
       setFavorites((prev) => {
         const n = new Map(prev);
@@ -146,7 +177,7 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
         await putListLocal({ ...l, songIds: l.songIds.filter((s) => s !== id), updatedAt: Date.now() });
       }
     },
-    [repo, lists, putListLocal],
+    [repo, lists, putListLocal, emit],
   );
 
   const toggleFavorite = useCallback(
@@ -207,10 +238,12 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
 
   const deleteList = useCallback(
     async (id: string) => {
+      const list = lists.find((l) => l.id === id);
       await repo.deleteList(id);
       setLists((prev) => prev.filter((l) => l.id !== id));
+      if (list) emit({ type: 'listDeleted', list });
     },
-    [repo],
+    [repo, lists, emit],
   );
 
   const addToList = useCallback(
@@ -265,6 +298,7 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
         return !cur || s.updatedAt >= cur.updatedAt;
       });
       await repo.putSongs(toWrite);
+      toWrite.forEach((song) => emit({ type: 'song', song }));
       const merged = new Map(songsById);
       toWrite.forEach((s) => merged.set(s.id, s));
       setSongs([...merged.values()].sort(compareSongs));
@@ -282,6 +316,7 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
             id: l.id || newId(),
             name: l.name,
             kind: l.kind === 'culto' ? 'culto' : 'personal',
+            shared: l.shared,
             date: l.date,
             description: l.description,
             songIds: l.songIds.filter((id) => validIds.has(id)),
@@ -289,6 +324,7 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
             updatedAt: l.updatedAt ?? Date.now(),
           };
           await repo.putList(list);
+          emit({ type: 'list', list });
           nextLists.set(list.id, list);
           listCount++;
         }
@@ -305,7 +341,7 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
       }
       return { songs: toWrite.length, lists: listCount, favorites: favCount };
     },
-    [repo, songsById, lists, favorites],
+    [repo, songsById, lists, favorites, emit],
   );
 
   const restoreCatalog = useCallback(async () => {
@@ -313,6 +349,34 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
     setSongs((await repo.getAllSongs()).sort(compareSongs));
     return n;
   }, [repo]);
+
+  const applyRemote = useCallback(
+    async (c: RemoteChanges) => {
+      const curSongs = new Map((await repo.getAllSongs()).map((x) => [x.id, x]));
+      const songsIn = c.songs.filter((x) => (curSongs.get(x.id)?.updatedAt ?? -1) < x.updatedAt);
+      const songsOut = c.deletedSongIds.filter((id) => curSongs.has(id));
+      const curLists = new Map((await repo.getAllLists()).map((x) => [x.id, x]));
+      const listsIn = c.lists.filter((x) => (curLists.get(x.id)?.updatedAt ?? -1) < x.updatedAt);
+      const listsOut = c.deletedListIds.filter((id) => curLists.has(id));
+      if (!songsIn.length && !songsOut.length && !listsIn.length && !listsOut.length) return 0;
+
+      await repo.putSongs(songsIn);
+      for (const id of songsOut) {
+        await repo.deleteSong(id);
+        await markCatalogDeleted(repo, id);
+      }
+      for (const l of listsIn) await repo.putList(l);
+      for (const id of listsOut) await repo.deleteList(id);
+
+      const [s2, f2, l2, r2] = await Promise.all([repo.getAllSongs(), repo.getFavorites(), repo.getAllLists(), repo.getRecents()]);
+      setSongs(s2.sort(compareSongs));
+      setFavorites(new Map(f2.map((x) => [x.songId, x.addedAt])));
+      setLists(l2.sort((a, b) => b.updatedAt - a.updatedAt));
+      setRecents(r2.sort((a, b) => b.viewedAt - a.viewedAt));
+      return songsIn.length + songsOut.length + listsIn.length + listsOut.length;
+    },
+    [repo],
+  );
 
   const value: LibraryCtx = {
     ready,
@@ -337,6 +401,9 @@ export function LibraryProvider({ children, repo: repoProp }: { children: ReactN
     exportBackup,
     importBackup,
     restoreCatalog,
+    repo,
+    onLocalChange,
+    applyRemote,
   };
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

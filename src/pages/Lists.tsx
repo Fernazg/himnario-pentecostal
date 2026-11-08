@@ -1,4 +1,4 @@
-import { CalendarDays, ChevronRight, ListMusic, Plus, User } from 'lucide-react';
+import { CalendarDays, ChevronRight, ListMusic, Plus, User, Users } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ListFormSheet } from '../components/ListFormSheet';
@@ -10,7 +10,7 @@ export const formatListDate = (d?: string) =>
   d ? new Date(d + 'T12:00').toLocaleDateString('es', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : '';
 
 function ListCard({ list }: { list: SongList }) {
-  const Icon = list.kind === 'culto' ? CalendarDays : User;
+  const Icon = list.shared ? Users : list.kind === 'culto' ? CalendarDays : User;
   return (
     <li>
       <Link to={`/listas/${list.id}`} className="flex items-center gap-4 rounded-2xl px-2 py-3 transition hover:bg-surface-2">
@@ -20,6 +20,7 @@ function ListCard({ list }: { list: SongList }) {
         <div className="min-w-0 flex-1">
           <div className="truncate font-medium">{list.name}</div>
           <div className="truncate text-sm first-letter:uppercase text-muted">
+            {list.shared ? 'Compartida · ' : ''}
             {list.date ? formatListDate(list.date) + ' · ' : ''}
             {list.songIds.length} {list.songIds.length === 1 ? 'canción' : 'canciones'}
           </div>
