@@ -23,7 +23,7 @@ export default defineConfig({
         display: 'standalone',
         orientation: 'any',
         background_color: '#0f4c5c',
-        theme_color: '#7a2e2a',
+        theme_color: '#0f4c5c',
         categories: ['music', 'lifestyle', 'books'],
         icons: [
           { src: 'pwa-192.png', sizes: '192x192', type: 'image/png' },

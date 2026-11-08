@@ -3,38 +3,38 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Paleta sobria y cálida: marfil, piedra y vino; ámbar en modo oscuro. */
+/* Paleta Himnario EA: azul petróleo y marfil, con acentos dorados (acordes) y salvia. */
 :root {
-  --bg: #faf7f2;
+  --bg: #f7f4ec;
   --surface: #ffffff;
-  --surface-2: #f3eee6;
-  --border: #e6ded2;
-  --text: #241d18;
-  --muted: #7b6f64;
-  --accent: #7a2e2a;
-  --accent-soft: #f4e4df;
+  --surface-2: #edf1ee;
+  --border: #dbe3e0;
+  --text: #14292f;
+  --muted: #5c6e73;
+  --accent: #0f4c5c;
+  --accent-soft: #dde9e9;
   --accent-text: #ffffff;
-  --chord: #9b3d25;
-  --gold: #b07a2a;
-  --cat-himnos: #7a2e2a;
-  --cat-alabanzas: #a0672a;
-  --cat-coros: #3f6a5a;
+  --chord: #9a5f1c;
+  --gold: #b8892f;
+  --cat-himnos: #0f4c5c;
+  --cat-alabanzas: #8a5d17;
+  --cat-coros: #3f6e4f;
 }
 .dark {
-  --bg: #151210;
-  --surface: #1e1a17;
-  --surface-2: #28221e;
-  --border: #352d27;
-  --text: #f1ebe3;
-  --muted: #a69a8e;
-  --accent: #e3a857;
-  --accent-soft: #3a2c1d;
-  --accent-text: #1a140f;
-  --chord: #f0b467;
-  --gold: #e3a857;
-  --cat-himnos: #d9837a;
-  --cat-alabanzas: #e3a857;
-  --cat-coros: #7fbfa5;
+  --bg: #0b181c;
+  --surface: #12232a;
+  --surface-2: #1a2f36;
+  --border: #243d45;
+  --text: #edf2ef;
+  --muted: #93a7ac;
+  --accent: #7cc3cd;
+  --accent-soft: #173a43;
+  --accent-text: #08171b;
+  --chord: #e9b866;
+  --gold: #e3b866;
+  --cat-himnos: #7cc3cd;
+  --cat-alabanzas: #e3b866;
+  --cat-coros: #9ccaa7;
 }
 
 @theme {

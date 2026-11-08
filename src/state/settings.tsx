@@ -63,7 +63,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     const apply = () => {
       const dark = settings.theme === 'dark' || (settings.theme === 'system' && mq.matches);
       document.documentElement.classList.toggle('dark', dark);
-      document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.setAttribute('content', dark ? '#151210' : '#faf7f2'));
+      document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.setAttribute('content', dark ? '#0b181c' : '#f7f4ec'));
     };
     apply();
     mq.addEventListener('change', apply);
