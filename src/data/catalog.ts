@@ -9,7 +9,7 @@ import type { Category, Song } from './types';
  * Para publicar cambios del catálogo: actualice catalog.json y suba
  * CATALOG_VERSION y CATALOG_STAMP.
  */
-export const CATALOG_VERSION = 1;
+export const CATALOG_VERSION = 2;
 const CATALOG_STAMP = Date.UTC(2026, 10, 7); // marca de tiempo de las canciones del catálogo
 
 interface CatalogEntry {
@@ -62,6 +62,12 @@ export async function installCatalog(repo: Repository, { force = false } = {}): 
     return force || !deleted.has(s.id);
   });
   await repo.putSongs(toWrite);
+
+  // Retira canciones que salieron del catálogo (si el usuario no las editó).
+  const catalogIds = new Set(catalog.map((s) => s.id));
+  for (const s of current) {
+    if (s.id.startsWith('sa-') && !catalogIds.has(s.id) && untouched(s)) await repo.deleteSong(s.id);
+  }
 
   // Retira las canciones de demostración de versiones anteriores si no se editaron.
   for (const s of current) {

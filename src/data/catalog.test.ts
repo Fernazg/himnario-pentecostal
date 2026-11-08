@@ -59,4 +59,16 @@ describe('installCatalog', () => {
     expect(repo.songs.has('sa-c')).toBe(true);
     expect(repo.songs.get('sa-a')!.lyrics).toContain('[Do]');
   });
+
+  it('retira canciones que salieron del catálogo, salvo las editadas', async () => {
+    const repo = memoryRepo([
+      song({ id: 'sa-vieja', category: 'alabanzas' }),
+      song({ id: 'sa-vieja-editada', category: 'alabanzas', updatedAt: 9 }),
+      song({ id: 'mia', category: 'alabanzas' }),
+    ]);
+    await installCatalog(repo);
+    expect(repo.songs.has('sa-vieja')).toBe(false);
+    expect(repo.songs.has('sa-vieja-editada')).toBe(true);
+    expect(repo.songs.has('mia')).toBe(true);
+  });
 });

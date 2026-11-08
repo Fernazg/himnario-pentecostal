@@ -37,7 +37,7 @@ npm run preview    # servir la compilación (probar PWA/offline)
 
 ## Contenido
 
-El himnario incluido (`src/data/catalog.json`) proviene de **Senda Angosta** (sendangosta.wordpress.com): himnos pentecostales numerados, alabanzas antiguas y coros antiguos. Solo trae la letra; no se agregaron autores, tonalidades ni acordes, porque la fuente no los indica. Cada canción registra su origen en «Observaciones».
+El himnario incluido (`src/data/catalog.json`) proviene de **Senda Angosta** (sendangosta.wordpress.com): himnos pentecostales numerados y coros antiguos. Las alabanzas especiales se cargan desde cero en la app (las 38 de la fuente original se retiraron). Solo trae la letra; no se agregaron autores, tonalidades ni acordes, porque la fuente no los indica. Cada canción registra su origen en «Observaciones».
 
 - Se instala la primera vez que se abre la app y al publicarse una nueva versión del catálogo (`CATALOG_VERSION` en `src/data/catalog.ts`).
 - Las canciones que el usuario edite (por ejemplo, para agregar acordes) no se sobrescriben, y las que elimine no se vuelven a instalar, salvo con *Ajustes → Restaurar himnario incluido*.
