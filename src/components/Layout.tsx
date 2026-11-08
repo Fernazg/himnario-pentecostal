@@ -17,7 +17,7 @@ function Logo() {
       <img src="/favicon.svg" alt="" className="size-9 rounded-xl" />
       <div className="leading-tight">
         <div className="font-serif text-lg font-semibold">Himnario</div>
-        <div className="text-xs text-muted">Pentecostal</div>
+        <div className="text-xs text-muted">El Almendro</div>
       </div>
     </div>
   );

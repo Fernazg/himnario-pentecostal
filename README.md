@@ -1,4 +1,4 @@
-# Himnario Pentecostal
+# Himnario El Almendro
 
 Creado por **Fernando Silva**.
 

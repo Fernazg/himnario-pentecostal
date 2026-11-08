@@ -14,9 +14,9 @@ export default defineConfig({
       registerType: 'prompt',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
-        name: 'Himnario Pentecostal',
-        short_name: 'Himnario',
-        description: 'Himnos, alabanzas especiales y coros pentecostales con acordes y transposición. Creado por Fernando Silva.',
+        name: 'Himnario El Almendro',
+        short_name: 'El Almendro',
+        description: 'Himnario El Almendro: himnos, alabanzas especiales y coros pentecostales con acordes y transposición. Creado por Fernando Silva.',
         lang: 'es',
         start_url: '/',
         scope: '/',

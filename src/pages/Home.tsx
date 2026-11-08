@@ -27,7 +27,7 @@ export default function Home() {
     <div className="pt-safe mx-auto max-w-5xl">
       <header className="px-4 pt-6 md:px-8 md:pt-10">
         <p className="text-sm font-medium text-muted">{greeting()}</p>
-        <h1 className="mt-0.5 font-serif text-3xl font-semibold tracking-tight md:text-4xl">Himnario Pentecostal</h1>
+        <h1 className="mt-0.5 font-serif text-3xl font-semibold tracking-tight md:text-4xl">Himnario El Almendro</h1>
         {!online && (
           <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-3 py-1 text-xs text-muted">
             <WifiOff size={13} /> Sin conexión: todo sigue disponible

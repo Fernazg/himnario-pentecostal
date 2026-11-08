@@ -229,7 +229,7 @@ export default function Settings() {
             </Button>
           )}
         </Row>
-        <Row label="Himnario Pentecostal" hint={`Versión ${__APP_VERSION__} · Funciona sin conexión`} />
+        <Row label="Himnario El Almendro" hint={`Versión ${__APP_VERSION__} · Funciona sin conexión`} />
         <Row label="Creado por" hint="Fernando Silva">
           <span className="font-serif text-lg text-accent">FS</span>
         </Row>
