@@ -9,7 +9,7 @@ import type { Category, Song } from './types';
  * Para publicar cambios del catálogo: actualice catalog.json y suba
  * CATALOG_VERSION y CATALOG_STAMP.
  */
-export const CATALOG_VERSION = 4;
+export const CATALOG_VERSION = 5;
 const CATALOG_STAMP = Date.UTC(2026, 10, 7); // marca de tiempo de las canciones del catálogo
 
 interface CatalogEntry {
