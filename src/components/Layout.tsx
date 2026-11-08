@@ -1,6 +1,8 @@
 import { BookOpen, Heart, House, ListMusic, Settings } from 'lucide-react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { cx } from './ui';
+import { useLibrary } from '../state/library';
+import { Splash } from './Splash';
 import { UpdatePrompt } from './UpdatePrompt';
 
 const NAV = [
@@ -14,11 +16,8 @@ const NAV = [
 function Logo() {
   return (
     <div className="flex items-center gap-2.5 px-3">
-      <img src="/favicon.svg" alt="" className="size-9 rounded-xl" />
-      <div className="leading-tight">
-        <div className="font-serif text-lg font-semibold">Himnario</div>
-        <div className="text-xs text-muted">El Almendro</div>
-      </div>
+      <img src="/favicon.svg" alt="" className="size-10 rounded-xl" />
+      <div className="font-serif text-lg font-semibold leading-tight">Himnario EA</div>
     </div>
   );
 }
@@ -26,6 +25,8 @@ function Logo() {
 export function Layout() {
   const { pathname } = useLocation();
   const songMode = pathname.startsWith('/cancion/');
+  const { ready } = useLibrary();
+  if (!ready) return <Splash />;
   return (
     <div className="min-h-dvh md:flex">
       {/* Barra lateral en escritorio */}

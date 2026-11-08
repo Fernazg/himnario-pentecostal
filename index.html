@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="author" content="Fernando Silva" />
-    <meta name="description" content="Himnario El Almendro: himnos, alabanzas especiales y coros con acordes, transposición y modo sin conexión." />
+    <meta name="description" content="Himnario EA: himnos, alabanzas especiales y coros con acordes, transposición y modo sin conexión." />
     <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#151210" media="(prefers-color-scheme: dark)" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="El Almendro" />
+    <meta name="apple-mobile-web-app-title" content="Himnario EA" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <title>Himnario El Almendro</title>
+    <title>Himnario EA</title>
     <script>
       // Aplica el tema antes del primer pintado para evitar parpadeos.
       (function () {
@@ -25,9 +25,28 @@
         } catch (e) {}
       })();
     </script>
+    <style>
+      .splash { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; background: #0f4c5c; color: #f7f1e3; font-family: Georgia, 'Lora Variable', serif; }
+      .splash img { animation: splash-in 0.5s ease-out both; }
+      .splash-name { font-size: 26px; font-weight: 600; letter-spacing: 0.02em; animation: splash-in 0.5s 0.1s ease-out both; }
+      .splash-dots { display: flex; gap: 7px; margin-top: 6px; }
+      .splash-dots i { width: 7px; height: 7px; border-radius: 50%; background: #f7f1e3; opacity: 0.35; animation: splash-dot 1.2s infinite ease-in-out; }
+      .splash-dots i:nth-child(2) { animation-delay: 0.15s; }
+      .splash-dots i:nth-child(3) { animation-delay: 0.3s; }
+      @keyframes splash-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+      @keyframes splash-dot { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .splash *, .splash { animation: none !important; } }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Pantalla de carga: React la reemplaza al iniciar. -->
+      <div class="splash" role="status" aria-label="Cargando Himnario EA">
+        <img src="/logo-arbol.svg" alt="" width="150" height="160" />
+        <div class="splash-name">Himnario EA</div>
+        <div class="splash-dots"><i></i><i></i><i></i></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

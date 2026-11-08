@@ -1,4 +1,4 @@
-# Himnario El Almendro
+# Himnario EA
 
 Creado por **Fernando Silva**.
 
