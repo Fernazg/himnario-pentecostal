@@ -227,6 +227,12 @@ export default function SongPage() {
                 )}
               </button>
             )}
+            {currentKey && !hasChords && (
+              <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-surface-2 px-3 py-1.5 text-sm">
+                <span className="text-muted">Tono</span>
+                <span className="font-semibold text-chord">{keyName(currentKey, notation)}</span>
+              </span>
+            )}
           </div>
         ) : (
           <h1 className="mb-5 font-serif text-2xl font-semibold" style={{ fontSize: settings.fontSize * 1.15 }}>

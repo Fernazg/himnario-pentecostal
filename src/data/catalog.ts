@@ -9,7 +9,7 @@ import type { Category, Song } from './types';
  * Para publicar cambios del catálogo: actualice catalog.json y suba
  * CATALOG_VERSION y CATALOG_STAMP.
  */
-export const CATALOG_VERSION = 2;
+export const CATALOG_VERSION = 3;
 const CATALOG_STAMP = Date.UTC(2026, 10, 7); // marca de tiempo de las canciones del catálogo
 
 interface CatalogEntry {
@@ -44,6 +44,9 @@ export async function loadCatalog(): Promise<Song[]> {
 /** Una canción no editada por el usuario conserva updatedAt === createdAt. */
 const untouched = (s: Song) => s.updatedAt === s.createdAt;
 
+/** Canciones del catálogo: Senda Angosta (sa-) y alabanzas de Himnario EA (ea-). */
+export const isCatalogId = (id: string) => id.startsWith('sa-') || id.startsWith('ea-');
+
 /**
  * Agrega o actualiza las canciones del catálogo. Con `force`, también vuelve a
  * agregar las que el usuario haya eliminado. Devuelve cuántas se escribieron.
@@ -66,7 +69,7 @@ export async function installCatalog(repo: Repository, { force = false } = {}): 
   // Retira canciones que salieron del catálogo (si el usuario no las editó).
   const catalogIds = new Set(catalog.map((s) => s.id));
   for (const s of current) {
-    if (s.id.startsWith('sa-') && !catalogIds.has(s.id) && untouched(s)) await repo.deleteSong(s.id);
+    if (isCatalogId(s.id) && !catalogIds.has(s.id) && untouched(s)) await repo.deleteSong(s.id);
   }
 
   // Retira las canciones de demostración de versiones anteriores si no se editaron.
@@ -80,7 +83,7 @@ export async function installCatalog(repo: Repository, { force = false } = {}): 
 
 /** Recuerda que el usuario eliminó una canción del catálogo para no reinstalarla. */
 export async function markCatalogDeleted(repo: Repository, id: string) {
-  if (!id.startsWith('sa-')) return;
+  if (!isCatalogId(id)) return;
   const list = (await repo.getMeta<string[]>('catalogDeleted')) ?? [];
   if (!list.includes(id)) await repo.setMeta('catalogDeleted', [...list, id]);
 }
