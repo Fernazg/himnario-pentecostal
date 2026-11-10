@@ -2,7 +2,7 @@
 export function Splash() {
   return (
     <div className="splash" role="status" aria-label="Cargando Himnario EA">
-      <img src="/logo-arbol.svg" alt="" width={150} height={160} />
+      <img src="/logo-libro.svg" alt="" width={170} height={111} />
       <div className="splash-name">Himnario EA</div>
       <div className="splash-dots">
         <i />
