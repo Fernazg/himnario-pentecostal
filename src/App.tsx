@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useParams } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import AdminSongs from './pages/AdminSongs';
 import Favorites from './pages/Favorites';
@@ -13,6 +13,12 @@ import { LibraryProvider } from './state/library';
 import { SettingsProvider } from './state/settings';
 import { SyncProvider } from './state/sync';
 import { ToastProvider } from './state/toast';
+
+/** Remonta el editor al cambiar de canción (p. ej. de «nueva» a una existente). */
+function EditorRoute() {
+  const { id } = useParams();
+  return <SongEditor key={id} />;
+}
 
 export default function App() {
   return (
@@ -31,7 +37,7 @@ export default function App() {
                 <Route path="listas/:id" element={<ListDetail />} />
                 <Route path="ajustes" element={<Settings />} />
                 <Route path="ajustes/canciones" element={<AdminSongs />} />
-                <Route path="editar/:id" element={<SongEditor />} />
+                <Route path="editar/:id" element={<EditorRoute />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Route>
             </Routes>

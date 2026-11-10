@@ -21,6 +21,7 @@ npm run preview    # servir la compilación (probar PWA/offline)
 - **Transposición** que conserva el tipo de acorde, extensiones (`maj7`, `sus4`, `7(b9)`, `6/9`) e inversiones (`Do/Mi`), eligiendo sostenidos o bemoles según la tonalidad destino.
 - **Buscador** por título, número, fragmento de letra (sin acordes ni tildes) y autor, con filtro por categoría.
 - **Listas** personales y de culto (con fecha): ordenar, quitar, compartir y recorrer en modo culto (anterior/siguiente).
+- **Pegar desde documento**: se pega el texto copiado de un PDF o Word (una o varias canciones) y la app une las líneas cortadas, reconoce número, título, tono, estrofas I/II, coros, puente, final y voces, y quita números de página (`src/lib/pasteFormat.ts`).
 - **Administración**: agregar, editar y eliminar canciones; conversión automática de «acordes sobre la letra» al formato en línea; vista previa; respaldo e importación JSON.
 - **PWA sin conexión**: instalación, precache de la app y fuentes, datos en IndexedDB, preferencias en localStorage.
 

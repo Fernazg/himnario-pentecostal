@@ -1,6 +1,7 @@
-import { ArrowLeft, Info, Trash2, Wand2 } from 'lucide-react';
+import { ArrowLeft, ClipboardPaste, Info, Trash2, Wand2 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { PasteSheet } from '../components/PasteSheet';
 import { CATEGORY_ICON, categoryColor } from '../components/songMeta';
 import { SongView } from '../components/SongView';
 import { Button, ConfirmDialog, EmptyState, Field, IconButton, Segmented, cx, inputClass } from '../components/ui';
@@ -37,15 +38,20 @@ export default function SongEditor() {
   const [form, setForm] = useState<SongInput>(EMPTY);
   const [tab, setTab] = useState<'edit' | 'preview'>('edit');
   const [showHelp, setShowHelp] = useState(false);
+  const [params] = useSearchParams();
+  const [pasteOpen, setPasteOpen] = useState(() => isNew && params.get('pegar') === '1');
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const loaded = useRef(false);
 
+  const location = useLocation();
   useEffect(() => {
     if (loaded.current || !ready) return;
-    if (existing) setForm({ ...EMPTY, ...existing });
+    const pasted = (location.state as { pasted?: { title: string; number?: string; key?: string; lyrics: string } } | null)?.pasted;
+    if (existing) setForm({ ...EMPTY, ...existing, ...(pasted ? { title: pasted.title, lyrics: pasted.lyrics, number: pasted.number ?? existing.number, key: pasted.key ?? existing.key } : {}) });
+    if (pasted) setTab('preview');
     loaded.current = true;
-  }, [ready, existing]);
+  }, [ready, existing, location.state]);
 
   const set = <K extends keyof SongInput>(k: K, v: SongInput[K]) => setForm((f) => ({ ...f, [k]: v }));
 
@@ -108,6 +114,20 @@ export default function SongEditor() {
       </header>
 
       <div className="space-y-5 px-4 pt-5 md:px-8">
+        {isNew && (
+          <button
+            type="button"
+            onClick={() => setPasteOpen(true)}
+            className="flex w-full items-center gap-3 rounded-2xl border border-dashed border-accent/40 bg-accent-soft/60 p-4 text-left transition hover:bg-accent-soft"
+          >
+            <ClipboardPaste size={22} className="shrink-0 text-accent" />
+            <span>
+              <span className="block font-medium">Pegar desde documento</span>
+              <span className="block text-sm text-muted">Copie la letra del PDF o Word y la app la ordena sola. Admite varias canciones.</span>
+            </span>
+          </button>
+        )}
+
         <Field label="Título *">
           <input
             className={cx(inputClass, titleError && 'border-red-600')}
@@ -185,7 +205,12 @@ export default function SongEditor() {
 
         <div>
           <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-            <span className="text-sm font-medium">Letra y acordes</span>
+            <span className="flex items-center gap-3 text-sm font-medium">
+              Letra y acordes
+              <button type="button" onClick={() => setPasteOpen(true)} className="inline-flex items-center gap-1 text-xs font-medium text-accent">
+                <ClipboardPaste size={14} /> Pegar documento
+              </button>
+            </span>
             <Segmented
               label="Modo"
               value={tab}
@@ -303,6 +328,34 @@ export default function SongEditor() {
           </Button>
         )}
       </div>
+
+      <PasteSheet
+        open={pasteOpen}
+        onClose={() => setPasteOpen(false)}
+        defaultCategory={isNew ? 'alabanzas' : form.category}
+        onUseSingle={(p, category, match) => {
+          if (match && match.id !== existing?.id) {
+            // Ya existe (mismo número o título): se edita esa canción en lugar de duplicarla.
+            navigate(`/editar/${match.id}`, { replace: true, state: { pasted: p } });
+            toast(`Se actualizará «${match.title}»: revise y pulse Guardar`);
+            return;
+          }
+          setForm((f) => ({
+            ...f,
+            title: p.title,
+            number: p.number ?? f.number,
+            key: p.key ?? f.key,
+            category,
+            lyrics: p.lyrics,
+          }));
+          setTab('preview');
+          toast('Revise la vista previa y pulse Guardar');
+        }}
+        onSavedMany={(n, category) => {
+          toast(`${n} ${n === 1 ? 'canción guardada' : 'canciones guardadas'}${sync.isAdmin ? ' y publicadas' : ''}`);
+          navigate(`/himnario?cat=${category}`, { replace: true });
+        }}
+      />
 
       <ConfirmDialog
         open={confirmDelete}

@@ -1,4 +1,4 @@
-import { ChevronRight, Download, FilePlus2, Library, RotateCcw, ShieldCheck, Smartphone, Upload } from 'lucide-react';
+import { ChevronRight, ClipboardPaste, Download, FilePlus2, Library, RotateCcw, ShieldCheck, Smartphone, Upload } from 'lucide-react';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { SharedHymnalSection } from '../components/SharedHymnal';
@@ -152,6 +152,7 @@ export default function Settings() {
       <Section title="Administración">
         <LinkRow to="/ajustes/canciones" icon={<Library size={20} />} label="Administrar canciones" hint={`${songs.length} canciones en el himnario`} />
         <LinkRow to="/editar/nueva" icon={<FilePlus2 size={20} />} label="Agregar canción" hint="Letra, acordes y datos" />
+        <LinkRow to="/editar/nueva?pegar=1" icon={<ClipboardPaste size={20} />} label="Pegar desde documento" hint="Una o varias canciones copiadas de un PDF o Word" />
       </Section>
 
       <Section title="Datos y respaldo">
