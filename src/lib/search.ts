@@ -1,5 +1,6 @@
 import type { Category, Song } from '../data/types';
 import { plainLyrics } from './songText';
+import { themeById } from '../data/themes';
 
 /** Minúsculas, sin tildes ni signos: "¡Señor!" → "senor". */
 export function normalize(s: string): string {
@@ -18,6 +19,8 @@ export interface SearchEntry {
   number: string;
   people: string;
   lyrics: string;
+  /** Nombres de las categorías temáticas, normalizados. */
+  themes: string;
 }
 
 export function buildIndex(songs: Song[]): SearchEntry[] {
@@ -27,10 +30,11 @@ export function buildIndex(songs: Song[]): SearchEntry[] {
     number: (song.number ?? '').trim().toLowerCase(),
     people: normalize(`${song.author ?? ''} ${song.composer ?? ''}`),
     lyrics: normalize(plainLyrics(song.lyrics)),
+    themes: normalize((song.themes ?? []).map((id) => themeById(id)?.name ?? '').join(' | ')),
   }));
 }
 
-export type MatchField = 'number' | 'title' | 'author' | 'lyrics';
+export type MatchField = 'number' | 'title' | 'author' | 'theme' | 'lyrics';
 
 export interface SearchResult {
   song: Song;
@@ -84,6 +88,9 @@ export function searchSongs(index: SearchEntry[], query: string, category?: Cate
     else if (terms.every((t) => e.people.includes(t))) {
       score = 500;
       field = 'author';
+    } else if (q.length >= 4 && terms.every((t) => e.themes.includes(t))) {
+      score = 450;
+      field = 'theme';
     } else if (e.lyrics.includes(q)) {
       score = 400;
       field = 'lyrics';

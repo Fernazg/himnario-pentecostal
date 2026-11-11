@@ -6,7 +6,7 @@ import { installCatalog, markCatalogDeleted } from './catalog';
 vi.mock('./catalog.json', () => ({
   default: {
     songs: [
-      { id: 'sa-a', title: 'A', number: '1', category: 'himnos', lyrics: 'nueva letra' },
+      { id: 'sa-a', title: 'A', number: '1', category: 'himnos', lyrics: 'nueva letra', themes: ['cielo'] },
       { id: 'sa-b', title: 'B', number: null, category: 'coros', lyrics: 'b' },
       { id: 'sa-c', title: 'C', category: 'alabanzas', lyrics: 'c' },
     ],
@@ -70,5 +70,13 @@ describe('installCatalog', () => {
     expect(repo.songs.has('sa-vieja')).toBe(false);
     expect(repo.songs.has('sa-vieja-editada')).toBe(true);
     expect(repo.songs.has('mia')).toBe(true);
+  });
+
+  it('agrega los temas a canciones editadas sin tocar su letra', async () => {
+    const repo = memoryRepo([song({ id: 'sa-a', lyrics: 'mi versión', createdAt: 1, updatedAt: 9 })]);
+    await installCatalog(repo);
+    expect(repo.songs.get('sa-a')!.lyrics).toBe('mi versión');
+    expect(repo.songs.get('sa-a')!.themes).toEqual(['cielo']);
+    expect(repo.songs.get('sa-a')!.updatedAt).toBe(9);
   });
 });

@@ -9,7 +9,7 @@ import type { Category, Song } from './types';
  * Para publicar cambios del catálogo: actualice catalog.json y suba
  * CATALOG_VERSION y CATALOG_STAMP.
  */
-export const CATALOG_VERSION = 5;
+export const CATALOG_VERSION = 6;
 const CATALOG_STAMP = Date.UTC(2026, 10, 7); // marca de tiempo de las canciones del catálogo
 
 interface CatalogEntry {
@@ -22,6 +22,7 @@ interface CatalogEntry {
   composer?: string;
   key?: string;
   notes?: string;
+  themes?: string[];
 }
 
 export async function loadCatalog(): Promise<Song[]> {
@@ -36,6 +37,7 @@ export async function loadCatalog(): Promise<Song[]> {
     composer: s.composer,
     key: s.key,
     notes: s.notes,
+    themes: s.themes,
     createdAt: CATALOG_STAMP,
     updatedAt: CATALOG_STAMP,
   }));
@@ -59,11 +61,19 @@ export async function installCatalog(repo: Repository, { force = false } = {}): 
   const byId = new Map(current.map((s) => [s.id, s]));
   const deleted = new Set((await repo.getMeta<string[]>('catalogDeleted')) ?? []);
 
-  const toWrite = catalog.filter((s) => {
+  const sameThemes = (a?: string[], b?: string[]) => JSON.stringify(a ?? []) === JSON.stringify(b ?? []);
+  const toWrite: Song[] = [];
+  for (const s of catalog) {
     const cur = byId.get(s.id);
-    if (cur) return untouched(cur) && cur.lyrics !== s.lyrics;
-    return force || !deleted.has(s.id);
-  });
+    if (!cur) {
+      if (force || !deleted.has(s.id)) toWrite.push(s);
+    } else if (untouched(cur)) {
+      if (cur.lyrics !== s.lyrics || !sameThemes(cur.themes, s.themes)) toWrite.push({ ...s, createdAt: cur.createdAt, updatedAt: cur.updatedAt });
+    } else if (!cur.themes?.length && s.themes?.length) {
+      // Canción editada por el usuario: se respeta su versión y solo se le suman los temas.
+      toWrite.push({ ...cur, themes: s.themes });
+    }
+  }
   await repo.putSongs(toWrite);
 
   // Retira canciones que salieron del catálogo (si el usuario no las editó).

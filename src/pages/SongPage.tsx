@@ -23,6 +23,7 @@ import { CATEGORY_ICON, categoryColor } from '../components/songMeta';
 import { SongView } from '../components/SongView';
 import { Button, EmptyState, IconButton, Segmented, Sheet, cx } from '../components/ui';
 import { categoryInfo } from '../data/types';
+import { themeById, toneVar } from '../data/themes';
 import { useWakeLock } from '../hooks/useWakeLock';
 import {
   allKeys,
@@ -232,6 +233,25 @@ export default function SongPage() {
                 <span className="text-muted">Tono</span>
                 <span className="font-semibold text-chord">{keyName(currentKey, notation)}</span>
               </span>
+            )}
+            {!!song.themes?.length && (
+              <nav aria-label="Categorías temáticas" className="mt-4 flex flex-wrap gap-2">
+                {song.themes.map((tid) => {
+                  const t = themeById(tid);
+                  if (!t) return null;
+                  const Icon = t.icon;
+                  return (
+                    <Link
+                      key={tid}
+                      to={`/categorias/${tid}`}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-medium transition hover:border-accent/50"
+                    >
+                      <Icon size={14} style={{ color: toneVar(t.tone) }} />
+                      {t.name}
+                    </Link>
+                  );
+                })}
+              </nav>
             )}
           </div>
         ) : (

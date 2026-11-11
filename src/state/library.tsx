@@ -4,6 +4,7 @@ import { newId, type Repository } from '../data/repository';
 import { installCatalog, markCatalogDeleted } from '../data/catalog';
 import type { BackupFile, Category, RecentView, Song, SongInput, SongList } from '../data/types';
 import { buildIndex, compareSongs, type SearchEntry } from '../lib/search';
+import { cleanThemes } from '../data/themes';
 
 const MAX_RECENTS = 30;
 const CATEGORY_IDS: Category[] = ['himnos', 'alabanzas', 'coros'];
@@ -83,6 +84,7 @@ function sanitizeSong(raw: unknown): Song | null {
     composer: str(r.composer),
     key: str(r.key),
     notes: str(r.notes),
+    themes: cleanThemes(r.themes),
     createdAt: typeof r.createdAt === 'number' ? r.createdAt : now,
     updatedAt: typeof r.updatedAt === 'number' ? r.updatedAt : now,
   };

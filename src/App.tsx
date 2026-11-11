@@ -7,6 +7,8 @@ import Hymnal from './pages/Hymnal';
 import ListDetail from './pages/ListDetail';
 import Lists from './pages/Lists';
 import Settings from './pages/Settings';
+import ThemeDetail from './pages/ThemeDetail';
+import Themes from './pages/Themes';
 import SongEditor from './pages/SongEditor';
 import SongPage from './pages/SongPage';
 import { LibraryProvider } from './state/library';
@@ -32,6 +34,8 @@ export default function App() {
                 <Route index element={<Home />} />
                 <Route path="himnario" element={<Hymnal />} />
                 <Route path="cancion/:id" element={<SongPage />} />
+                <Route path="categorias" element={<Themes />} />
+                <Route path="categorias/:id" element={<ThemeDetail />} />
                 <Route path="favoritos" element={<Favorites />} />
                 <Route path="listas" element={<Lists />} />
                 <Route path="listas/:id" element={<ListDetail />} />

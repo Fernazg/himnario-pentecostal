@@ -24,11 +24,13 @@ create table if not exists public.songs (
   composer    text,
   key         text,
   notes       text,
+  themes      jsonb not null default '[]'::jsonb,  -- categorías temáticas (src/data/themes.ts)
   created_at  bigint not null,
   updated_at  bigint not null,
   deleted     boolean not null default false,
   synced_at   bigint not null default public.now_ms()
 );
+alter table public.songs add column if not exists themes jsonb not null default '[]'::jsonb;
 create index if not exists songs_synced_at_idx on public.songs (synced_at);
 
 drop trigger if exists songs_touch on public.songs;

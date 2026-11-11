@@ -1,4 +1,4 @@
-import { BookOpen, Heart, House, ListMusic, Settings } from 'lucide-react';
+import { BookOpen, Heart, House, ListMusic, Settings, Tags } from 'lucide-react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { cx } from './ui';
 import { useLibrary } from '../state/library';
@@ -8,6 +8,7 @@ import { UpdatePrompt } from './UpdatePrompt';
 const NAV = [
   { to: '/', label: 'Inicio', icon: House, end: true },
   { to: '/himnario', label: 'Himnario', icon: BookOpen },
+  { to: '/categorias', label: 'Categorías', icon: Tags },
   { to: '/favoritos', label: 'Favoritos', icon: Heart },
   { to: '/listas', label: 'Listas', icon: ListMusic },
   { to: '/ajustes', label: 'Ajustes', icon: Settings },
@@ -63,19 +64,19 @@ export function Layout() {
           aria-label="Principal"
           className="pb-safe fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface/90 backdrop-blur-xl md:hidden"
         >
-          <div className="mx-auto grid max-w-lg grid-cols-5">
+          <div className="mx-auto grid max-w-lg grid-cols-6">
             {NAV.map(({ to, label, icon: Icon, end }) => (
               <NavLink
                 key={to}
                 to={to}
                 end={end}
                 className={({ isActive }) =>
-                  cx('flex flex-col items-center gap-0.5 pb-1.5 pt-2 text-[11px] font-medium', isActive ? 'text-accent' : 'text-muted')
+                  cx('flex min-w-0 flex-col items-center gap-0.5 pb-1.5 pt-2 text-[10.5px] font-medium tracking-tight', isActive ? 'text-accent' : 'text-muted')
                 }
               >
                 {({ isActive }) => (
                   <>
-                    <span className={cx('flex h-7 w-12 items-center justify-center rounded-full transition', isActive && 'bg-accent-soft')}>
+                    <span className={cx('flex h-7 w-11 items-center justify-center rounded-full transition', isActive && 'bg-accent-soft')}>
                       <Icon size={20} strokeWidth={isActive ? 2.3 : 1.8} />
                     </span>
                     {label}

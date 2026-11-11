@@ -6,6 +6,7 @@ import { CATEGORY_ICON, categoryColor } from '../components/songMeta';
 import { SongView } from '../components/SongView';
 import { Button, ConfirmDialog, EmptyState, Field, IconButton, Segmented, cx, inputClass } from '../components/ui';
 import { CATEGORIES, type Category, type SongInput } from '../data/types';
+import { THEMES, toneVar } from '../data/themes';
 import { allKeys, isChord, isFlatKey, keyName, parseKey } from '../lib/chords';
 import { chordsOverToInline, extractChords, isChordLine } from '../lib/songText';
 import { useLibrary } from '../state/library';
@@ -94,6 +95,7 @@ export default function SongEditor() {
         composer: clean(form.composer),
         key: clean(form.key) ?? (firstChord ? keyName(firstChord, 'es') : undefined),
         notes: clean(form.notes),
+        themes: form.themes?.length ? form.themes : undefined,
       },
       existing?.id,
     );
@@ -298,6 +300,37 @@ export default function SongEditor() {
               />
             </div>
           )}
+        </div>
+
+        <div>
+          <span className="mb-1 block text-sm font-medium">Categorías temáticas</span>
+          <p className="mb-2 text-xs text-muted">
+            Elija los temas del mensaje de la letra (no solo palabras sueltas). El primero que marque será el tema principal.
+          </p>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Categorías temáticas">
+            {THEMES.map((t) => {
+              const sel = form.themes ?? [];
+              const idx = sel.indexOf(t.id);
+              const on = idx >= 0;
+              const Icon = t.icon;
+              return (
+                <button
+                  key={t.id}
+                  type="button"
+                  aria-pressed={on}
+                  onClick={() => set('themes', on ? sel.filter((x) => x !== t.id) : [...sel, t.id])}
+                  className={cx(
+                    'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition',
+                    on ? 'border-accent bg-accent-soft text-ink' : 'border-line bg-surface text-muted hover:border-accent/40',
+                  )}
+                >
+                  <Icon size={14} style={{ color: toneVar(t.tone) }} />
+                  {t.name}
+                  {idx === 0 && <span className="rounded-full bg-accent px-1.5 text-[10px] text-on-accent">principal</span>}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <Field label="Observaciones">

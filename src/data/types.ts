@@ -21,6 +21,8 @@ export interface Song {
   /** Tonalidad original, p. ej. "Sol" o "Lam". */
   key?: string;
   notes?: string;
+  /** Categorías temáticas (ids de src/data/themes.ts); la primera es la principal. */
+  themes?: string[];
   createdAt: number;
   updatedAt: number;
 }

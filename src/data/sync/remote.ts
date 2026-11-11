@@ -1,6 +1,7 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { Song, SongList } from '../types';
 import type { RemoteChanges } from '../../state/library';
+import { cleanThemes } from '../themes';
 import { SUPABASE_KEY, SUPABASE_URL } from './config';
 
 let client: SupabaseClient | null = null;
@@ -21,6 +22,7 @@ export interface SongRow {
   composer: string | null;
   key: string | null;
   notes: string | null;
+  themes?: string[] | null;
   created_at: number;
   updated_at: number;
   deleted: boolean;
@@ -51,6 +53,7 @@ export const songToRow = (s: Song, deleted = false): SongRow => ({
   composer: s.composer ?? null,
   key: s.key ?? null,
   notes: s.notes ?? null,
+  themes: s.themes ?? [],
   created_at: s.createdAt,
   updated_at: s.updatedAt,
   deleted,
@@ -66,6 +69,7 @@ export const rowToSong = (r: SongRow): Song => ({
   composer: u(r.composer),
   key: u(r.key),
   notes: u(r.notes),
+  themes: cleanThemes(r.themes),
   createdAt: Number(r.created_at),
   updatedAt: Number(r.updated_at),
 });

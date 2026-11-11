@@ -4,6 +4,8 @@ import { CATEGORY_ICON, SongRow, categoryColor } from '../components/songMeta';
 import { CATEGORIES } from '../data/types';
 import { useLibrary } from '../state/library';
 import { useOnline } from '../hooks/useOnline';
+import { THEMES } from '../data/themes';
+import { ThemeIcon, useSongsByTheme } from './Themes';
 
 function greeting() {
   const h = new Date().getHours();
@@ -16,6 +18,7 @@ export default function Home() {
   const { songs, recents, songsById, lists, error } = useLibrary();
   const navigate = useNavigate();
   const online = useOnline();
+  const byTheme = useSongsByTheme();
   const counts = Object.fromEntries(CATEGORIES.map((c) => [c.id, songs.filter((s) => s.category === c.id).length]));
   const recentSongs = recents.map((r) => songsById.get(r.songId)).filter((s) => !!s).slice(0, 6);
   const upcoming = lists
@@ -81,6 +84,30 @@ export default function Home() {
               </Link>
             );
           })}
+        </div>
+      </section>
+
+      <section className="pt-8" aria-labelledby="temas-title">
+        <div className="mb-2 flex items-center justify-between px-4 md:px-8">
+          <h2 id="temas-title" className="font-serif text-xl font-semibold">
+            Explorar por tema
+          </h2>
+          <Link to="/categorias" className="text-sm font-medium text-accent">
+            Ver todas
+          </Link>
+        </div>
+        <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-1 md:px-8">
+          {THEMES.slice(0, 10).map((t) => (
+            <Link
+              key={t.id}
+              to={`/categorias/${t.id}`}
+              className="flex w-40 shrink-0 flex-col gap-2 rounded-2xl border border-line bg-surface p-3 transition hover:shadow-md"
+            >
+              <ThemeIcon theme={t} size="sm" />
+              <span className="line-clamp-2 text-sm font-medium leading-snug">{t.name}</span>
+              <span className="mt-auto text-xs text-muted">{byTheme.get(t.id)?.length ?? 0} canciones</span>
+            </Link>
+          ))}
         </div>
       </section>
 
