@@ -1,0 +1,2345 @@
+[
+ {
+  "id": "sa-himno-1-ven-oh-todopoderoso",
+  "numero": "1",
+  "titulo": "Ven, ¡Oh Todopoderoso!",
+  "cambios": [
+   "restos de la página web eliminados",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-2-luz-de-vida",
+  "numero": "2",
+  "titulo": "Luz de Vida",
+  "cambios": [
+   "restos de la página web eliminados"
+  ]
+ },
+ {
+  "id": "sa-himno-3-alma-mia-no-delires",
+  "numero": "3",
+  "titulo": "Alma Mía, No Delires",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-4-yo-por-cristo",
+  "numero": "4",
+  "titulo": "Yo por Cristo",
+  "cambios": [
+   "estribillo «Alabanzas doy a ti, mi salvador» completado en cada estrofa (venía abreviado)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-5-cantemos-aqui",
+  "numero": "5",
+  "titulo": "Cantemos Aquí",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Cantemos Aqui» → «Cantemos Aquí»"
+  ]
+ },
+ {
+  "id": "sa-himno-7-venid-con-canticos",
+  "numero": "7",
+  "titulo": "Venid con Cánticos",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-10-venid-pecadores",
+  "numero": "10",
+  "titulo": "Venid Pecadores",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himnno-11-oidlo-pobre-pecador",
+  "numero": "11",
+  "titulo": "Oídlo, Pobre Pecador",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Oìdlo, Pobre Pecador» → «Oídlo, Pobre Pecador»"
+  ]
+ },
+ {
+  "id": "sa-himno-13-ven-alma-que-lloras",
+  "numero": "13",
+  "titulo": "Ven, Alma que Lloras",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-14-no-os-detengais",
+  "numero": "14",
+  "titulo": "No os Detengáis",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «No os Detengais» → «No os Detengáis»"
+  ]
+ },
+ {
+  "id": "sa-himno-16-roca-abierta",
+  "numero": "16",
+  "titulo": "Roca Abierta",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-17-oh-jesus-senor-divino",
+  "numero": "17",
+  "titulo": "Oh, Jesús Señor Divino",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-19-bondadoso-salvador",
+  "numero": "19",
+  "titulo": "Bondadoso Salvador",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-21-mirad-al-salvador",
+  "numero": "21",
+  "titulo": "Mirad al Salvador",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-22-confio-yo-en-cristo",
+  "numero": "22",
+  "titulo": "Confío Yo en Cristo",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Confio Yo en Cristo» → «Confío Yo en Cristo»"
+  ]
+ },
+ {
+  "id": "sa-himno-23-de-heladas-cordilleras",
+  "numero": "23",
+  "titulo": "De Heladas Cordilleras",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-24-yo-vil-indigno",
+  "numero": "24",
+  "titulo": "Yo Vil Indigno",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-25-hay-una-fuente-carmesi",
+  "numero": "25",
+  "titulo": "Hay una Fuente Carmesí",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Hay una Fuente Carmesi» → «Hay una Fuente Carmesí»"
+  ]
+ },
+ {
+  "id": "sa-himno-26-yo-confio-en-jesus",
+  "numero": "26",
+  "titulo": "Yo Confío en Jesús",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Yo Confio en Jesús» → «Yo Confío en Jesús»"
+  ]
+ },
+ {
+  "id": "sa-himno-27-tal-como-soy",
+  "numero": "27",
+  "titulo": "Tal Como Soy",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-28-no-hay-otro-mediador",
+  "numero": "28",
+  "titulo": "No Hay Otro Mediador",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-29-si-yo-mis-pecados",
+  "numero": "29",
+  "titulo": "Si Yo Mis Pecados",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-30-gozo-hay-en-el-cielo",
+  "numero": "30",
+  "titulo": "Gozo Hay en el Cielo",
+  "cambios": [
+   "mayúsculas corregidas",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-31-suenen-dulces-himnos",
+  "numero": "31",
+  "titulo": "Suenen Dulces Himnos",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-33-concededme-jesus-poder",
+  "numero": "33",
+  "titulo": "Concédeme, Jesús, Poder",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Concededme, Jesús, Poder» → «Concédeme, Jesús, Poder»"
+  ]
+ },
+ {
+  "id": "sa-himno-34-siempre-hablamos",
+  "numero": "34",
+  "titulo": "Siempre Hablamos",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-36-voy-al-cielo",
+  "numero": "36",
+  "titulo": "Voy al Cielo",
+  "cambios": [
+   "mayúsculas corregidas"
+  ]
+ },
+ {
+  "id": "sa-himno-37-jerusalem",
+  "numero": "37",
+  "titulo": "Jerusalén",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Jerusalem» → «Jerusalén»"
+  ]
+ },
+ {
+  "id": "sa-himno-38-hay-un-mundo-feliz",
+  "numero": "38",
+  "titulo": "Hay un mundo feliz",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-39-pecador-ven-al-dulce-jesus",
+  "numero": "39",
+  "titulo": "Pecador ven al dulce Jesús",
+  "cambios": [
+   "restos de la página web eliminados",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-40-cantare-cantare",
+  "numero": "40",
+  "titulo": "Cantaré, Cantaré",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-41-el-salvador-esta-aqui",
+  "numero": "41",
+  "titulo": "El Salvador Está Aquí",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula",
+   "título: «El Salvador esta Aqui» → «El Salvador Está Aquí»"
+  ]
+ },
+ {
+  "id": "sa-himno-43-ved-del-cielo-descendiendo",
+  "numero": "43",
+  "titulo": "Ved del Cielo Descendiendo",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «ved del cielo descendiendo» → «Ved del Cielo Descendiendo»"
+  ]
+ },
+ {
+  "id": "sa-himno-44-la-palabra",
+  "numero": "44",
+  "titulo": "La Palabra",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-47-meditad",
+  "numero": "47",
+  "titulo": "Meditad",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-48-alma-cese-tu-dolor",
+  "numero": "48",
+  "titulo": "Alma Cese Tu Dolor",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-49-heme-aqui",
+  "numero": "49",
+  "titulo": "Heme Aquí",
+  "cambios": [
+   "título: «Heme Aqui» → «Heme Aquí»"
+  ]
+ },
+ {
+  "id": "sa-himno-51-en-el-curso-de-este-dia",
+  "numero": "51",
+  "titulo": "En El Curso de Este Día",
+  "cambios": [
+   "se quitó la letra del himno 50 que la fuente publicaba por error; queda pendiente la letra correcta"
+  ]
+ },
+ {
+  "id": "sa-himno-52-en-la-ciudad-de-dios",
+  "numero": "52",
+  "titulo": "En La Ciudad de Dios",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-53-ni-en-la-tierra",
+  "numero": "53",
+  "titulo": "Ni en la Tierra",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-54-la-vida-es-ficticia",
+  "numero": "54",
+  "titulo": "La Vida es Ficticia",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-55-la-diestra-del-excelso",
+  "numero": "55",
+  "titulo": "La Diestra del Excelso",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-57-venid-venid-zagales",
+  "numero": "57",
+  "titulo": "Venid, Venid Zagales",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-58-obediente-a-tu-mandato",
+  "numero": "58",
+  "titulo": "Obediente a Tu Mandato",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-60-mas-cerca",
+  "numero": "60",
+  "titulo": "Más Cerca",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-62-es-cristo-mi-pastor",
+  "numero": "62",
+  "titulo": "Es Cristo Mi Pastor",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-64-de-pie-de-pie-soldados",
+  "numero": "64",
+  "titulo": "De pie, De pie, Soldados",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-65-la-nave-evangelista",
+  "numero": "65",
+  "titulo": "La Nave Evangelista",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-66-nos-veremos-en-el-rio",
+  "numero": "66",
+  "titulo": "Nos Veremos en el Rio",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-67-santo-santo-santo",
+  "numero": "67",
+  "titulo": "Santo, Santo, Santo",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-68-oh-que-amigo-nos-es-cristo",
+  "numero": "68",
+  "titulo": "Oh, que Amigo nos es Cristo",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-69-santa-biblia",
+  "numero": "69",
+  "titulo": "Santa Biblia",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-70-cuando-leo-en-la-biblia",
+  "numero": "70",
+  "titulo": "Cuando Leo en la Biblia",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "se quitó una estrofa del himno 69 copiada por error; falta la primera estrofa original"
+  ]
+ },
+ {
+  "id": "sa-himno-73-oid-un-son-en-alta-esfera",
+  "numero": "73",
+  "titulo": "Oid un Son en Alta Esfera",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-80-tentado-no-cedas",
+  "numero": "80",
+  "titulo": "Tentado, No Cedas",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-82-dia-feliz",
+  "numero": "82",
+  "titulo": "Día Feliz",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-83-trabajad-trabajad",
+  "numero": "83",
+  "titulo": "Trabajad, Trabajad",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-85-firmes-y-adelante",
+  "numero": "85",
+  "titulo": "Firmes y Adelante",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-87-el-trono-santo",
+  "numero": "87",
+  "titulo": "El Trono Santo",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-88-en-la-celica-morada",
+  "numero": "88",
+  "titulo": "En La Célica Morada",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-89-lejos-de-mi-padre-dios",
+  "numero": "89",
+  "titulo": "Lejos de mi Padre Dios",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-90-ved-que-acercandose",
+  "numero": "90",
+  "titulo": "Ved que Acercándose",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-91-oh-soldados-de-los-cielos",
+  "numero": "91",
+  "titulo": "Oh, Soldados De Los Cielos",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-92-te-sientes-casi-resuelto-ya",
+  "numero": "92",
+  "titulo": "¿Te Sientes Casi Resuelto Ya?",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-93-a-jesucristo-ven-sin-tardar",
+  "numero": "93",
+  "titulo": "A Jesucristo Ven Sin Tardar",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-96-dicha-grande",
+  "numero": "96",
+  "titulo": "Dicha Grande",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-97-salvo-navego",
+  "numero": "97",
+  "titulo": "Salvo Navego",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-98-mas-que-vencer",
+  "numero": "98",
+  "titulo": "Más Que Vencer",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-99-para-todo-viajero",
+  "numero": "99",
+  "titulo": "Para Todo Viajero",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-102-gozo-la-santa-palabra-leer",
+  "numero": "102",
+  "titulo": "Gozo La Santa Palabra Leer",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-103-dad-loor-a-dios",
+  "numero": "103",
+  "titulo": "Dad Loor a Dios",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-105-tocad-trompeta-ya",
+  "numero": "105",
+  "titulo": "Tocad Trompeta Ya",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-106-sagrado-es-el-amor",
+  "numero": "106",
+  "titulo": "Sagrado Es El Amor",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-107-siempre-aqui-reposare",
+  "numero": "107",
+  "titulo": "Siempre Aquí Reposaré",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Siempre Aqui Reposare» → «Siempre Aquí Reposaré»"
+  ]
+ },
+ {
+  "id": "sa-himno-108-a-cristo-doy-mi-canto",
+  "numero": "108",
+  "titulo": "A Cristo Doy Mi Canto",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-111-que-me-importa-del-mundo-las-penas",
+  "numero": "111",
+  "titulo": "¿Qué Me Importa del Mundo las Penas?",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Que Me Importa Del Mundo Las Penas» → «¿Qué Me Importa del Mundo las Penas?»"
+  ]
+ },
+ {
+  "id": "sa-himno-112-deje-mis-penas",
+  "numero": "112",
+  "titulo": "Dejé Mis Penas",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-113-todos-los-que-tengan-sed",
+  "numero": "113",
+  "titulo": "Todos Los Que Tengan Sed",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-114-gloria-a-nuestro-salvador",
+  "numero": "114",
+  "titulo": "Gloria a Nuestro Salvador",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-117-tu-dejaste-tu-trono",
+  "numero": "117",
+  "titulo": "Tú Dejaste Tu Trono",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-118-venid-ninos",
+  "numero": "118",
+  "titulo": "Venid Niños",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-119-con-voz-benigna",
+  "numero": "119",
+  "titulo": "Con Voz Benigna",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-121-bendita-hora-de-oracion",
+  "numero": "121",
+  "titulo": "Bendita Hora de Oración",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-122-castillo-fuerte",
+  "numero": "122",
+  "titulo": "Castillo Fuerte",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-126-mire-con-ansia",
+  "numero": "126",
+  "titulo": "Miré con Ansia",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Mire con Ansia» → «Miré con Ansia»"
+  ]
+ },
+ {
+  "id": "sa-himno-128-oh-vuelve-vuelve",
+  "numero": "128",
+  "titulo": "Oh, vuelve, Vuelve",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-131-adelante-vamos",
+  "numero": "131",
+  "titulo": "¡Adelante Vamos!",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-132-jesus-es-mi-amigo",
+  "numero": "132",
+  "titulo": "Jesús Es Mi Amigo",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-133-pecadores-extraviados",
+  "numero": "133",
+  "titulo": "Pecadores Extraviados",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-136-salvado-tan-gran-privilegio",
+  "numero": "136",
+  "titulo": "Salvado, Tan Gran Privilegio",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-137-te-alabamos-oh-dios",
+  "numero": "137",
+  "titulo": "Te Alabamos, ¡Oh Dios!",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-138-cuando-yo-contemple-la-cruz",
+  "numero": "138",
+  "titulo": "Cuando Yo Contemplé la Cruz",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Cuando Yo Contemple La Cruz» → «Cuando Yo Contemplé la Cruz»"
+  ]
+ },
+ {
+  "id": "sa-himno-139-he-oido-de-un-bello-paraiso",
+  "numero": "139",
+  "titulo": "He Oído De Un Bello Paraíso",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-140-cuando-cesaren-mis-penas",
+  "numero": "140",
+  "titulo": "Cuando Cesaren Mis Penas",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-141-si-al-fiero-enemigo",
+  "numero": "141",
+  "titulo": "Si Al Fiero Enemigo",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-142-un-vivo-anhelo",
+  "numero": "142",
+  "titulo": "Un Vivo Anhelo",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-143-cristo-jesus",
+  "numero": "143",
+  "titulo": "Cristo Jesús",
+  "cambios": [
+   "mayúsculas corregidas"
+  ]
+ },
+ {
+  "id": "sa-himno-144-mas-de-jesus-que-apender",
+  "numero": "144",
+  "titulo": "Más de Jesús Quiero Aprender",
+  "cambios": [
+   "título: «Más De Jesús Que Apender» → «Más de Jesús Quiero Aprender»"
+  ]
+ },
+ {
+  "id": "sa-himno-145-cual-faro-en-el-mar",
+  "numero": "145",
+  "titulo": "Cual Faro En El Mar",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-146-avivanos-senor",
+  "numero": "146",
+  "titulo": "Avívanos, Señor",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Avivanos, Señor» → «Avívanos, Señor»"
+  ]
+ },
+ {
+  "id": "sa-himno-149-en-su-amorosa-compasion",
+  "numero": "149",
+  "titulo": "En Su Amorosa Compasión",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-150-consagrame-todo-entero",
+  "numero": "150",
+  "titulo": "Consagrarme Todo Entero",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-157-lleno-de-angustias",
+  "numero": "157",
+  "titulo": "Lleno De Angustias",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-160-jerusalem-de-arriba",
+  "numero": "160",
+  "titulo": "Jerusalén de Arriba",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Jerusalem De Arriba» → «Jerusalén de Arriba»"
+  ]
+ },
+ {
+  "id": "sa-himno-162-soy-extranjero-aqui",
+  "numero": "162",
+  "titulo": "Soy Extranjero Aquí",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-ve-ve-oh-sion",
+  "numero": "165",
+  "titulo": "Ve, Ve, Oh, Sion",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-166-tus-pies-la-senda",
+  "numero": "166",
+  "titulo": "Tus Pies La Senda",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-167-cristo-busca-limpios-corazones",
+  "numero": "167",
+  "titulo": "Cristo Busca Limpios Corazones",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-168-cuando-vengan-pruebas",
+  "numero": "168",
+  "titulo": "Cuando Vengan Pruebas",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-170-el-senor-resucito",
+  "numero": "170",
+  "titulo": "El Señor Resucitó",
+  "cambios": [
+   "título: «El Señor Resucito» → «El Señor Resucitó»"
+  ]
+ },
+ {
+  "id": "sa-himno-172-cuando-en-mi-todo-acabare",
+  "numero": "172",
+  "titulo": "Cuando En Mí Todo Acabaré",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-173-unanimes-junto-a-la-cruz",
+  "numero": "173",
+  "titulo": "Unánimes Junto a Jesús",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "título: «Unanimes Junto a la Cruz» → «Unánimes Junto a Jesús»"
+  ]
+ },
+ {
+  "id": "sa-himno-177-que-ha-quitado-mi-maldad",
+  "numero": "177",
+  "titulo": "¿Qué Ha Quitado Mi Maldad?",
+  "cambios": [
+   "título: «Que Ha Quitado Mi Maldad» → «¿Qué Ha Quitado Mi Maldad?»"
+  ]
+ },
+ {
+  "id": "sa-himno-178-oh-ven-a-la-cruz",
+  "numero": "178",
+  "titulo": "¡Oh! Ven a la Cruz",
+  "cambios": [
+   "título: «¡Oh! Ven a La Cruz» → «¡Oh! Ven a la Cruz»"
+  ]
+ },
+ {
+  "id": "sa-himno-179-oyenos-pastor-divino",
+  "numero": "179",
+  "titulo": "Óyenos, Pastor Divino",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-180-mi-redentor-el-rey-de-gloria",
+  "numero": "180",
+  "titulo": "Mi Redentor, el Rey de Gloria",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Mi redentor, El Rey de Gloria» → «Mi Redentor, el Rey de Gloria»"
+  ]
+ },
+ {
+  "id": "sa-himno-181-alabado-el-gran-manantial",
+  "numero": "181",
+  "titulo": "Alabado El Gran Manantial",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-182-pobre-peregrino",
+  "numero": "182",
+  "titulo": "Pobre Peregrino",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-183-nuevas-alegres",
+  "numero": "183",
+  "titulo": "Nuevas Alegres",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-184-de-cristo-yo-soy",
+  "numero": "184",
+  "titulo": "De Cristo Yo Soy",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-hinmo-185-sone-que-el-gran-dia",
+  "numero": "185",
+  "titulo": "Soñé que el Gran Día",
+  "cambios": [
+   "título: «Soñe Que El Gran Día» → «Soñé que el Gran Día»"
+  ]
+ },
+ {
+  "id": "sa-himno-187-cuando-anuncie-el-arcangel",
+  "numero": "187",
+  "titulo": "Cuando Anuncie el Arcángel",
+  "cambios": [
+   "título: «Cuando Anuncie El Arcangel» → «Cuando Anuncie el Arcángel»"
+  ]
+ },
+ {
+  "id": "sa-himno-188-cantemos-del-amor-divino",
+  "numero": "188",
+  "titulo": "Cantemos Del Amor Divino",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-190-a-combatir",
+  "numero": "190",
+  "titulo": "¡A Combatir!",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-191-un-principe-vino",
+  "numero": "191",
+  "titulo": "Un Príncipe Vino",
+  "cambios": [
+   "título: «Un Principe Vino» → «Un Príncipe Vino»"
+  ]
+ },
+ {
+  "id": "sa-himno-192-me-hirio-el-pecado",
+  "numero": "192",
+  "titulo": "Me Hirió El Pecado",
+  "cambios": [
+   "restos de la página web eliminados",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-193-honra-y-gloria-al-padre-eterno",
+  "numero": "193",
+  "titulo": "Honra y Gloria al Padre Eterno",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-194-ved-del-cielo-rey-de-gloria",
+  "numero": "194",
+  "titulo": "Ved Del Cielo Rey De Gloria",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "mayúsculas corregidas",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-195-hoy-mi-alma-bana-con-su-luz",
+  "numero": "195",
+  "titulo": "Hoy Mi Alma Baña Con Su Luz",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-197-marchare-en-la-luz-de-dios",
+  "numero": "197",
+  "titulo": "Marcharé En La Luz De Dios",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-198-ama-el-pastor-sus-ovejas",
+  "numero": "198",
+  "titulo": "Ama El Pastor Sus Ovejas",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-199-a-abraham-y-a-sara",
+  "numero": "199",
+  "titulo": "A Abraham y A Sara",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-200-en-cristo-feliz",
+  "numero": "200",
+  "titulo": "En Cristo, Feliz",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-203-muy-cercano-esta-el-dia",
+  "numero": "203",
+  "titulo": "Muy Cercano Está el Día",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Muy Cercano Esta El Día» → «Muy Cercano Está el Día»"
+  ]
+ },
+ {
+  "id": "sa-himno-204-que-mi-vida-entera-este",
+  "numero": "204",
+  "titulo": "Que Mi Vida Entera Esté",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Que Mi Vida Entera Este» → «Que Mi Vida Entera Esté»"
+  ]
+ },
+ {
+  "id": "sa-himno-205-cantare-la-maravilla",
+  "numero": "205",
+  "titulo": "Cantaré La Maravilla",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-206-cuando-estes-cansado",
+  "numero": "206",
+  "titulo": "Cuando Estés Cansado",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-207-oh-jamas-nos-cansaremos",
+  "numero": "207",
+  "titulo": "¡Oh! Jamás Nos Cansaremos",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-209-soldados-santos-del-senor",
+  "numero": "209",
+  "titulo": "Soldados Santos del Señor",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-212-en-el-fondo-de-mi-alma",
+  "numero": "212",
+  "titulo": "En El Fondo De Mi Alma",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-213-a-prepararnos-morada",
+  "numero": "213",
+  "titulo": "A Prepararnos Morada",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-215-mensajeros-del-maestro",
+  "numero": "215",
+  "titulo": "Mensajeros Del Maestro",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-216-cuan-glorioso-es-el-cambio",
+  "numero": "216",
+  "titulo": "Cuán Glorioso Es el Cambio",
+  "cambios": [
+   "título: «Cuan Glorioso Es El Cambio» → «Cuán Glorioso Es el Cambio»"
+  ]
+ },
+ {
+  "id": "sa-himno-217-hasta-cuando-senor",
+  "numero": "217",
+  "titulo": "¿Hasta Cuándo, Señor?",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Hasta Cuando Señor» → «¿Hasta Cuándo, Señor?»"
+  ]
+ },
+ {
+  "id": "sa-himno-218-quien-a-cristo-quiere",
+  "numero": "218",
+  "titulo": "¿Quién a Cristo Quiere?",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-219-nuestra-vida-acabara",
+  "numero": "219",
+  "titulo": "Nuestra Vida Acabará",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-220-como-puedes-pecar",
+  "numero": "220",
+  "titulo": "¿Cómo Puedes Pecar?",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-221-hay-quien-vele-mis-pisadas",
+  "numero": "221",
+  "titulo": "Hay quien Vele Mis Pisadas",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-222-hermano-dinos-hoy",
+  "numero": "222",
+  "titulo": "Hermano, Dinos Hoy",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-223-cristo-quiere-que-yo-brille",
+  "numero": "223",
+  "titulo": "Cristo Quiere Que Yo Brille",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-224-cuan-hermosos-son-los-pies",
+  "numero": "224",
+  "titulo": "Cuán Hermosos Son los Pies",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula",
+   "título: «Cuan Hermosos Son Los Pies» → «Cuán Hermosos Son los Pies»"
+  ]
+ },
+ {
+  "id": "sa-himno-225-oid-oid-lo-que-nos-manda",
+  "numero": "225",
+  "titulo": "Oíd, Oíd Lo Que Nos Manda",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-227-uno-por-uno-llegando-estan",
+  "numero": "227",
+  "titulo": "Uno Por Uno Llegando Están",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-229-lejos-allende-los-mares",
+  "numero": "229",
+  "titulo": "Lejos, Allende Los Mares",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-230-comisionados-del-senor",
+  "numero": "230",
+  "titulo": "Comisionados Del Señor",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-231-por-fe-en-jesus-el-salvador",
+  "numero": "231",
+  "titulo": "Por Fe En Jesús El Salvador",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-232-enrolado-estoy",
+  "numero": "232",
+  "titulo": "Enrolado Estoy",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-233-cautivo-era-de-satan",
+  "numero": "233",
+  "titulo": "Cautivo Era De Satán",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-234-oh-cristo-amado",
+  "numero": "234",
+  "titulo": "Oh, Cristo Amado",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-235-como-podre-estar-triste",
+  "numero": "235",
+  "titulo": "¿Cómo Podré Estar Triste?",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula",
+   "título: «Como Podré Estar Triste» → «¿Cómo Podré Estar Triste?»"
+  ]
+ },
+ {
+  "id": "sa-himno-239-oh-jovenes-venid",
+  "numero": "239",
+  "titulo": "¡Oh, Jóvenes, Venid!",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-240-adios-mis-hermanos",
+  "numero": "240",
+  "titulo": "Adiós Mis Hermanos",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-241-ando-con-gozo",
+  "numero": "241",
+  "titulo": "Ando con Gozo",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-242-al-pecador-cristo-llama",
+  "numero": "242",
+  "titulo": "Al Pecador Cristo Llama",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-243-cantare-a-cristo",
+  "numero": "243",
+  "titulo": "Cantaré a Cristo",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-244-sembrare-la-simiente-preciosa",
+  "numero": "244",
+  "titulo": "Sembraré la Simiente preciosa",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-245-senor-jesus-escucha-ya",
+  "numero": "245",
+  "titulo": "Señor Jesús, Escucha ya",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-246-cual-ciudad-sobre-un-monte",
+  "numero": "246",
+  "titulo": "Cual ciudad Sobre Un Monte",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-247-en-la-guerra-contra-el-pecado",
+  "numero": "247",
+  "titulo": "En La Guerra Contra El Pecado",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-249-quieres-ser-salvo",
+  "numero": "249",
+  "titulo": "Quieres Ser Salvo",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-252-en-un-monte-lejano",
+  "numero": "252",
+  "titulo": "En Un Monte Lejano",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-253-la-mujer-samaritana",
+  "numero": "253",
+  "titulo": "La Mujer Samaritana",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-254-las-sendas-anchas-dejare",
+  "numero": "254",
+  "titulo": "Las Sendas Anchas Dejaré",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-256-el-senor-jesus-esta-llamando",
+  "numero": "256",
+  "titulo": "El Señor Jesús Está Llamando",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula",
+   "título: «El Señor Jesús Esta Llamando» → «El Señor Jesús Está Llamando»"
+  ]
+ },
+ {
+  "id": "sa-himno-257-muchas-cosas-en-los-cielos",
+  "numero": "257",
+  "titulo": "Muchas Cosas En Los Cielos",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-259-oh-mi-corazon-rebosa-de-gozo",
+  "numero": "259",
+  "titulo": "¡Oh! Mi Corazón Rebosa De Gozo",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-260-pienso-ahora",
+  "numero": "260",
+  "titulo": "Pienso Ahora",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-261-quiero-cantar-a-mi-rey",
+  "numero": "261",
+  "titulo": "Quiero Cantar a Mi Rey",
+  "cambios": [
+   "título: «Quiero cantar a Mi Rey» → «Quiero Cantar a Mi Rey»"
+  ]
+ },
+ {
+  "id": "sa-himno-262-quien-esta-de-parte",
+  "numero": "262",
+  "titulo": "¿Quién Está de Parte?",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Quien Esta de Parte» → «¿Quién Está de Parte?»"
+  ]
+ },
+ {
+  "id": "sa-himno-263-yo-quiero-trabajar",
+  "numero": "263",
+  "titulo": "Yo Quiero Trabajar",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-264-cantan-los-angeles",
+  "numero": "264",
+  "titulo": "Cantan Los Ángeles",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-266-si-yo-tuviera-de-la-manana",
+  "numero": "266",
+  "titulo": "Si Yo Tuviera De La Mañana",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-268-la-venida-de-cristo",
+  "numero": "268",
+  "titulo": "La Venida De Cristo",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-269-con-el-alma-entristecida",
+  "numero": "269",
+  "titulo": "Con El Alma Entristecida",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-270-corazones-inflamados",
+  "numero": "270",
+  "titulo": "Corazones Inflamados",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-271-cuando-el-verbo-termino",
+  "numero": "271",
+  "titulo": "Cuando El Verbo Terminó",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-272-de-la-tierra-de-egipto",
+  "numero": "272",
+  "titulo": "De La Tierra De Egipto",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-274-de-jesus-escucha-el-tierno",
+  "numero": "274",
+  "titulo": "De Jesús Escucha el Tierno Llamamiento",
+  "cambios": [
+   "título: «De Jesús Escucha El Tierno» → «De Jesús Escucha el Tierno Llamamiento»"
+  ]
+ },
+ {
+  "id": "sa-himno-275-el-evangelio",
+  "numero": "275",
+  "titulo": "El Evangelio",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-276-el-calvario",
+  "numero": "276",
+  "titulo": "El Calvario",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-277-en-el-cielo-una-morada",
+  "numero": "277",
+  "titulo": "En El Cielo Una Morada",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-278-ha-nacido-el-salvador",
+  "numero": "278",
+  "titulo": "Ha Nacido El Salvador",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-279-hubo-uno",
+  "numero": "279",
+  "titulo": "Hubo Uno",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-281-hay-un-canto-nuevo",
+  "numero": "281",
+  "titulo": "Hay Un Canto Nuevo",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-283-la-patria-necesita",
+  "numero": "283",
+  "titulo": "La Patria Necesita",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-285-muy-triste-en-pecado",
+  "numero": "285",
+  "titulo": "Muy Triste En Pecado",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-286-habra-grandes-lluvias",
+  "numero": "286",
+  "titulo": "Habrá Grandes Lluvias",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-287-sal-a-sembrar",
+  "numero": "287",
+  "titulo": "Sal a Sembrar",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-288-son-verdades-reveladas",
+  "numero": "288",
+  "titulo": "Son Verdades Reveladas",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "mayúsculas corregidas"
+  ]
+ },
+ {
+  "id": "sa-himno-290-senor-de-los-cielos",
+  "numero": "290",
+  "titulo": "Señor de los Cielos",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Señor De Los Cielos» → «Señor de los Cielos»"
+  ]
+ },
+ {
+  "id": "sa-himno-291-quisiera-contarles",
+  "numero": "291",
+  "titulo": "Quisiera Contarles",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-294-oh-cristo-mio",
+  "numero": "294",
+  "titulo": "Oh, Cristo Mío",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-295-oh-yo-quiero-andar-con-cristo",
+  "numero": "295",
+  "titulo": "Oh, Yo Quiero Andar Con Cristo",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-296-por-ti-oh-cristo",
+  "numero": "296",
+  "titulo": "Por ti, Oh Cristo",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-298-moro-yo-en-las-alturas",
+  "numero": "298",
+  "titulo": "Moro Yo En Las Alturas",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-299-jesucristo-descendio",
+  "numero": "299",
+  "titulo": "Jesucristo Descendió",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-301-un-dia-cristo-volvera",
+  "numero": "301",
+  "titulo": "Un Día Cristo Volverá",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-302-ven-pecador",
+  "numero": "302",
+  "titulo": "Ven Pecador",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-305-un-principe-tenemos",
+  "numero": "305",
+  "titulo": "Un Príncipe Tenemos",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-306-junto-al-templo-de-la-hermosa",
+  "numero": "306",
+  "titulo": "Junto Al Templo De La Hermosa",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-307-sembrad-con-amor",
+  "numero": "307",
+  "titulo": "Sembrad Con Amor",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-309-tiernas-canciones",
+  "numero": "309",
+  "titulo": "Tiernas Canciones",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-310-sufrio-por-mi-el-salvador",
+  "numero": "310",
+  "titulo": "Sufrió Por Mí El Salvador",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-311-oh-amor-de-dios",
+  "numero": "311",
+  "titulo": "¡Oh, Amor De Dios!",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-312-gratitud-a-nuestro-dios",
+  "numero": "312",
+  "titulo": "Gratitud A Nuestro Dios",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-313-marcho-siempre-al-frente",
+  "numero": "313",
+  "titulo": "Marcho Siempre Al Frente",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-315-cristo-nuestro-jefe",
+  "numero": "315",
+  "titulo": "Cristo Nuestro Jefe",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-316-alla-en-las-playas-de-galilea",
+  "numero": "316",
+  "titulo": "Allá En Las Playas De Galilea",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-318-es-jesucristo-mi-todo",
+  "numero": "318",
+  "titulo": "Es Jesucristo Mi Todo",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-319-viene-otra-vez-el-salvador",
+  "numero": "319",
+  "titulo": "Viene Otra Vez El Salvador",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-320-yo-oigo-decir",
+  "numero": "320",
+  "titulo": "Yo Oigo Decir",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-321-fieles-soldados",
+  "numero": "321",
+  "titulo": "Fieles Soldados",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "mayúsculas corregidas"
+  ]
+ },
+ {
+  "id": "sa-himno-323-ven-amigo-ven",
+  "numero": "323",
+  "titulo": "Ven Amigo Ven",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-324-eres-mansion-de-confraternidad",
+  "numero": "324",
+  "titulo": "Eres Mansión de Confraternidad",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "mayúsculas corregidas",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-325-quiero-ver-a-jesucristo",
+  "numero": "325",
+  "titulo": "Quiero Ver a Jesucristo",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-326-varios-anos-he-luchado",
+  "numero": "326",
+  "titulo": "Varios Años He Luchado",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-329-alma-escucha-a-tu-senor",
+  "numero": "329",
+  "titulo": "Alma Escucha a Tu Señor",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-332-estrella-de-la-manana",
+  "numero": "332",
+  "titulo": "Estrella De La Mañana",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-334-salimos-de-la-vida",
+  "numero": "334",
+  "titulo": "Salimos De La Vida",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-335-en-la-vergonzosa-cruz",
+  "numero": "335",
+  "titulo": "En La Vergonzosa Cruz",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-337-peregrino",
+  "numero": "337",
+  "titulo": "Peregrino",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-338-oh-senor-procuro-en-vano",
+  "numero": "338",
+  "titulo": "Oh Señor Procuro En Vano",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-341-en-tus-afanes-y-en-tu-dolor",
+  "numero": "341",
+  "titulo": "En Tus Afanes Y En Tu Dolor",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)"
+  ]
+ },
+ {
+  "id": "sa-himno-342-mas-cual-mi-cristo",
+  "numero": "342",
+  "titulo": "Más Cual Mi Cristo",
+  "cambios": [
+   "título: «Mas Cual Mi Cristo» → «Más Cual Mi Cristo»"
+  ]
+ },
+ {
+  "id": "sa-himno-343-oid-la-voz",
+  "numero": "343",
+  "titulo": "Oid La Voz",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-345-es-tiempo-de-la-siega",
+  "numero": "345",
+  "titulo": "Es Tiempo De La Siega",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-346-el-oro-y-la-plata",
+  "numero": "346",
+  "titulo": "El Oro y La Plata",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-348-va-mi-barca",
+  "numero": "348",
+  "titulo": "Va Mi Barca",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-349-la-llamada",
+  "numero": "349",
+  "titulo": "La Llamada",
+  "cambios": [
+   "coro reconstruido (marcas «Coro» sueltas o bloques mal cerrados)",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-350-el-cordero-inmolado",
+  "numero": "350",
+  "titulo": "El Cordero Inmolado",
+  "cambios": [
+   "mayúsculas corregidas"
+  ]
+ },
+ {
+  "id": "sa-himno-360-estad-por-cristo-firmes",
+  "numero": "360",
+  "titulo": "Estad por Cristo Firmes",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-363-oid-como-resuena",
+  "numero": "363",
+  "titulo": "Oíd Cómo Resuena",
+  "cambios": [
+   "título: «Oíd Como Resuena» → «Oíd Cómo Resuena»"
+  ]
+ },
+ {
+  "id": "sa-himno-367-con-nosotros-venid",
+  "numero": "367",
+  "titulo": "Con Nosotros Venid",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-368-la-iglesia-del-senor",
+  "numero": "368",
+  "titulo": "La Iglesia del Señor",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-370-que-dios-tan-bondadoso",
+  "numero": "370",
+  "titulo": "¡Qué Dios Tan Bondadoso!",
+  "cambios": [
+   "título: «Que Dios Tan Bondadoso» → «¡Qué Dios Tan Bondadoso!»"
+  ]
+ },
+ {
+  "id": "sa-himno-372-el-banquete",
+  "numero": "372",
+  "titulo": "El Banquete",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-376-ved-que-avanzan-las-huestes",
+  "numero": "376",
+  "titulo": "Ved que Avanzan Las Huestes",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-377-perdon",
+  "numero": "377",
+  "titulo": "Perdón",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-378-es-la-biblia-gran-tesoro",
+  "numero": "378",
+  "titulo": "Es La Biblia Gran Tesoro",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-379-por-las-arpas-y-las-voces",
+  "numero": "379",
+  "titulo": "Por Las Arpas y Las Voces",
+  "cambios": [
+   "mayúsculas corregidas",
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-384-mi-redentor",
+  "numero": "384",
+  "titulo": "Mi Redentor",
+  "cambios": [
+   "mayúsculas corregidas"
+  ]
+ },
+ {
+  "id": "sa-himno-387-bajo-de-las-estrellas",
+  "numero": "387",
+  "titulo": "Bajo de Las Estrellas",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-390-los-hijos-del-reino",
+  "numero": "390",
+  "titulo": "Los Hijos del Reino",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-392-somos-soldados-guerreros",
+  "numero": "392",
+  "titulo": "Somos Soldados Guerreros",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-393-senor-mi-dios",
+  "numero": "393",
+  "titulo": "Señor, Mi Dios",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-399-callad-no-ois",
+  "numero": "399",
+  "titulo": "Callad, ¿No Oís?",
+  "cambios": [
+   "nombres propios con mayúscula",
+   "título: «Callad, ¿No oís?» → «Callad, ¿No Oís?»"
+  ]
+ },
+ {
+  "id": "sa-himno-411-despertad-soldados-bravos",
+  "numero": "411",
+  "titulo": "Despertad, Soldados Bravos",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-412-hoy-es-dia-de-reposo",
+  "numero": "412",
+  "titulo": "Hoy es Día de Reposo",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-413-a-nuestro-padre-dios",
+  "numero": "413",
+  "titulo": "A Nuestro Padre Dios",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-418-senor-yo-me-encuentro",
+  "numero": "418",
+  "titulo": "Señor, Yo Me Encuentro",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-419-de-la-cumbre-del-calvario",
+  "numero": "419",
+  "titulo": "De La Cumbre Del Calvario",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-himno-420-guerreros-fieles-somos",
+  "numero": "420",
+  "titulo": "Guerreros Fieles Somos",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-como-un-relampago",
+  "numero": null,
+  "titulo": "Como Un Relámpago",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-dejame-beber-de-tu-rio-senor",
+  "numero": null,
+  "titulo": "Déjame Beber de Tu Río, Señor",
+  "cambios": [
+   "título: «Dejame Beber de Tú Río Señor» → «Déjame Beber de Tu Río, Señor»"
+  ]
+ },
+ {
+  "id": "sa-donde-esta-el-espiritu-de-dios",
+  "numero": null,
+  "titulo": "Donde Está El Espíritu de Dios",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-donde-esta-tu-dios",
+  "numero": null,
+  "titulo": "¿Dónde Está Tu Dios?",
+  "cambios": [
+   "título: «Dónde Está Tú Dios?» → «¿Dónde Está Tu Dios?»"
+  ]
+ },
+ {
+  "id": "sa-el-culto-de-hoy",
+  "numero": null,
+  "titulo": "El Culto de Hoy",
+  "cambios": [
+   "mayúsculas corregidas"
+  ]
+ },
+ {
+  "id": "sa-en-esta-reunion-cristo-esta",
+  "numero": null,
+  "titulo": "En Esta Reunión Cristo Está",
+  "cambios": [
+   "título: «En Está Reunión Cristo Está» → «En Esta Reunión Cristo Está»"
+  ]
+ },
+ {
+  "id": "sa-este-avivamiento-quien-lo-apagara",
+  "numero": null,
+  "titulo": "Este Avivamiento, ¿Quién lo Apagará?",
+  "cambios": [
+   "título: «Esté Avivamiento, ¿Quién Lo Apagará?» → «Este Avivamiento, ¿Quién lo Apagará?»"
+  ]
+ },
+ {
+  "id": "sa-estoy-listo-si-el-me-llama",
+  "numero": null,
+  "titulo": "Estoy Listo Si Él Me Llama",
+  "cambios": [
+   "título: «Estoy Listo Si El Me Llama» → «Estoy Listo Si Él Me Llama»"
+  ]
+ },
+ {
+  "id": "sa-jesus-esta-aqui-pide-lo-que-quieras",
+  "numero": null,
+  "titulo": "Jesús Está Aquí, Pide lo que Quieras",
+  "cambios": [
+   "título: «Jesús está Aquí Pide Lo Que Quieras» → «Jesús Está Aquí, Pide lo que Quieras»"
+  ]
+ },
+ {
+  "id": "sa-libertad-libertad-oh-que-buena",
+  "numero": null,
+  "titulo": "Libertad, Libertad, ¡Oh, Qué Buena!",
+  "cambios": [
+   "título: «Libertad, Libertad, Oh Que Buena.» → «Libertad, Libertad, ¡Oh, Qué Buena!»"
+  ]
+ },
+ {
+  "id": "sa-mirad-cuan-bueno-es",
+  "numero": null,
+  "titulo": "Mirad Cuán Bueno Es",
+  "cambios": [
+   "título: «Mirad Cuan Bueno Es» → «Mirad Cuán Bueno Es»"
+  ]
+ },
+ {
+  "id": "sa-no-sabeis-no-sabeis-que-somos-templo",
+  "numero": null,
+  "titulo": "¿No Sabéis que Somos Templo?",
+  "cambios": [
+   "título: «No Sabeís, No Sabeís, Que Somos Templo» → «¿No Sabéis que Somos Templo?»"
+  ]
+ },
+ {
+  "id": "sa-oh-jerusalen-que-bonita-eres",
+  "numero": null,
+  "titulo": "Oh Jerusalén, Qué Bonita Eres",
+  "cambios": [
+   "título: «Oh Jerusalen Que Bonita eres» → «Oh Jerusalén, Qué Bonita Eres»"
+  ]
+ },
+ {
+  "id": "sa-que-bonito-es",
+  "numero": null,
+  "titulo": "Qué Bonito Es",
+  "cambios": [
+   "título: «Que Bonito Es» → «Qué Bonito Es»"
+  ]
+ },
+ {
+  "id": "sa-que-glorioso-es-andar-con-el",
+  "numero": null,
+  "titulo": "Qué Glorioso Es Andar con Él",
+  "cambios": [
+   "título: «Que Glorioso Es Andar Con Él» → «Qué Glorioso Es Andar con Él»"
+  ]
+ },
+ {
+  "id": "sa-que-tu-si-sea-si",
+  "numero": null,
+  "titulo": "Que Tu Sí Sea Sí",
+  "cambios": [
+   "título: «Que tú sí, sea sí» → «Que Tu Sí Sea Sí»"
+  ]
+ },
+ {
+  "id": "sa-senor-unenos",
+  "numero": null,
+  "titulo": "¡Señor!, Únenos",
+  "cambios": [
+   "título: «¡Señor!, unenos» → «¡Señor!, Únenos»"
+  ]
+ },
+ {
+  "id": "sa-toma-por-favor",
+  "numero": null,
+  "titulo": "Toma Por Favor",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-vamos-escalando-peldanos",
+  "numero": null,
+  "titulo": "Vamos Escalando Peldaños",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-yo-me-alegre-con-los-que-me-decian",
+  "numero": null,
+  "titulo": "Yo Me Alegré con los que Me Decían",
+  "cambios": [
+   "título: «Yo Me Alegre Con Los Que Me Decían» → «Yo Me Alegré con los que Me Decían»"
+  ]
+ },
+ {
+  "id": "sa-yo-quiero-mas-y-mas-de-cristo",
+  "numero": null,
+  "titulo": "Yo Quiero Más Y más De Cristo",
+  "cambios": [
+   "nombres propios con mayúscula"
+  ]
+ },
+ {
+  "id": "sa-yo-se-que-estas-aqui",
+  "numero": null,
+  "titulo": "Yo Sé que Estás Aquí",
+  "cambios": [
+   "título: «Yo Sé Que Estás Aqui» → «Yo Sé que Estás Aquí»"
+  ]
+ }
+]

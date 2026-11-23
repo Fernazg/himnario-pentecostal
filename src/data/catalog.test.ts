@@ -79,4 +79,10 @@ describe('installCatalog', () => {
     expect(repo.songs.get('sa-a')!.themes).toEqual(['cielo']);
     expect(repo.songs.get('sa-a')!.updatedAt).toBe(9);
   });
+
+  it('actualiza canciones no editadas aunque solo cambie el título', async () => {
+    const repo = memoryRepo([song({ id: 'sa-a', title: 'Titulo viejo', lyrics: 'nueva letra', themes: ['cielo'], createdAt: 5, updatedAt: 5 })]);
+    await installCatalog(repo);
+    expect(repo.songs.get('sa-a')!.title).toBe('A');
+  });
 });

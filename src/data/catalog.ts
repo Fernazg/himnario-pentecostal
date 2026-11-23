@@ -9,7 +9,7 @@ import type { Category, Song } from './types';
  * Para publicar cambios del catálogo: actualice catalog.json y suba
  * CATALOG_VERSION y CATALOG_STAMP.
  */
-export const CATALOG_VERSION = 6;
+export const CATALOG_VERSION = 7;
 const CATALOG_STAMP = Date.UTC(2026, 10, 7); // marca de tiempo de las canciones del catálogo
 
 interface CatalogEntry {
@@ -68,7 +68,10 @@ export async function installCatalog(repo: Repository, { force = false } = {}): 
     if (!cur) {
       if (force || !deleted.has(s.id)) toWrite.push(s);
     } else if (untouched(cur)) {
-      if (cur.lyrics !== s.lyrics || !sameThemes(cur.themes, s.themes)) toWrite.push({ ...s, createdAt: cur.createdAt, updatedAt: cur.updatedAt });
+      const changed =
+        cur.lyrics !== s.lyrics || cur.title !== s.title || (cur.number ?? '') !== (s.number ?? '') ||
+        (cur.key ?? '') !== (s.key ?? '') || (cur.notes ?? '') !== (s.notes ?? '') || !sameThemes(cur.themes, s.themes);
+      if (changed) toWrite.push({ ...s, createdAt: cur.createdAt, updatedAt: cur.updatedAt });
     } else if (!cur.themes?.length && s.themes?.length) {
       // Canción editada por el usuario: se respeta su versión y solo se le suman los temas.
       toWrite.push({ ...cur, themes: s.themes });

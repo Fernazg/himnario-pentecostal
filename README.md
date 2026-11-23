@@ -44,6 +44,8 @@ El himnario incluido (`src/data/catalog.json`) proviene de **Senda Angosta** (se
 - Se instala la primera vez que se abre la app y al publicarse una nueva versión del catálogo (`CATALOG_VERSION` en `src/data/catalog.ts`).
 - Las canciones que el usuario edite (por ejemplo, para agregar acordes) no se sobrescriben, y las que elimine no se vuelven a instalar, salvo con *Ajustes → Restaurar himnario incluido*.
 
+Las correcciones de transcripción aplicadas al himnario (coros, restos de la web, mayúsculas, nombres propios y títulos) se generan con `scripts/corregir-himnos.py` y quedan listadas en `content/correcciones.json`.
+
 Agregue únicamente contenido propio, de dominio público o con autorización, e indique autor/compositor solo cuando estén verificados. Para cargas masivas, importe un JSON desde *Ajustes → Importar* con la forma:
 
 ```json
