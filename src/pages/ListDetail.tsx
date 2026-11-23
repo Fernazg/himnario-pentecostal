@@ -26,7 +26,7 @@ function AddSongsSheet({ open, onClose, listId }: { open: boolean; onClose: () =
       <div className="sticky top-0 z-10 bg-surface pb-2">
         <SearchBox value={q} onChange={setQ} />
       </div>
-      <ul className="-mx-2">
+      <ul className="-mx-5 border-t border-line">
         {results.map(({ song }) => {
           const idx = list.songIds.indexOf(song.id);
           const inList = idx >= 0;
@@ -36,17 +36,17 @@ function AddSongsSheet({ open, onClose, listId }: { open: boolean; onClose: () =
                 type="button"
                 aria-pressed={inList}
                 onClick={() => (inList ? removeFromList(listId, idx) : addToList(listId, song.id))}
-                className="flex w-full items-center gap-3 rounded-2xl px-2 py-2 text-left hover:bg-surface-2"
+                className="flex w-full items-center gap-3 border-b border-line px-5 py-3 text-left transition-colors hover:bg-surface-2/60"
               >
                 <SongBadge song={song} />
-                <span className="min-w-0 flex-1 truncate font-medium">{song.title}</span>
+                <span className="min-w-0 flex-1 truncate text-[15px] font-medium">{song.title}</span>
                 <span
                   className={cx(
-                    'flex size-8 items-center justify-center rounded-full',
-                    inList ? 'bg-accent text-on-accent' : 'bg-surface-2 text-ink',
+                    'flex size-8 items-center justify-center rounded-[8px] border',
+                    inList ? 'border-accent bg-accent text-on-accent' : 'border-line text-ink',
                   )}
                 >
-                  {inList ? <Check size={16} strokeWidth={3} /> : <Plus size={16} />}
+                  {inList ? <Check size={15} strokeWidth={2.5} /> : <Plus size={15} strokeWidth={1.75} />}
                 </span>
               </button>
             </li>
@@ -101,8 +101,8 @@ export default function ListDetail() {
   };
 
   return (
-    <div className="pt-safe mx-auto max-w-4xl">
-      <div className="flex items-center justify-between px-2 pt-2 md:px-6">
+    <div className="pt-safe mx-auto max-w-5xl">
+      <div className="flex items-center justify-between px-2 pt-2 md:px-7">
         <IconButton label="Volver a listas" onClick={() => navigate('/listas')}>
           <ArrowLeft size={22} />
         </IconButton>
@@ -110,18 +110,18 @@ export default function ListDetail() {
           <EllipsisVertical size={20} />
         </IconButton>
       </div>
-      <header className="px-4 pb-4 pt-2 md:px-8">
-        <p className="text-sm font-medium text-accent">
+      <header className="border-b border-line px-5 pb-6 pt-3 md:px-10">
+        <p className="eyebrow text-muted">
           {list.kind === 'culto' ? 'Culto o reunión' : 'Lista personal'}
           {list.shared && ' · Compartida con la iglesia'}
         </p>
-        <h1 className="mt-1 font-serif text-3xl font-semibold tracking-tight">{list.name}</h1>
-        <p className="mt-1 text-sm text-muted first-letter:uppercase">
+        <h1 className="display mt-3 text-[38px] leading-[1.04] md:text-[52px]">{list.name}</h1>
+        <p className="mt-2 text-[14px] text-muted first-letter:uppercase">
           {list.date ? formatListDate(list.date) + ' · ' : ''}
           {items.length} {items.length === 1 ? 'canción' : 'canciones'}
         </p>
-        {list.description && <p className="mt-2 text-sm">{list.description}</p>}
-        <div className="mt-4 flex flex-wrap gap-2">
+        {list.description && <p className="mt-3 max-w-xl font-serif text-[17px] italic leading-relaxed">{list.description}</p>}
+        <div className="mt-6 flex flex-wrap gap-2">
           <Button variant="primary" disabled={!items.length} onClick={() => navigate(`/cancion/${items[0]!.id}?lista=${list.id}`)}>
             <Play size={17} className="fill-current" /> Comenzar
           </Button>
@@ -139,19 +139,19 @@ export default function ListDetail() {
       </header>
 
       {items.length === 0 ? (
-        <EmptyState icon={<ListMusic size={28} />} title="Lista vacía">
+        <EmptyState icon={<ListMusic />} title="Lista vacía">
           {canEdit
             ? 'Agregue canciones con el botón «Agregar» o desde cualquier canción con «Agregar a una lista».'
             : 'El responsable aún no ha agregado canciones.'}
         </EmptyState>
       ) : (
-        <ol className="px-2 md:px-6">
+        <ol>
           {items.map((s, i) => (
             <SongRow
               key={s.id}
               song={s}
               to={editingOrder ? undefined : `/cancion/${s.id}?lista=${list.id}`}
-              subtitle={`${i + 1} de ${items.length}${s.key ? ' · ' + formatKey(s.key, settings.notation) : ''}`}
+              subtitle={`${String(i + 1).padStart(2, '0')} / ${String(items.length).padStart(2, '0')}${s.key ? ' · Tono ' + formatKey(s.key, settings.notation) : ''}`}
               trailing={
                 editingOrder && (
                   <div className="flex">
@@ -186,7 +186,7 @@ export default function ListDetail() {
                 setMenu(false);
                 void action();
               }}
-              className={cx('flex items-center gap-4 rounded-xl px-3 py-3.5 text-left hover:bg-surface-2', danger && 'text-red-700 dark:text-red-400')}
+              className={cx('flex items-center gap-4 border-b border-line px-2 py-3.5 text-left text-[15px] transition-colors last:border-b-0 hover:text-accent [&_svg]:stroke-[1.6]', danger && 'text-red-700 dark:text-red-400')}
             >
               <I size={20} className={danger ? '' : 'text-muted'} />
               {label}

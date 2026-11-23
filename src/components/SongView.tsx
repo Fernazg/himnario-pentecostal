@@ -56,19 +56,19 @@ export const SongView = memo(function SongView({ lyrics, steps, notation, prefer
   }
 
   return (
-    <div className={cx('space-y-[1.1em]', font === 'serif' ? 'font-serif' : 'font-sans')} style={{ fontSize }}>
+    <div className={cx('space-y-[1.15em] leading-[1.5]', font === 'serif' ? 'font-serif' : 'font-sans')} style={{ fontSize }}>
       {blocks.map((block, bi) => (
-        <section key={bi} className={cx('stanza', block.chorus && 'border-l-[3px] border-gold/60 pl-[0.8em]')}>
+        <section key={bi} className={cx('stanza', block.chorus && 'border-l-2 border-accent pl-[0.85em]')}>
           {block.lines.map((line, li) => {
             if (line.kind === 'section')
               return (
-                <h3 key={li} className="mb-[0.3em] font-sans text-[0.68em] font-semibold uppercase tracking-[0.12em] text-muted">
+                <h3 key={li} className="eyebrow mb-[0.45em] !text-[max(11px,0.52em)] text-muted">
                   {line.label}
                 </h3>
               );
             if (line.kind === 'comment')
               return (
-                <p key={li} className="font-sans text-[0.75em] italic text-muted">
+                <p key={li} className="font-serif text-[0.8em] italic text-muted">
                   {line.text}
                 </p>
               );

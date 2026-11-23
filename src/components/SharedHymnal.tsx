@@ -123,7 +123,7 @@ function AuthSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
           />
         </Field>
         {msg && (
-          <p className={msg.kind === 'error' ? 'text-sm text-red-700 dark:text-red-400' : 'rounded-xl bg-accent-soft p-3 text-sm'}>
+          <p className={msg.kind === 'error' ? 'text-sm text-red-700 dark:text-red-400' : 'border-l-2 border-accent py-1 pl-3 text-sm leading-relaxed'}>
             {msg.text}
           </p>
         )}

@@ -162,7 +162,7 @@ export function PasteSheet({
             <div className="mb-2 text-sm font-medium">
               {parsed.length === 1 ? 'Se reconoció 1 canción' : `Se reconocieron ${parsed.length} canciones`}
             </div>
-            <ul className="divide-y divide-line overflow-hidden rounded-2xl border border-line">
+            <ul className="divide-y divide-line border-y border-line">
               {parsed.map((p, i) => {
                 const { secs, count } = summary(p.lyrics);
                 const existing = findExisting(songs, p, category);
@@ -175,7 +175,7 @@ export function PasteSheet({
                       aria-expanded={expanded}
                       className="flex w-full items-start gap-3 px-3 py-3 text-left hover:bg-surface-2"
                     >
-                      <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg bg-accent-soft text-sm font-semibold text-accent">
+                      <span className="num mt-0.5 w-9 shrink-0 text-[13px] text-faint">
                         {p.number ?? '—'}
                       </span>
                       <span className="min-w-0 flex-1">
@@ -185,7 +185,7 @@ export function PasteSheet({
                           {count} versos{secs.length ? ` · ${secs.join(', ')}` : ''}
                         </span>
                         {existing && (
-                          <span className="mt-1 inline-block rounded-full bg-surface-2 px-2 py-0.5 text-xs text-muted">
+                          <span className="mt-1 inline-block rounded-[4px] border border-line px-1.5 py-0.5 text-[11px] text-muted">
                             Reemplazará a «{existing.title}»
                           </span>
                         )}
@@ -193,7 +193,7 @@ export function PasteSheet({
                       {expanded ? <ChevronUp size={18} className="mt-1 text-muted" /> : <ChevronDown size={18} className="mt-1 text-muted" />}
                     </button>
                     {expanded && (
-                      <div className="border-t border-line bg-bg px-4 py-4">
+                      <div className="border-t border-line bg-bg px-4 py-5">
                         <SongView
                           lyrics={p.lyrics}
                           steps={0}

@@ -1,3 +1,8 @@
+/**
+ * Componentes base del sistema de diseño «Edición».
+ * Radios contenidos (8–10 px), líneas finas en lugar de sombras, petróleo
+ * como color de acción y tipografía editorial para los títulos.
+ */
 import { X } from 'lucide-react';
 import { useEffect, useId, type ButtonHTMLAttributes, type ReactNode } from 'react';
 
@@ -17,11 +22,11 @@ export function Button({
       type="button"
       {...props}
       className={cx(
-        'inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold transition active:scale-[0.98] disabled:opacity-40 disabled:active:scale-100',
-        variant === 'primary' && 'bg-accent text-on-accent hover:opacity-90',
-        variant === 'secondary' && 'bg-surface-2 text-ink hover:bg-line',
+        'inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] px-4 text-[14px] font-medium tracking-[-0.005em] transition-colors duration-150 active:translate-y-px disabled:opacity-40 disabled:active:translate-y-0 [&_svg]:stroke-[1.75]',
+        variant === 'primary' && 'bg-accent text-on-accent hover:bg-accent-strong',
+        variant === 'secondary' && 'border border-line bg-surface text-ink hover:border-faint',
         variant === 'ghost' && 'text-ink hover:bg-surface-2',
-        variant === 'danger' && 'bg-red-700 text-white hover:bg-red-800 dark:bg-red-500 dark:text-black',
+        variant === 'danger' && 'bg-[#a3302a] text-white hover:bg-[#8a2823] dark:bg-[#e0786f] dark:text-[#1a0a09]',
         className,
       )}
     />
@@ -41,7 +46,7 @@ export function IconButton({
       title={label}
       {...props}
       className={cx(
-        'inline-flex size-11 shrink-0 items-center justify-center rounded-full transition active:scale-95 disabled:opacity-30',
+        'inline-flex size-11 shrink-0 items-center justify-center rounded-[10px] transition-colors duration-150 disabled:opacity-30 [&_svg]:stroke-[1.75]',
         active ? 'bg-accent-soft text-accent' : 'text-ink hover:bg-surface-2',
         className,
       )}
@@ -77,17 +82,18 @@ export function Sheet({
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center" role="dialog" aria-modal="true" aria-labelledby={id}>
-      <div className="animate-fade absolute inset-0 bg-black/45" onClick={onClose} />
-      <div className="animate-sheet relative flex max-h-[88dvh] w-full flex-col rounded-t-3xl bg-surface shadow-2xl sm:max-w-lg sm:rounded-3xl">
-        <div className="flex items-center justify-between gap-2 px-5 pb-2 pt-4">
-          <h2 id={id} className="font-serif text-lg font-semibold">
+      <div className="animate-fade absolute inset-0 bg-[#061216]/55 backdrop-blur-[2px]" onClick={onClose} />
+      <div className="animate-sheet relative flex max-h-[88dvh] w-full flex-col rounded-t-2xl border-t border-line bg-surface sm:max-w-lg sm:rounded-2xl sm:border">
+        <div className="mx-auto mt-2 h-1 w-9 rounded-full bg-line sm:hidden" aria-hidden />
+        <div className="flex items-center justify-between gap-2 border-b border-line px-5 pb-3 pt-2 sm:pt-3">
+          <h2 id={id} className="display text-[22px] leading-tight">
             {title}
           </h2>
           <IconButton label="Cerrar" onClick={onClose} className="-mr-2">
             <X size={20} />
           </IconButton>
         </div>
-        <div className="overflow-y-auto px-5 pb-5">{children}</div>
+        <div className="overflow-y-auto px-5 py-4">{children}</div>
         {footer && <div className="pb-safe border-t border-line px-5 py-3">{footer}</div>}
         {!footer && <div className="pb-safe" />}
       </div>
@@ -132,45 +138,66 @@ export function ConfirmDialog({
         </div>
       }
     >
-      <p className="text-muted">{message}</p>
+      <p className="text-[15px] leading-relaxed text-muted">{message}</p>
     </Sheet>
   );
 }
 
 export function EmptyState({ icon, title, children }: { icon: ReactNode; title: string; children?: ReactNode }) {
   return (
-    <div className="flex flex-col items-center px-6 py-14 text-center">
-      <div className="mb-4 flex size-16 items-center justify-center rounded-full bg-accent-soft text-accent">{icon}</div>
-      <h3 className="font-serif text-lg font-semibold">{title}</h3>
-      {children && <div className="mt-2 max-w-sm text-sm text-muted">{children}</div>}
+    <div className="flex flex-col items-start px-5 py-14 md:px-10">
+      <div className="mb-5 text-faint [&_svg]:size-8 [&_svg]:stroke-[1.25]">{icon}</div>
+      <h3 className="display text-[26px] leading-tight">{title}</h3>
+      {children && <div className="mt-2 max-w-md text-[15px] leading-relaxed text-muted">{children}</div>}
     </div>
   );
 }
 
-export function PageHeader({ title, subtitle, actions }: { title: string; subtitle?: ReactNode; actions?: ReactNode }) {
+export function PageHeader({
+  title,
+  subtitle,
+  actions,
+  eyebrow,
+}: {
+  title: string;
+  subtitle?: ReactNode;
+  actions?: ReactNode;
+  eyebrow?: ReactNode;
+}) {
   return (
-    <header className="flex items-end justify-between gap-3 px-4 pb-3 pt-6 md:px-8 md:pt-10">
+    <header className="flex items-end justify-between gap-3 px-5 pb-5 pt-8 md:px-10 md:pb-7 md:pt-12">
       <div className="min-w-0">
-        <h1 className="font-serif text-3xl font-semibold tracking-tight md:text-4xl">{title}</h1>
-        {subtitle && <p className="mt-1 text-sm text-muted">{subtitle}</p>}
+        {eyebrow && <p className="eyebrow mb-2.5 text-muted">{eyebrow}</p>}
+        <h1 className="display text-[40px] leading-[1.02] md:text-[54px]">{title}</h1>
+        {subtitle && <p className="mt-2 text-[15px] text-muted">{subtitle}</p>}
       </div>
       {actions && <div className="flex shrink-0 items-center gap-1">{actions}</div>}
     </header>
   );
 }
 
+/** Encabezado de sección: etiqueta en versalitas mono con línea fina. */
+export function SectionLabel({ children, action }: { children: ReactNode; action?: ReactNode }) {
+  return (
+    <div className="flex items-center justify-between gap-3 border-b border-line pb-2.5">
+      <h2 className="eyebrow text-muted">{children}</h2>
+      {action}
+    </div>
+  );
+}
+
 export function Field({ label, hint, children }: { label: string; hint?: ReactNode; children: ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-sm font-medium">{label}</span>
+      <span className="mb-1.5 block text-[13px] font-medium text-ink">{label}</span>
       {children}
-      {hint && <span className="mt-1 block text-xs text-muted">{hint}</span>}
+      {hint && <span className="mt-1.5 block text-xs text-muted">{hint}</span>}
     </label>
   );
 }
 
 export const inputClass =
-  'w-full rounded-xl border border-line bg-surface px-3.5 py-2.5 text-base text-ink placeholder:text-muted/70 focus:border-accent focus:outline-none';
+  'w-full rounded-[10px] border border-line bg-surface px-3.5 py-2.5 text-[16px] text-ink placeholder:text-faint transition-shadow focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/10';
 
 export function Segmented<T extends string>({
   value,
@@ -184,7 +211,7 @@ export function Segmented<T extends string>({
   label: string;
 }) {
   return (
-    <div role="radiogroup" aria-label={label} className="inline-flex rounded-full bg-surface-2 p-1">
+    <div role="radiogroup" aria-label={label} className="inline-flex rounded-[10px] border border-line bg-surface-2 p-0.5">
       {options.map((o) => (
         <button
           key={o.value}
@@ -193,13 +220,51 @@ export function Segmented<T extends string>({
           aria-checked={value === o.value}
           onClick={() => onChange(o.value)}
           className={cx(
-            'min-h-9 rounded-full px-3.5 text-sm font-medium transition',
-            value === o.value ? 'bg-surface text-ink shadow-sm' : 'text-muted hover:text-ink',
+            'min-h-9 rounded-[8px] px-3.5 text-[13px] font-medium transition-colors',
+            value === o.value ? 'bg-surface text-ink shadow-[0_0_0_1px_var(--border)]' : 'text-muted hover:text-ink',
           )}
         >
           {o.label}
         </button>
       ))}
+    </div>
+  );
+}
+
+/** Filtros como pestañas de texto con subrayado (en lugar de píldoras). */
+export function Tabs<T extends string | null>({
+  value,
+  options,
+  onChange,
+  label,
+}: {
+  value: T;
+  options: ReadonlyArray<{ value: T; label: ReactNode; count?: number }>;
+  onChange: (v: T) => void;
+  label: string;
+}) {
+  return (
+    <div role="tablist" aria-label={label} className="no-scrollbar flex gap-5 overflow-x-auto border-b border-line">
+      {options.map((o) => {
+        const on = value === o.value;
+        return (
+          <button
+            key={String(o.value)}
+            type="button"
+            role="tab"
+            aria-selected={on}
+            aria-pressed={on}
+            onClick={() => onChange(o.value)}
+            className={cx(
+              '-mb-px shrink-0 border-b-2 pb-2.5 pt-1 text-[14px] font-medium transition-colors',
+              on ? 'border-accent text-ink' : 'border-transparent text-muted hover:text-ink',
+            )}
+          >
+            {o.label}
+            {o.count !== undefined && <span className="num ml-1.5 text-[12px] text-faint">{o.count}</span>}
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -212,9 +277,9 @@ export function Toggle({ checked, onChange, label }: { checked: boolean; onChang
       aria-checked={checked}
       aria-label={label}
       onClick={() => onChange(!checked)}
-      className={cx('relative h-7 w-12 shrink-0 rounded-full transition', checked ? 'bg-accent' : 'bg-line')}
+      className={cx('relative h-6 w-10 shrink-0 rounded-full transition-colors', checked ? 'bg-accent' : 'bg-line')}
     >
-      <span className={cx('absolute top-1 size-5 rounded-full bg-white shadow transition-all', checked ? 'left-6' : 'left-1')} />
+      <span className={cx('absolute top-0.5 size-5 rounded-full bg-white transition-all', checked ? 'left-[18px]' : 'left-0.5')} />
     </button>
   );
 }

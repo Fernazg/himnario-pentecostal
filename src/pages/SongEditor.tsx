@@ -105,22 +105,22 @@ export default function SongEditor() {
 
   return (
     <div className="pt-safe mx-auto max-w-3xl pb-28">
-      <header className="sticky top-0 z-20 flex items-center gap-2 border-b border-line/70 bg-bg/90 px-2 py-1.5 backdrop-blur-xl md:px-6">
+      <header className="sticky top-0 z-20 flex items-center gap-2 border-b border-line bg-bg/92 px-2 py-1.5 backdrop-blur-xl md:px-7">
         <IconButton label="Volver" onClick={() => navigate(-1)}>
           <ArrowLeft size={22} />
         </IconButton>
-        <h1 className="flex-1 truncate font-serif text-lg font-semibold">{isNew ? 'Nueva canción' : 'Editar canción'}</h1>
+        <h1 className="display flex-1 truncate text-[21px]">{isNew ? 'Nueva canción' : 'Editar canción'}</h1>
         <Button variant="primary" onClick={save}>
           Guardar
         </Button>
       </header>
 
-      <div className="space-y-5 px-4 pt-5 md:px-8">
+      <div className="space-y-7 px-5 pt-7 md:px-10">
         {isNew && (
           <button
             type="button"
             onClick={() => setPasteOpen(true)}
-            className="flex w-full items-center gap-3 rounded-2xl border border-dashed border-accent/40 bg-accent-soft/60 p-4 text-left transition hover:bg-accent-soft"
+            className="flex w-full items-center gap-4 rounded-[10px] border border-dashed border-accent/45 p-4 text-left transition-colors hover:bg-accent-soft/50"
           >
             <ClipboardPaste size={22} className="shrink-0 text-accent" />
             <span>
@@ -142,7 +142,7 @@ export default function SongEditor() {
         </Field>
 
         <div>
-          <span className="mb-1.5 block text-sm font-medium">Categoría</span>
+          <span className="mb-1.5 block text-[13px] font-medium">Colección</span>
           <div className="grid grid-cols-3 gap-2" role="radiogroup" aria-label="Categoría">
             {CATEGORIES.map((c) => {
               const Icon = CATEGORY_ICON[c.id];
@@ -155,11 +155,11 @@ export default function SongEditor() {
                   aria-checked={selected}
                   onClick={() => set('category', c.id as Category)}
                   className={cx(
-                    'flex flex-col items-center gap-1.5 rounded-2xl border px-2 py-3 text-center text-xs font-medium transition sm:text-sm',
+                    'flex flex-col items-start gap-3 rounded-[10px] border px-3 py-3 text-left text-[13px] font-medium transition-colors',
                     selected ? 'border-accent bg-accent-soft' : 'border-line bg-surface hover:border-accent/40',
                   )}
                 >
-                  <Icon size={20} style={{ color: categoryColor(c.id) }} />
+                  <Icon size={18} strokeWidth={1.5} style={{ color: categoryColor(c.id) }} />
                   {c.label}
                 </button>
               );
@@ -227,7 +227,7 @@ export default function SongEditor() {
           {tab === 'edit' ? (
             <>
               {hasChordLines && (
-                <div className="mb-2 flex flex-wrap items-center gap-3 rounded-2xl bg-accent-soft p-3 text-sm">
+                <div className="mb-3 flex flex-wrap items-center gap-3 border-l-2 border-accent bg-accent-soft/50 py-3 pl-4 pr-3 text-[14px]">
                   <span className="flex-1">Hay acordes escritos en líneas separadas. ¿Desea alinearlos automáticamente sobre la letra?</span>
                   <Button variant="primary" onClick={() => set('lyrics', chordsOverToInline(form.lyrics))}>
                     <Wand2 size={16} /> Convertir
@@ -249,7 +249,7 @@ export default function SongEditor() {
                     key={snippet}
                     type="button"
                     onClick={() => set('lyrics', (form.lyrics ? form.lyrics.replace(/\n*$/, '\n\n') : '') + snippet)}
-                    className="rounded-full bg-surface-2 px-3 py-1.5 font-mono text-xs hover:bg-line"
+                    className="rounded-[6px] border border-line px-2.5 py-1.5 font-mono text-[12px] transition-colors hover:border-faint"
                   >
                     + {snippet.split('\n')[0] === '{soc}' ? 'Coro' : snippet}
                   </button>
@@ -257,14 +257,14 @@ export default function SongEditor() {
                 <button
                   type="button"
                   onClick={() => setShowHelp((v) => !v)}
-                  className="ml-auto inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-medium text-accent hover:bg-surface-2"
+                  className="ml-auto inline-flex items-center gap-1 rounded-[6px] px-2.5 py-1.5 text-[12px] font-medium text-accent hover:bg-surface-2"
                   aria-expanded={showHelp}
                 >
                   <Info size={14} /> Formato
                 </button>
               </div>
               {showHelp && (
-                <div className="mt-3 space-y-2 rounded-2xl border border-line bg-surface p-4 text-sm text-muted">
+                <div className="mt-3 space-y-2 border-l-2 border-line py-1 pl-4 text-[14px] leading-relaxed text-muted">
                   <p>
                     Escriba cada acorde entre corchetes justo antes de la sílaba donde se toca: <code className="text-chord">[Sol]Ala[Re]bad</code>.
                     Se aceptan notación española (Do, Rem, Sol7, Si°, Fa#m7/Do#) e internacional (C, Dm, G7).
@@ -285,7 +285,7 @@ export default function SongEditor() {
               )}
             </>
           ) : (
-            <div className="min-h-[22rem] rounded-2xl border border-line bg-surface p-5">
+            <div className="min-h-[22rem] rounded-[10px] border border-line bg-surface p-5 md:p-7">
               <SongView
                 lyrics={form.lyrics}
                 steps={0}
@@ -303,7 +303,7 @@ export default function SongEditor() {
         </div>
 
         <div>
-          <span className="mb-1 block text-sm font-medium">Categorías temáticas</span>
+          <span className="mb-1 block text-[13px] font-medium">Categorías temáticas</span>
           <p className="mb-2 text-xs text-muted">
             Elija los temas del mensaje de la letra (no solo palabras sueltas). El primero que marque será el tema principal.
           </p>
@@ -320,13 +320,13 @@ export default function SongEditor() {
                   aria-pressed={on}
                   onClick={() => set('themes', on ? sel.filter((x) => x !== t.id) : [...sel, t.id])}
                   className={cx(
-                    'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition',
+                    'inline-flex items-center gap-1.5 rounded-[6px] border px-2.5 py-1.5 text-[12px] font-medium transition-colors',
                     on ? 'border-accent bg-accent-soft text-ink' : 'border-line bg-surface text-muted hover:border-accent/40',
                   )}
                 >
                   <Icon size={14} style={{ color: toneVar(t.tone) }} />
                   {t.name}
-                  {idx === 0 && <span className="rounded-full bg-accent px-1.5 text-[10px] text-on-accent">principal</span>}
+                  {idx === 0 && <span className="eyebrow rounded-[4px] bg-accent px-1.5 py-px !text-[9px] text-on-accent">principal</span>}
                 </button>
               );
             })}
@@ -343,14 +343,14 @@ export default function SongEditor() {
         </Field>
 
         {sync.enabled && (
-          <p className={cx('rounded-2xl p-3 text-sm', sync.isAdmin ? 'bg-accent-soft' : 'bg-surface-2 text-muted')}>
+          <p className={cx('border-l-2 py-1 pl-4 text-[14px] leading-relaxed', sync.isAdmin ? 'border-accent' : 'border-line text-muted')}>
             {sync.isAdmin
               ? 'Usted es administrador: al guardar, este cambio se publicará para toda la iglesia.'
               : 'Este cambio se guardará solo en este dispositivo. Para publicarlo para toda la iglesia, inicie sesión como administrador en Ajustes.'}
           </p>
         )}
 
-        <p className="flex gap-2 rounded-2xl bg-surface-2 p-3 text-xs text-muted">
+        <p className="flex gap-2 border-t border-line pt-4 text-[12px] leading-relaxed text-muted">
           <Info size={16} className="shrink-0" />
           Agregue solo contenido propio, de dominio público o con autorización. Indique autor y compositor únicamente cuando estén verificados.
         </p>

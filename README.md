@@ -14,6 +14,10 @@ npm run build      # compilación de producción + Service Worker
 npm run preview    # servir la compilación (probar PWA/offline)
 ```
 
+## Diseño
+
+Sistema de diseño «Edición»: azul petróleo como estructura, tipografías Geist, Newsreader y Geist Mono, y jerarquía con líneas finas en lugar de tarjetas. Detalle en `docs/sistema-de-diseno.md`.
+
 ## Funciones
 
 - **Tres categorías** fijas: Himnos, Alabanzas especiales, Coros pentecostales.

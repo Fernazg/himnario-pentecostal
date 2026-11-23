@@ -170,95 +170,93 @@ export default function SongPage() {
     <div className={cx('min-h-dvh', presenting && 'bg-bg')}>
       {/* Barra superior */}
       {!presenting && (
-        <header className="pt-safe sticky top-0 z-30 border-b border-line/70 bg-bg/90 backdrop-blur-xl">
-          <div className="mx-auto flex max-w-4xl items-center gap-1 px-2 py-1.5 md:px-6">
+        <header className="pt-safe sticky top-0 z-30 border-b border-line bg-bg/92 backdrop-blur-xl">
+          <div className="mx-auto flex max-w-3xl items-center gap-0.5 px-2 py-1.5 md:px-6">
             <IconButton label="Volver" onClick={() => (window.history.length > 1 ? navigate(-1) : navigate('/himnario'))}>
-              <ArrowLeft size={22} />
+              <ArrowLeft size={21} />
             </IconButton>
-            <div className="min-w-0 flex-1 truncate text-center text-sm font-medium text-muted">
-              {list ? `${list.name} · ${pos + 1}/${list.songIds.length}` : info.label}
+            <div className="eyebrow min-w-0 flex-1 truncate text-center text-muted">
+              {list ? `${list.name} · ${pos + 1} / ${list.songIds.length}` : info.label}
             </div>
-            <IconButton label={isFav ? 'Quitar de favoritos' : 'Agregar a favoritos'} onClick={onFav} active={isFav}>
-              <Heart size={21} className={cx(isFav && 'fill-current')} />
+            <IconButton label={isFav ? 'Quitar de favoritos' : 'Agregar a favoritos'} onClick={onFav} className={isFav ? 'text-chord' : ''}>
+              <Heart size={20} className={cx(isFav && 'fill-current')} />
             </IconButton>
             <IconButton label="Compartir" onClick={onShare}>
-              <Share2 size={20} />
+              <Share2 size={19} />
             </IconButton>
             <IconButton label="Más opciones" onClick={() => setMenu(true)}>
-              <EllipsisVertical size={20} />
+              <EllipsisVertical size={19} />
             </IconButton>
           </div>
         </header>
       )}
 
       <article
-        className={cx('mx-auto max-w-3xl px-5 md:px-8', presenting ? 'pb-24 pt-[max(1.5rem,env(safe-area-inset-top))]' : 'pb-40 pt-6')}
+        className={cx('mx-auto max-w-3xl px-5 md:px-10', presenting ? 'pb-24 pt-[max(1.5rem,env(safe-area-inset-top))]' : 'pb-40 pt-8 md:pt-12')}
         onClick={() => presenting && setControlsVisible((v) => !v)}
       >
         {!presenting ? (
-          <div className="mb-7">
-            <div className="flex items-center gap-2 text-sm font-medium" style={{ color: categoryColor(song.category) }}>
-              <Icon size={16} />
-              <span>
-                {info.singular}
-                {song.number ? ` · N.º ${song.number}` : ''}
-              </span>
-            </div>
-            <h1 className="mt-2 font-serif text-3xl font-semibold leading-tight tracking-tight md:text-4xl">{song.title}</h1>
+          <div className="mb-9">
+            <p className="eyebrow flex items-center gap-2 text-muted">
+              <Icon size={14} strokeWidth={1.75} style={{ color: categoryColor(song.category) }} />
+              {info.singular}
+              {song.number && <span className="num text-ink">N.º {song.number.padStart(3, '0')}</span>}
+            </p>
+            <h1 className="display mt-3 text-[38px] leading-[1.04] md:text-[52px]">{song.title}</h1>
             {(song.author || song.composer) && (
-              <p className="mt-2 text-sm text-muted">
+              <p className="mt-3 text-[14px] text-muted">
                 {song.author && <>Letra: {song.author}</>}
                 {song.author && song.composer && ' · '}
                 {song.composer && <>Música: {song.composer}</>}
               </p>
             )}
-            {currentKey && hasChords && (
-              <button
-                type="button"
-                onClick={() => setKeySheet(true)}
-                className="mt-3 inline-flex items-center gap-2 rounded-full bg-surface-2 px-3 py-1.5 text-sm"
-              >
-                <span className="text-muted">Tono</span>
-                <span className="font-semibold text-chord">{keyName(currentKey, notation)}</span>
-                {steps !== 0 && originalKey && (
-                  <span className="text-muted">
-                    (original {keyName(originalKey, notation)}, {steps > 0 ? '+' : ''}
-                    {steps})
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-line pt-4">
+              {currentKey && hasChords && (
+                <button type="button" onClick={() => setKeySheet(true)} className="group flex items-baseline gap-2">
+                  <span className="eyebrow text-muted">Tono</span>
+                  <span className="num text-[17px] font-semibold text-chord underline decoration-chord/30 underline-offset-4 group-hover:decoration-chord">
+                    {keyName(currentKey, notation)}
                   </span>
-                )}
-              </button>
-            )}
-            {currentKey && !hasChords && (
-              <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-surface-2 px-3 py-1.5 text-sm">
-                <span className="text-muted">Tono</span>
-                <span className="font-semibold text-chord">{keyName(currentKey, notation)}</span>
-              </span>
-            )}
-            {!!song.themes?.length && (
-              <nav aria-label="Categorías temáticas" className="mt-4 flex flex-wrap gap-2">
-                {song.themes.map((tid) => {
-                  const t = themeById(tid);
-                  if (!t) return null;
-                  const Icon = t.icon;
-                  return (
-                    <Link
-                      key={tid}
-                      to={`/categorias/${tid}`}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-medium transition hover:border-accent/50"
-                    >
-                      <Icon size={14} style={{ color: toneVar(t.tone) }} />
-                      {t.name}
-                    </Link>
-                  );
-                })}
-              </nav>
-            )}
+                  {steps !== 0 && originalKey && (
+                    <span className="num text-[12px] text-muted">
+                      orig. {keyName(originalKey, notation)} · {steps > 0 ? '+' : ''}
+                      {steps}
+                    </span>
+                  )}
+                </button>
+              )}
+              {currentKey && !hasChords && (
+                <span className="flex items-baseline gap-2">
+                  <span className="eyebrow text-muted">Tono</span>
+                  <span className="num text-[17px] font-semibold text-chord">{keyName(currentKey, notation)}</span>
+                </span>
+              )}
+              {!!song.themes?.length && (
+                <nav aria-label="Categorías temáticas" className="flex flex-wrap gap-1.5">
+                  {song.themes.map((tid) => {
+                    const t = themeById(tid);
+                    if (!t) return null;
+                    const TIcon = t.icon;
+                    return (
+                      <Link
+                        key={tid}
+                        to={`/categorias/${tid}`}
+                        className="inline-flex items-center gap-1.5 rounded-[6px] border border-line px-2 py-1 text-[12px] font-medium text-muted transition-colors hover:border-accent/50 hover:text-ink"
+                      >
+                        <TIcon size={13} strokeWidth={1.75} style={{ color: toneVar(t.tone) }} />
+                        {t.name}
+                      </Link>
+                    );
+                  })}
+                </nav>
+              )}
+            </div>
           </div>
         ) : (
-          <h1 className="mb-5 font-serif text-2xl font-semibold" style={{ fontSize: settings.fontSize * 1.15 }}>
-            {song.number ? `${song.number}. ` : ''}
+          <h1 className="display mb-6" style={{ fontSize: settings.fontSize * 1.3 }}>
+            {song.number ? <span className="num mr-3 text-[0.55em] text-muted">{song.number.padStart(3, '0')}</span> : null}
             {song.title}
-            {currentKey && showChords && <span className="ml-3 align-middle font-sans text-[0.55em] text-chord">{keyName(currentKey, notation)}</span>}
+            {currentKey && showChords && <span className="num ml-3 align-middle text-[0.5em] text-chord">{keyName(currentKey, notation)}</span>}
           </h1>
         )}
 
@@ -273,88 +271,94 @@ export default function SongPage() {
         />
 
         {song.notes && !presenting && (
-          <aside className="mt-10 rounded-2xl bg-surface-2 p-4 text-sm">
-            <div className="mb-1 font-semibold">Observaciones</div>
-            <p className="whitespace-pre-line text-muted">{song.notes}</p>
+          <aside className="mt-12 border-t border-line pt-4">
+            <p className="eyebrow mb-2 text-muted">Observaciones</p>
+            <p className="whitespace-pre-line text-[14px] leading-relaxed text-muted">{song.notes}</p>
           </aside>
         )}
 
         {list && !presenting && (
-          <div className="mt-10 grid grid-cols-2 gap-3">
-            <Button disabled={!prevId} onClick={() => goTo(prevId)} className="justify-start">
-              <ChevronLeft size={18} /> Anterior
-            </Button>
-            <Button disabled={!nextId} onClick={() => goTo(nextId)} className="justify-end" variant={nextId ? 'primary' : 'secondary'}>
-              Siguiente <ChevronRight size={18} />
-            </Button>
-          </div>
+          <nav className="mt-12 grid grid-cols-2 border-y border-line" aria-label="Navegación de la lista">
+            <button type="button" disabled={!prevId} onClick={() => goTo(prevId)} className="flex items-center gap-2 py-4 text-left text-[14px] font-medium disabled:opacity-30">
+              <ChevronLeft size={18} strokeWidth={1.75} /> Anterior
+            </button>
+            <button
+              type="button"
+              disabled={!nextId}
+              onClick={() => goTo(nextId)}
+              className="flex items-center justify-end gap-2 border-l border-line py-4 text-right text-[14px] font-medium text-accent disabled:text-ink disabled:opacity-30"
+            >
+              Siguiente <ChevronRight size={18} strokeWidth={1.75} />
+            </button>
+          </nav>
         )}
       </article>
 
-      {/* Controles de lectura */}
+      {/* Controles de lectura: barra en petróleo profundo */}
       {controlsVisible && (
-        <div className="pb-safe fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 backdrop-blur-xl">
-          <div className="mx-auto flex max-w-3xl items-center justify-between gap-1 px-2 py-1.5">
+        <div className="pb-safe fixed inset-x-0 bottom-0 z-30 bg-deep text-on-deep md:left-60 lg:left-64">
+          <div className="mx-auto flex max-w-3xl items-center justify-between gap-1 px-2 py-1.5 md:px-6">
             {hasChords ? (
-              <div className="flex items-center rounded-full bg-surface-2">
-                <IconButton label="Bajar medio tono" onClick={() => setSteps(steps - 1)}>
-                  <Minus size={19} />
+              <div className="flex items-center rounded-[10px] border border-deep-line">
+                <IconButton label="Bajar medio tono" onClick={() => setSteps(steps - 1)} className="text-on-deep hover:bg-white/10">
+                  <Minus size={18} />
                 </IconButton>
                 <button
                   type="button"
                   onClick={() => setKeySheet(true)}
-                  className="min-w-14 px-1 text-center font-semibold text-chord"
+                  className="num min-w-[3.75rem] self-stretch border-x border-deep-line px-1 text-center text-[15px] font-semibold text-[#f0a074]"
                   aria-label="Elegir tonalidad"
                 >
                   {currentKey ? keyName(currentKey, notation) : steps > 0 ? `+${steps}` : steps}
                 </button>
-                <IconButton label="Subir medio tono" onClick={() => setSteps(steps + 1)}>
-                  <Plus size={19} />
+                <IconButton label="Subir medio tono" onClick={() => setSteps(steps + 1)} className="text-on-deep hover:bg-white/10">
+                  <Plus size={18} />
                 </IconButton>
               </div>
             ) : (
-              <span className="px-3 text-xs text-muted">Sin acordes</span>
+              <span className="eyebrow px-3 text-on-deep-muted">Sin acordes</span>
             )}
             <div className="flex items-center">
-              <IconButton label="Reducir letra" onClick={() => setFont(settings.fontSize - 2)} disabled={settings.fontSize <= FONT_MIN}>
-                <AArrowDown size={21} />
+              <IconButton label="Reducir letra" onClick={() => setFont(settings.fontSize - 2)} disabled={settings.fontSize <= FONT_MIN} className="text-on-deep hover:bg-white/10">
+                <AArrowDown size={20} />
               </IconButton>
-              <IconButton label="Aumentar letra" onClick={() => setFont(settings.fontSize + 2)} disabled={settings.fontSize >= FONT_MAX}>
-                <AArrowUp size={21} />
+              <IconButton label="Aumentar letra" onClick={() => setFont(settings.fontSize + 2)} disabled={settings.fontSize >= FONT_MAX} className="text-on-deep hover:bg-white/10">
+                <AArrowUp size={20} />
               </IconButton>
               {hasChords && (
                 <IconButton
                   label={settings.showChords ? 'Ocultar acordes' : 'Mostrar acordes'}
                   aria-pressed={settings.showChords}
-                  active={settings.showChords}
                   onClick={() => update({ showChords: !settings.showChords })}
+                  className={settings.showChords ? 'bg-white/12 text-[#f0a074] hover:bg-white/15' : 'text-on-deep hover:bg-white/10'}
                 >
-                  <Guitar size={20} />
+                  <Guitar size={19} />
                 </IconButton>
               )}
               <IconButton
                 label={presenting ? 'Salir de pantalla completa' : 'Pantalla completa'}
                 onClick={() => (presenting ? exitPresent() : enterPresent())}
+                className="text-on-deep hover:bg-white/10"
               >
-                {presenting ? <Minimize size={20} /> : <Maximize size={20} />}
+                {presenting ? <Minimize size={19} /> : <Maximize size={19} />}
               </IconButton>
             </div>
           </div>
         </div>
       )}
       {presenting && !controlsVisible && (
-        <div className="fixed right-3 z-30 flex gap-2" style={{ top: 'max(0.75rem, env(safe-area-inset-top))' }}>
+        <div className="fixed right-3 z-30 flex gap-1 rounded-[12px] bg-deep/90 p-1 text-on-deep backdrop-blur" style={{ top: 'max(0.75rem, env(safe-area-inset-top))' }}>
           {list && prevId && (
-            <IconButton label="Canción anterior" onClick={() => goTo(prevId)} className="bg-surface/80 shadow backdrop-blur">
+            <IconButton label="Canción anterior" onClick={() => goTo(prevId)} className="text-on-deep hover:bg-white/10">
               <ChevronLeft size={20} />
             </IconButton>
           )}
           {list && nextId && (
-            <IconButton label="Canción siguiente" onClick={() => goTo(nextId)} className="bg-surface/80 shadow backdrop-blur">
+            <IconButton label="Canción siguiente" onClick={() => goTo(nextId)} className="text-on-deep hover:bg-white/10">
               <ChevronRight size={20} />
             </IconButton>
           )}
-          <IconButton label="Salir de pantalla completa" onClick={exitPresent} className="bg-surface/80 shadow backdrop-blur">
+          <IconButton label="Salir de pantalla completa" onClick={exitPresent} className="text-on-deep hover:bg-white/10">
             <Minimize size={20} />
           </IconButton>
         </div>
@@ -364,7 +368,7 @@ export default function SongPage() {
       <Sheet open={keySheet} onClose={() => setKeySheet(false)} title="Tonalidad">
         {originalKey ? (
           <>
-            <p className="mb-3 text-sm text-muted">
+            <p className="mb-4 text-[14px] text-muted">
               Original: <span className="font-semibold text-ink">{keyName(originalKey, notation)}</span>
               {steps !== 0 && (
                 <>
@@ -385,12 +389,12 @@ export default function SongPage() {
                     onClick={() => setSteps(delta)}
                     aria-pressed={selected}
                     className={cx(
-                      'flex min-h-14 flex-col items-center justify-center rounded-2xl border text-base font-semibold transition',
+                      'num flex min-h-14 flex-col items-center justify-center rounded-[8px] border text-[16px] font-semibold transition-colors',
                       selected ? 'border-accent bg-accent text-on-accent' : 'border-line hover:border-accent/50',
                     )}
                   >
                     {keyName(k, notation)}
-                    <span className={cx('text-[11px] font-normal', selected ? 'opacity-80' : 'text-muted')}>
+                    <span className={cx('text-[10px] font-normal uppercase tracking-wider', selected ? 'opacity-80' : 'text-faint')}>
                       {delta === 0 ? 'original' : `${delta > 0 ? '+' : ''}${delta}`}
                     </span>
                   </button>
@@ -434,7 +438,7 @@ export default function SongPage() {
                 setMenu(false);
                 void action();
               }}
-              className="flex items-center gap-4 rounded-xl px-3 py-3.5 text-left hover:bg-surface-2"
+              className="flex items-center gap-4 border-b border-line px-2 py-3.5 text-left text-[15px] transition-colors last:border-b-0 hover:text-accent [&_svg]:stroke-[1.6]"
             >
               <I size={20} className="text-muted" />
               {label}

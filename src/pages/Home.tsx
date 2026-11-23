@@ -1,11 +1,12 @@
-import { ChevronRight, History, ListMusic, Search, WifiOff } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Search, WifiOff } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CATEGORY_ICON, SongRow, categoryColor } from '../components/songMeta';
+import { SectionLabel } from '../components/ui';
+import { THEMES, toneVar } from '../data/themes';
 import { CATEGORIES } from '../data/types';
-import { useLibrary } from '../state/library';
 import { useOnline } from '../hooks/useOnline';
-import { THEMES } from '../data/themes';
-import { ThemeIcon, useSongsByTheme } from './Themes';
+import { useLibrary } from '../state/library';
+import { useSongsByTheme } from './Themes';
 
 function greeting() {
   const h = new Date().getHours();
@@ -13,6 +14,8 @@ function greeting() {
   if (h < 19) return 'Buenas tardes';
   return 'Buenas noches';
 }
+
+const today = () => new Date().toLocaleDateString('es', { weekday: 'long', day: 'numeric', month: 'long' });
 
 export default function Home() {
   const { songs, recents, songsById, lists, error } = useLibrary();
@@ -27,133 +30,153 @@ export default function Home() {
     .slice(0, 3);
 
   return (
-    <div className="pt-safe mx-auto max-w-5xl">
-      <header className="px-4 pt-6 md:px-8 md:pt-10">
-        <p className="text-sm font-medium text-muted">{greeting()}</p>
-        <h1 className="mt-0.5 font-serif text-3xl font-semibold tracking-tight md:text-4xl">Himnario EA</h1>
-        {!online && (
-          <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-3 py-1 text-xs text-muted">
-            <WifiOff size={13} /> Sin conexión: todo sigue disponible
+    <div>
+      {/* Portada en petróleo profundo */}
+      <section className="pt-safe bg-deep text-on-deep">
+        <div className="mx-auto max-w-5xl px-5 pb-8 pt-9 md:px-10 md:pb-12 md:pt-14">
+          <p className="eyebrow animate-rise text-on-deep-muted">
+            {greeting()} · {today()}
           </p>
-        )}
-        {error && <p className="mt-3 rounded-xl bg-red-100 p-3 text-sm text-red-800 dark:bg-red-950 dark:text-red-200">{error}</p>}
-      </header>
-
-      <div className="px-4 pt-5 md:px-8">
-        <button
-          type="button"
-          onClick={() => navigate('/himnario?buscar=1')}
-          className="flex w-full items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-3.5 text-left text-muted shadow-sm transition hover:border-accent/50"
-        >
-          <Search size={20} className="text-accent" />
-          <span>Buscar por título, número, letra o autor</span>
-        </button>
-      </div>
-
-      <section className="px-4 pt-7 md:px-8" aria-labelledby="cat-title">
-        <h2 id="cat-title" className="sr-only">
-          Categorías
-        </h2>
-        <div className="grid gap-3 sm:grid-cols-3">
-          {CATEGORIES.map((c) => {
-            const Icon = CATEGORY_ICON[c.id];
-            const color = categoryColor(c.id);
-            return (
-              <Link
-                key={c.id}
-                to={`/himnario?cat=${c.id}`}
-                className="group relative flex items-center gap-4 overflow-hidden rounded-3xl border border-line bg-surface p-4 transition hover:shadow-md sm:flex-col sm:items-start sm:p-5"
-              >
-                <div
-                  className="absolute -right-8 -top-8 size-24 rounded-full opacity-[0.07] transition group-hover:scale-110"
-                  style={{ background: color }}
-                />
-                <div
-                  className="flex size-12 shrink-0 items-center justify-center rounded-2xl"
-                  style={{ background: `color-mix(in srgb, ${color} 15%, transparent)`, color }}
-                >
-                  <Icon size={24} />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="font-serif text-lg font-semibold leading-tight">{c.label}</h3>
-                  <p className="mt-0.5 text-sm text-muted">
-                    {counts[c.id]} {counts[c.id] === 1 ? 'canción' : 'canciones'}
-                  </p>
-                </div>
-                <ChevronRight size={20} className="text-muted sm:hidden" />
-              </Link>
-            );
-          })}
+          <h1 className="display animate-rise mt-4 text-[50px] leading-[0.95] md:text-[76px]" style={{ animationDelay: '40ms' }}>
+            Himnario <em className="font-normal italic text-[#f0a074]">EA</em>
+          </h1>
+          <p className="animate-rise mt-3 max-w-sm text-[15px] leading-relaxed text-on-deep-muted" style={{ animationDelay: '80ms' }}>
+            <span className="num text-on-deep">{songs.length}</span> canciones para el culto, el ensayo y la oración.
+          </p>
+          <button
+            type="button"
+            onClick={() => navigate('/himnario?buscar=1')}
+            className="animate-rise mt-7 flex w-full items-center gap-3 rounded-[10px] border border-deep-line bg-white/[0.06] px-4 py-3.5 text-left text-[15px] text-on-deep-muted transition-colors hover:bg-white/[0.1] md:max-w-xl"
+            style={{ animationDelay: '120ms' }}
+          >
+            <Search size={19} strokeWidth={1.75} className="text-on-deep" />
+            <span className="flex-1">Buscar por título, número, letra o tema</span>
+            <span className="num hidden rounded border border-deep-line px-1.5 py-0.5 text-[11px] md:inline">/</span>
+          </button>
+          {!online && (
+            <p className="mt-4 inline-flex items-center gap-2 text-[13px] text-on-deep-muted">
+              <WifiOff size={14} /> Sin conexión — todo sigue disponible
+            </p>
+          )}
         </div>
       </section>
 
-      <section className="pt-8" aria-labelledby="temas-title">
-        <div className="mb-2 flex items-center justify-between px-4 md:px-8">
-          <h2 id="temas-title" className="font-serif text-xl font-semibold">
-            Explorar por tema
-          </h2>
-          <Link to="/categorias" className="text-sm font-medium text-accent">
-            Ver todas
-          </Link>
-        </div>
-        <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-1 md:px-8">
-          {THEMES.slice(0, 10).map((t) => (
-            <Link
-              key={t.id}
-              to={`/categorias/${t.id}`}
-              className="flex w-40 shrink-0 flex-col gap-2 rounded-2xl border border-line bg-surface p-3 transition hover:shadow-md"
+      <div className="mx-auto max-w-5xl">
+        {error && <p className="mx-5 mt-5 rounded-[10px] border border-[#a3302a]/30 p-3 text-sm text-[#a3302a] md:mx-10">{error}</p>}
+
+        {/* Colecciones: índice tipográfico */}
+        <section className="px-5 pt-9 md:px-10" aria-labelledby="col-title">
+          <SectionLabel>
+            <span id="col-title">Colecciones</span>
+          </SectionLabel>
+          <ul className="md:grid md:grid-cols-3 md:gap-0">
+            {CATEGORIES.map((c, i) => {
+              const Icon = CATEGORY_ICON[c.id];
+              return (
+                <li key={c.id} className={i > 0 ? 'border-t border-line md:border-l md:border-t-0 md:pl-6' : 'md:pr-6'}>
+                  <Link
+                    to={`/himnario?cat=${c.id}`}
+                    className="group flex items-center gap-4 py-5 md:flex-col md:items-start md:gap-6 md:py-7"
+                  >
+                    <Icon size={22} strokeWidth={1.5} style={{ color: categoryColor(c.id) }} className="shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <h3 className="display text-[24px] leading-tight">{c.label}</h3>
+                      <p className="mt-1 text-[13px] text-muted">{c.description}</p>
+                    </div>
+                    <span className="num text-[13px] text-muted md:hidden">{counts[c.id]}</span>
+                    <div className="hidden w-full items-center justify-between md:flex">
+                      <span className="num text-[13px] text-muted">{counts[c.id]} canciones</span>
+                      <ArrowRight size={16} className="text-faint transition-transform group-hover:translate-x-0.5 group-hover:text-accent" />
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        {/* Temas */}
+        <section className="pt-10" aria-labelledby="temas-title">
+          <div className="px-5 md:px-10">
+            <SectionLabel
+              action={
+                <Link to="/categorias" className="inline-flex items-center gap-1 text-[13px] font-medium text-accent">
+                  Ver los {THEMES.length} <ArrowUpRight size={14} />
+                </Link>
+              }
             >
-              <ThemeIcon theme={t} size="sm" />
-              <span className="line-clamp-2 text-sm font-medium leading-snug">{t.name}</span>
-              <span className="mt-auto text-xs text-muted">{byTheme.get(t.id)?.length ?? 0} canciones</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {upcoming.length > 0 && (
-        <section className="px-4 pt-8 md:px-8">
-          <div className="mb-2 flex items-center justify-between">
-            <h2 className="font-serif text-xl font-semibold">Cultos y reuniones</h2>
-            <Link to="/listas" className="text-sm font-medium text-accent">
-              Ver listas
-            </Link>
+              <span id="temas-title">Explorar por tema</span>
+            </SectionLabel>
           </div>
-          <div className="no-scrollbar -mx-4 flex gap-3 overflow-x-auto px-4 pb-1 md:mx-0 md:px-0">
-            {upcoming.map((l) => (
-              <Link key={l.id} to={`/listas/${l.id}`} className="w-56 shrink-0 rounded-2xl border border-line bg-surface p-4 transition hover:shadow-md">
-                <ListMusic size={20} className="text-accent" />
-                <div className="mt-3 truncate font-medium">{l.name}</div>
-                <div className="text-sm text-muted">
-                  {l.date ? new Date(l.date + 'T12:00').toLocaleDateString('es', { weekday: 'short', day: 'numeric', month: 'short' }) + ' · ' : ''}
-                  {l.songIds.length} {l.songIds.length === 1 ? 'canción' : 'canciones'}
-                </div>
-              </Link>
-            ))}
+          <div className="no-scrollbar flex gap-2 overflow-x-auto px-5 pt-4 md:flex-wrap md:px-10">
+            {THEMES.slice(0, 12).map((t) => {
+              const Icon = t.icon;
+              return (
+                <Link
+                  key={t.id}
+                  to={`/categorias/${t.id}`}
+                  className="flex shrink-0 items-center gap-2 rounded-[8px] border border-line bg-surface px-3 py-2 text-[13px] font-medium transition-colors hover:border-accent/50"
+                >
+                  <Icon size={15} strokeWidth={1.6} style={{ color: toneVar(t.tone) }} />
+                  {t.name}
+                  <span className="num text-[11px] text-faint">{byTheme.get(t.id)?.length ?? 0}</span>
+                </Link>
+              );
+            })}
           </div>
         </section>
-      )}
 
-      <section className="px-4 pt-8 md:px-8">
-        <h2 className="mb-1 flex items-center gap-2 font-serif text-xl font-semibold">
-          <History size={19} className="text-muted" /> Recientes
-        </h2>
-        {recentSongs.length ? (
-          <ul className="-mx-2">
-            {recentSongs.map((s) => (
-              <SongRow key={s.id} song={s} to={`/cancion/${s.id}`} />
-            ))}
-          </ul>
-        ) : (
-          <p className="py-3 text-sm text-muted">
-            Las canciones que abra aparecerán aquí.{' '}
-            <Link to="/himnario" className="font-medium text-accent">
-              Explorar el himnario
-            </Link>
-          </p>
+        {upcoming.length > 0 && (
+          <section className="px-5 pt-10 md:px-10">
+            <SectionLabel
+              action={
+                <Link to="/listas" className="text-[13px] font-medium text-accent">
+                  Ver listas
+                </Link>
+              }
+            >
+              Cultos y reuniones
+            </SectionLabel>
+            <ul>
+              {upcoming.map((l) => (
+                <li key={l.id} className="border-b border-line last:border-b-0">
+                  <Link to={`/listas/${l.id}`} className="flex items-baseline gap-4 py-4">
+                    <span className="num w-16 shrink-0 text-[12px] uppercase text-muted">
+                      {l.date ? new Date(l.date + 'T12:00').toLocaleDateString('es', { day: '2-digit', month: 'short' }) : '—'}
+                    </span>
+                    <span className="min-w-0 flex-1 truncate text-[16px] font-medium">{l.name}</span>
+                    <span className="num text-[12px] text-faint">{l.songIds.length}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
         )}
-      </section>
-      <footer className="px-4 pb-4 pt-10 text-center text-xs text-muted md:hidden">Creado por Fernando Silva</footer>
+
+        <section className="pt-10">
+          <div className="px-5 md:px-10">
+            <SectionLabel>Recientes</SectionLabel>
+          </div>
+          {recentSongs.length ? (
+            <ul>
+              {recentSongs.map((s) => (
+                <SongRow key={s.id} song={s} to={`/cancion/${s.id}`} />
+              ))}
+            </ul>
+          ) : (
+            <p className="px-5 py-5 text-[15px] text-muted md:px-10">
+              Las canciones que abra aparecerán aquí.{' '}
+              <Link to="/himnario" className="font-medium text-accent underline decoration-accent/30 underline-offset-4">
+                Explorar el himnario
+              </Link>
+            </p>
+          )}
+        </section>
+
+        <footer className="px-5 pb-6 pt-12 md:hidden">
+          <p className="eyebrow text-faint">Creado por Fernando Silva</p>
+        </footer>
+      </div>
     </div>
   );
 }

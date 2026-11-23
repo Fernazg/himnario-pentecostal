@@ -16,18 +16,15 @@ export const CATEGORY_ICON: Record<Category, LucideIcon> = {
 
 export const categoryColor = (c: Category) => `var(--cat-${c})`;
 
+/** Índice de la canción: número en mono (o el ícono de su tipo si no tiene número). */
 export function SongBadge({ song, size = 'md' }: { song: Song; size?: 'md' | 'lg' }) {
   const Icon = CATEGORY_ICON[song.category];
   return (
     <div
-      className={cx(
-        'flex shrink-0 items-center justify-center rounded-xl font-semibold tabular-nums',
-        size === 'md' ? 'size-11 text-sm' : 'size-14 text-base',
-      )}
-      style={{ background: `color-mix(in srgb, ${categoryColor(song.category)} 14%, transparent)`, color: categoryColor(song.category) }}
+      className={cx('num flex shrink-0 items-start justify-start pt-[3px] text-faint', size === 'md' ? 'w-10 text-[13px]' : 'w-12 text-[15px]')}
       aria-hidden
     >
-      {song.number ? song.number : <Icon size={size === 'md' ? 18 : 22} />}
+      {song.number ? song.number.padStart(3, '0') : <Icon size={size === 'md' ? 15 : 18} strokeWidth={1.5} className="mt-[2px]" />}
     </div>
   );
 }
@@ -38,32 +35,43 @@ export function SongRow({
   subtitle,
   trailing,
   onClick,
+  showCategory = true,
 }: {
   song: Song;
   to?: string;
   subtitle?: ReactNode;
   trailing?: ReactNode;
   onClick?: () => void;
+  /** En listas ya agrupadas por colección, la colección no se repite en cada fila. */
+  showCategory?: boolean;
 }) {
   const { favorites } = useLibrary();
   const { settings } = useSettings();
   const info = categoryInfo(song.category);
-  const meta = [info.singular, song.key ? formatKey(song.key, settings.notation) : null, song.author].filter(Boolean).join(' · ');
+  const meta = [showCategory ? info.singular : null, song.key ? `Tono ${formatKey(song.key, settings.notation)}` : null, song.author]
+    .filter(Boolean)
+    .join(' · ');
+  const second = subtitle ?? meta;
   const body = (
     <>
       <SongBadge song={song} />
       <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-1.5">
-          <span className="truncate font-medium">{song.title}</span>
-          {favorites.has(song.id) && <Heart size={13} className="shrink-0 fill-accent text-accent" aria-label="Favorita" />}
+        <div className="flex items-center gap-2">
+          <span className="truncate text-[16px] font-medium tracking-[-0.01em]">{song.title}</span>
+          {favorites.has(song.id) && <Heart size={12} className="shrink-0 fill-chord text-chord" aria-label="Favorita" />}
         </div>
-        <div className="truncate text-sm text-muted">{subtitle ?? meta}</div>
+        {second && (
+          <div className="mt-0.5 flex items-center gap-1.5 truncate text-[13px] text-muted">
+            {showCategory && <span className="size-1.5 shrink-0 rounded-full" style={{ background: categoryColor(song.category) }} aria-hidden />}
+            <span className="truncate">{second}</span>
+          </div>
+        )}
       </div>
     </>
   );
-  const rowClass = 'flex min-w-0 flex-1 items-center gap-3 rounded-2xl px-2 py-2 text-left transition hover:bg-surface-2 active:bg-surface-2';
+  const rowClass = 'flex min-w-0 flex-1 items-start gap-3 py-3.5 text-left transition-colors';
   return (
-    <li className="flex items-center gap-1 [content-visibility:auto] [contain-intrinsic-size:auto_60px]">
+    <li className="group flex items-center gap-1 border-b border-line px-5 [content-visibility:auto] [contain-intrinsic-size:auto_68px] last:border-b-0 hover:bg-surface-2/60 md:px-10">
       {to ? (
         <Link to={to} className={rowClass}>
           {body}
@@ -73,7 +81,7 @@ export function SongRow({
           {body}
         </button>
       ) : (
-        <div className={rowClass.replace(/hover:\S+|active:\S+/g, '')}>{body}</div>
+        <div className={rowClass}>{body}</div>
       )}
       {trailing}
     </li>

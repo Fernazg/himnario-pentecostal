@@ -1,4 +1,4 @@
-import { SearchX } from 'lucide-react';
+import { ArrowUpRight, SearchX } from 'lucide-react';
 import { useDeferredValue, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SearchBox } from '../components/SearchBox';
@@ -20,32 +20,24 @@ export function useSongsByTheme(): Map<string, Song[]> {
 
 export function ThemeIcon({ theme, size = 'md' }: { theme: Theme; size?: 'sm' | 'md' | 'lg' }) {
   const Icon = theme.icon;
-  const color = toneVar(theme.tone);
-  const box = size === 'sm' ? 'size-9 rounded-xl' : size === 'md' ? 'size-12 rounded-2xl' : 'size-16 rounded-3xl';
-  const icon = size === 'sm' ? 18 : size === 'md' ? 22 : 30;
-  return (
-    <div
-      className={`flex shrink-0 items-center justify-center ${box}`}
-      style={{ background: `color-mix(in srgb, ${color} 14%, transparent)`, color }}
-      aria-hidden
-    >
-      <Icon size={icon} />
-    </div>
-  );
+  const px = size === 'sm' ? 17 : size === 'md' ? 22 : 30;
+  return <Icon size={px} strokeWidth={1.5} style={{ color: toneVar(theme.tone) }} className="shrink-0" aria-hidden />;
 }
 
+/** Celda de la cuadrícula de temas: sin tarjeta, solo líneas finas. */
 export function ThemeCard({ theme, count }: { theme: Theme; count: number }) {
   return (
     <Link
       to={`/categorias/${theme.id}`}
-      className="group flex h-full flex-col gap-3 rounded-3xl border border-line bg-surface p-4 transition hover:-translate-y-0.5 hover:shadow-md sm:p-5"
+      className="group flex h-full min-h-[148px] flex-col justify-between gap-6 border-b border-r border-line p-4 transition-colors hover:bg-surface md:min-h-[168px] md:p-5"
     >
-      <ThemeIcon theme={theme} />
+      <div className="flex items-start justify-between">
+        <ThemeIcon theme={theme} />
+        <ArrowUpRight size={15} strokeWidth={1.75} className="text-faint opacity-0 transition-opacity group-hover:opacity-100" />
+      </div>
       <div className="min-w-0">
-        <h3 className="font-serif text-[1.05rem] font-semibold leading-snug">{theme.name}</h3>
-        <p className="mt-1 text-sm text-muted">
-          {count === 0 ? 'Sin canciones aún' : `${count} ${count === 1 ? 'canción' : 'canciones'}`}
-        </p>
+        <h3 className="display text-[19px] leading-[1.15] md:text-[21px]">{theme.name}</h3>
+        <p className="num mt-2 text-[12px] text-muted">{count === 0 ? 'Sin canciones aún' : `${String(count).padStart(3, '0')} canciones`}</p>
       </div>
     </Link>
   );
@@ -63,16 +55,16 @@ export default function Themes() {
 
   return (
     <div className="pt-safe mx-auto max-w-5xl">
-      <PageHeader title="Categorías" subtitle="Encuentre canciones según el mensaje de su letra" />
-      <div className="px-4 pb-4 md:px-8">
+      <PageHeader eyebrow={`${THEMES.length} temas`} title="Categorías" subtitle="Canciones agrupadas por el mensaje de su letra." />
+      <div className="px-5 pb-6 md:px-10">
         <SearchBox value={q} onChange={setQ} placeholder="Buscar categoría" />
       </div>
       {shown.length === 0 ? (
-        <EmptyState icon={<SearchX size={28} />} title="Sin categorías">
+        <EmptyState icon={<SearchX />} title="Sin categorías">
           No hay categorías que coincidan con «{q}».
         </EmptyState>
       ) : (
-        <ul className="grid grid-cols-2 gap-3 px-4 md:grid-cols-3 md:px-8 lg:grid-cols-4">
+        <ul className="mx-5 grid grid-cols-2 border-l border-t border-line md:mx-10 md:grid-cols-3 lg:grid-cols-4">
           {shown.map((t) => (
             <li key={t.id}>
               <ThemeCard theme={t} count={byTheme.get(t.id)?.length ?? 0} />
@@ -80,7 +72,7 @@ export default function Themes() {
           ))}
         </ul>
       )}
-      <p className="px-4 pt-6 text-xs text-muted md:px-8">
+      <p className="px-5 pt-6 text-[13px] leading-relaxed text-muted md:px-10">
         Cada canción se clasificó según el mensaje de su letra completa; una misma canción puede aparecer en varias categorías.
       </p>
     </div>

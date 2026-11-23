@@ -3,7 +3,7 @@ import { useDeferredValue, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { SearchBox } from '../components/SearchBox';
 import { SongRow } from '../components/songMeta';
-import { EmptyState, IconButton, cx } from '../components/ui';
+import { EmptyState, IconButton, Tabs } from '../components/ui';
 import { themeById, THEMES } from '../data/themes';
 import { CATEGORIES, categoryInfo, type Category } from '../data/types';
 import { compareSongs, normalize } from '../lib/search';
@@ -52,7 +52,7 @@ export default function ThemeDetail() {
             <ArrowLeft size={22} />
           </IconButton>
         </div>
-        <EmptyState icon={<Music size={28} />} title="Categoría no encontrada">
+        <EmptyState icon={<Music />} title="Categoría no encontrada">
           <Link to="/categorias" className="font-medium text-accent">
             Ver todas las categorías
           </Link>
@@ -64,61 +64,50 @@ export default function ThemeDetail() {
   const countFor = (c: Category | null) => (c ? all.filter((s) => s.category === c).length : all.length);
 
   return (
-    <div className="pt-safe mx-auto max-w-4xl">
-      <div className="px-2 pt-2 md:px-6">
+    <div className="pt-safe mx-auto max-w-5xl">
+      <div className="px-2 pt-2 md:px-7">
         <IconButton label="Volver a categorías" onClick={() => (window.history.length > 1 ? navigate(-1) : navigate('/categorias'))}>
-          <ArrowLeft size={22} />
+          <ArrowLeft size={21} />
         </IconButton>
       </div>
-      <header className="flex items-start gap-4 px-4 pb-4 pt-1 md:px-8">
-        <ThemeIcon theme={theme} size="lg" />
-        <div className="min-w-0">
-          <h1 className="font-serif text-2xl font-semibold leading-tight tracking-tight md:text-3xl">{theme.name}</h1>
-          <p className="mt-1 text-sm text-muted">{theme.description}</p>
-          <p className="mt-1 text-sm font-medium text-accent">
-            {all.length} {all.length === 1 ? 'canción' : 'canciones'}
-          </p>
-        </div>
+      <header className="px-5 pb-6 pt-3 md:px-10">
+        <p className="eyebrow flex items-center gap-2 text-muted">
+          <ThemeIcon theme={theme} size="sm" />
+          Categoría temática
+        </p>
+        <h1 className="display mt-3 text-[38px] leading-[1.04] md:text-[52px]">{theme.name}</h1>
+        <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted">{theme.description}</p>
+        <p className="num mt-3 text-[13px] text-accent">{all.length} {all.length === 1 ? 'canción' : 'canciones'}</p>
       </header>
 
       {all.length === 0 ? (
-        <EmptyState icon={<Music size={28} />} title="Aún no hay canciones en esta categoría">
+        <EmptyState icon={<Music />} title="Aún no hay canciones en esta categoría">
           Cuando se agreguen canciones con este tema aparecerán aquí. Puede asignarlo desde el editor de cada canción, en «Categorías temáticas».
         </EmptyState>
       ) : (
         <>
-          <div className="sticky top-0 z-20 space-y-3 bg-bg/95 px-4 pb-3 pt-1 backdrop-blur md:px-8">
+          <div className="sticky top-0 z-20 space-y-4 bg-bg/95 px-5 pt-2 backdrop-blur-md md:px-10">
             {all.length > 8 && <SearchBox value={q} onChange={setQ} placeholder="Buscar en esta categoría" />}
-            <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 md:mx-0 md:px-0" role="group" aria-label="Filtrar por tipo">
-              {[{ id: null as Category | null, label: 'Todas' }, ...CATEGORIES].map((c) => {
-                const n = countFor(c.id);
-                if (c.id && n === 0) return null;
-                return (
-                  <button
-                    key={c.id ?? 'all'}
-                    type="button"
-                    aria-pressed={type === c.id}
-                    onClick={() => setType(c.id)}
-                    className={cx(
-                      'shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition',
-                      type === c.id ? 'border-accent bg-accent text-on-accent' : 'border-line bg-surface hover:border-accent/50',
-                    )}
-                  >
-                    {c.label} <span className="opacity-70">{n}</span>
-                  </button>
-                );
-              })}
-            </div>
+            <Tabs
+              label="Filtrar por tipo"
+              value={type}
+              onChange={setType}
+              options={[
+                { value: null as Category | null, label: 'Todas', count: countFor(null) },
+                ...CATEGORIES.filter((c) => countFor(c.id) > 0).map((c) => ({ value: c.id as Category | null, label: c.label, count: countFor(c.id) })),
+              ]}
+            />
           </div>
 
           {groups.length === 0 ? (
-            <p className="px-4 py-8 text-center text-sm text-muted md:px-8">No hay canciones que coincidan con «{q}».</p>
+            <p className="px-5 py-10 text-[15px] text-muted md:px-10">No hay canciones que coincidan con «{q}».</p>
           ) : (
             groups.map(({ cat, songs }) => (
-              <section key={cat.id} className="px-2 pb-2 md:px-6" aria-labelledby={`g-${cat.id}`}>
+              <section key={cat.id} aria-labelledby={`g-${cat.id}`}>
                 {(!type || groups.length > 1) && (
-                  <h2 id={`g-${cat.id}`} className="px-2 pb-1 pt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-                    {categoryInfo(cat.id).label} · {songs.length}
+                  <h2 id={`g-${cat.id}`} className="eyebrow flex items-baseline justify-between bg-surface-2/70 px-5 py-2 text-muted md:px-10">
+                    {categoryInfo(cat.id).label}
+                    <span className="num">{songs.length}</span>
                   </h2>
                 )}
                 <ul>
@@ -140,9 +129,9 @@ export default function ThemeDetail() {
           )}
 
           {related.length > 0 && (
-            <section className="px-4 pt-8 md:px-8">
-              <h2 className="mb-3 font-serif text-lg font-semibold">Categorías relacionadas</h2>
-              <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
+            <section className="pt-12">
+              <h2 className="eyebrow px-5 pb-3 text-muted md:px-10">Categorías relacionadas</h2>
+              <ul className="mx-5 grid grid-cols-2 border-l border-t border-line md:mx-10 md:grid-cols-4">
                 {related.map(({ t }) => (
                   <li key={t.id}>
                     <ThemeCard theme={t} count={byTheme.get(t.id)?.length ?? 0} />

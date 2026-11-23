@@ -24,10 +24,10 @@ export default function Favorites() {
   }, [favorites, songsById, order, q]);
 
   return (
-    <div className="pt-safe mx-auto max-w-4xl">
-      <PageHeader title="Favoritos" subtitle={`${favorites.size} ${favorites.size === 1 ? 'canción' : 'canciones'}`} />
+    <div className="pt-safe mx-auto max-w-5xl">
+      <PageHeader eyebrow="Colección personal" title="Favoritos" subtitle={`${favorites.size} ${favorites.size === 1 ? 'canción guardada' : 'canciones guardadas'}`} />
       {ready && favorites.size === 0 ? (
-        <EmptyState icon={<Heart size={28} />} title="Aún no tiene favoritos">
+        <EmptyState icon={<Heart />} title="Aún no tiene favoritos">
           Toque el corazón en cualquier canción para guardarla aquí.{' '}
           <Link to="/himnario" className="font-medium text-accent">
             Ir al himnario
@@ -35,8 +35,8 @@ export default function Favorites() {
         </EmptyState>
       ) : (
         <>
-          <div className="space-y-3 px-4 pb-2 md:px-8">
-            {favorites.size > 8 && <SearchBox value={q} onChange={setQ} placeholder="Filtrar favoritos" />}
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 pb-4 md:px-10">
+            {favorites.size > 8 && <div className="w-full sm:w-auto sm:flex-1"><SearchBox value={q} onChange={setQ} placeholder="Filtrar favoritos" /></div>}
             <Segmented
               label="Ordenar"
               value={order}
@@ -47,7 +47,7 @@ export default function Favorites() {
               ]}
             />
           </div>
-          <ul className="px-2 md:px-6">
+          <ul>
             {songs.map((s) => (
               <SongRow
                 key={s.id}
@@ -56,13 +56,13 @@ export default function Favorites() {
                 trailing={
                   <IconButton
                     label="Quitar de favoritos"
-                    active
+                    className="text-chord hover:bg-surface-2"
                     onClick={async () => {
                       await toggleFavorite(s.id);
                       toast('Quitada de favoritos');
                     }}
                   >
-                    <Heart size={19} className="fill-current" />
+                    <Heart size={18} className="fill-current" />
                   </IconButton>
                 }
               />

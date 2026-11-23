@@ -27,13 +27,13 @@ export function AddToListSheet({ open, onClose, songId }: { open: boolean; onClo
   return (
     <>
       <Sheet open={open && !creating} onClose={onClose} title="Agregar a una lista">
-        <div className="-mx-2 flex flex-col">
+        <div className="-mx-5 flex flex-col border-t border-line">
           <button
             type="button"
             onClick={() => setCreating(true)}
-            className="flex items-center gap-4 rounded-xl px-3 py-3 text-left font-medium text-accent hover:bg-surface-2"
+            className="flex items-center gap-4 border-b border-line px-5 py-3.5 text-left text-[15px] font-medium text-accent transition-colors hover:bg-surface-2/60"
           >
-            <span className="flex size-10 items-center justify-center rounded-xl bg-accent-soft">
+            <span className="flex size-9 items-center justify-center rounded-[8px] border border-accent/40">
               <Plus size={20} />
             </span>
             Nueva lista
@@ -46,9 +46,9 @@ export function AddToListSheet({ open, onClose, songId }: { open: boolean; onClo
                 type="button"
                 onClick={() => toggle(l.id)}
                 aria-pressed={inList}
-                className="flex items-center gap-4 rounded-xl px-3 py-3 text-left hover:bg-surface-2"
+                className="flex items-center gap-4 border-b border-line px-5 py-3.5 text-left transition-colors hover:bg-surface-2/60"
               >
-                <span className="flex size-10 items-center justify-center rounded-xl bg-surface-2 text-muted">
+                <span className="flex size-9 items-center justify-center text-muted [&_svg]:stroke-[1.5]">
                   <ListMusic size={19} />
                 </span>
                 <span className="min-w-0 flex-1">
@@ -59,7 +59,7 @@ export function AddToListSheet({ open, onClose, songId }: { open: boolean; onClo
                 </span>
                 <span
                   className={cx(
-                    'flex size-6 items-center justify-center rounded-full border-2',
+                    'flex size-6 items-center justify-center rounded-[6px] border',
                     inList ? 'border-accent bg-accent text-on-accent' : 'border-line',
                   )}
                 >

@@ -17,7 +17,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         {msg && (
           <div
             key={msg.id}
-            className="animate-toast absolute left-1/2 w-max max-w-[90vw] -translate-x-1/2 rounded-full bg-ink px-4 py-2.5 text-sm font-medium text-bg shadow-lg"
+            className="animate-toast absolute left-1/2 w-max max-w-[90vw] -translate-x-1/2 rounded-[10px] bg-deep px-4 py-3 text-[14px] font-medium text-on-deep"
             style={{ bottom: 'calc(5.5rem + env(safe-area-inset-bottom))' }}
           >
             {msg.text}

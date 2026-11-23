@@ -3,7 +3,7 @@ import { useDeferredValue, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SearchBox } from '../components/SearchBox';
 import { SongRow } from '../components/songMeta';
-import { ConfirmDialog, EmptyState, IconButton, cx } from '../components/ui';
+import { ConfirmDialog, EmptyState, IconButton, Tabs } from '../components/ui';
 import { CATEGORIES, type Category, type Song } from '../data/types';
 import { useIncremental } from '../hooks/useIncremental';
 import { searchSongs } from '../lib/search';
@@ -22,51 +22,42 @@ export default function AdminSongs() {
   const { count, sentinel } = useIncremental(results.length, 80, `${dq}|${cat}`);
 
   return (
-    <div className="pt-safe mx-auto max-w-4xl">
-      <div className="flex items-center gap-2 px-2 pt-2 md:px-6">
+    <div className="pt-safe mx-auto max-w-5xl">
+      <div className="flex items-center gap-2 px-2 pt-2 md:px-7">
         <IconButton label="Volver a ajustes" onClick={() => navigate('/ajustes')}>
-          <ArrowLeft size={22} />
+          <ArrowLeft size={21} />
         </IconButton>
       </div>
-      <header className="flex flex-wrap items-end justify-between gap-3 px-4 pb-3 md:px-8">
+      <header className="flex flex-wrap items-end justify-between gap-4 px-5 pb-6 pt-3 md:px-10">
         <div>
-          <h1 className="font-serif text-3xl font-semibold tracking-tight">Administrar canciones</h1>
-          <p className="mt-1 text-sm text-muted">
+          <p className="eyebrow text-muted">Administración</p>
+          <h1 className="display mt-3 text-[38px] leading-[1.04] md:text-[52px]">Canciones</h1>
+          <p className="num mt-2 text-[13px] text-muted">
             {CATEGORIES.map((c) => `${songs.filter((s) => s.category === c.id).length} ${c.label.toLowerCase()}`).join(' · ')}
           </p>
         </div>
         <Link
           to="/editar/nueva"
-          className="inline-flex min-h-11 items-center gap-2 rounded-full bg-accent px-5 text-sm font-semibold text-on-accent hover:opacity-90"
+          className="inline-flex min-h-11 items-center gap-2 rounded-[10px] bg-accent px-4 text-[14px] font-medium text-on-accent transition-colors hover:bg-accent-strong"
         >
-          <Plus size={18} /> Nueva canción
+          <Plus size={17} strokeWidth={1.75} /> Nueva canción
         </Link>
       </header>
-      <div className="space-y-3 px-4 pb-2 md:px-8">
+      <div className="space-y-4 px-5 md:px-10">
         <SearchBox value={q} onChange={setQ} />
-        <div className="no-scrollbar flex gap-2 overflow-x-auto">
-          {[{ id: null as Category | null, label: 'Todas' }, ...CATEGORIES].map((c) => (
-            <button
-              key={c.id ?? 'all'}
-              type="button"
-              aria-pressed={cat === c.id}
-              onClick={() => setCat(c.id)}
-              className={cx(
-                'shrink-0 rounded-full border px-4 py-2 text-sm font-medium',
-                cat === c.id ? 'border-accent bg-accent text-on-accent' : 'border-line bg-surface',
-              )}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
+        <Tabs
+          label="Filtrar por colección"
+          value={cat}
+          onChange={setCat}
+          options={[{ value: null as Category | null, label: 'Todas' }, ...CATEGORIES.map((c) => ({ value: c.id as Category | null, label: c.label }))]}
+        />
       </div>
       {results.length === 0 ? (
-        <EmptyState icon={<Library size={28} />} title="No hay canciones">
+        <EmptyState icon={<Library />} title="No hay canciones">
           Agregue la primera con «Nueva canción» o importe un respaldo desde Ajustes.
         </EmptyState>
       ) : (
-        <ul className="px-2 md:px-6">
+        <ul>
           {results.slice(0, count).map(({ song }) => (
             <SongRow
               key={song.id}

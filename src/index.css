@@ -3,52 +3,77 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Paleta Himnario EA: azul petróleo y marfil, con acentos dorados (acordes) y salvia. */
+/*
+ * Sistema de diseño «Edición» — Himnario EA
+ * Petróleo como estructura (bandas, barra lateral, controles de lectura),
+ * papel cálido como lienzo, tinta para el texto y terracota solo para los acordes.
+ * Jerarquía con tipografía y líneas finas, no con tarjetas ni sombras.
+ */
 :root {
-  --bg: #f7f4ec;
-  --surface: #ffffff;
-  --surface-2: #edf1ee;
-  --border: #dbe3e0;
-  --text: #14292f;
-  --muted: #5c6e73;
-  --accent: #0f4c5c;
-  --accent-soft: #dde9e9;
-  --accent-text: #ffffff;
-  --chord: #9a5f1c;
-  --gold: #b8892f;
+  --bg: #f4f3ef;          /* papel */
+  --surface: #fbfaf8;     /* superficie elevada (hojas, menús) */
+  --surface-2: #eceae4;   /* rellenos: campos, estados presionados */
+  --border: #dedbd3;      /* líneas finas */
+  --text: #0c1d22;        /* tinta */
+  --muted: #5d6a6d;
+  --faint: #8a9396;
+  --accent: #0f4c5c;      /* azul petróleo */
+  --accent-strong: #0a3a47;
+  --accent-soft: #e1ebeb;
+  --accent-text: #f4f3ef;
+  --deep: #0b2f38;        /* petróleo profundo: bandas y controles */
+  --on-deep: #eef3f1;
+  --on-deep-muted: #9fbabd;
+  --deep-line: rgba(238, 243, 241, 0.12);
+  --chord: #b0502a;       /* terracota, complementario del petróleo */
+  --gold: #b0502a;
   --cat-himnos: #0f4c5c;
-  --cat-alabanzas: #8a5d17;
-  --cat-coros: #3f6e4f;
+  --cat-alabanzas: #96651c;
+  --cat-coros: #4b7054;
+  --radius: 10px;
 }
 .dark {
-  --bg: #0b181c;
-  --surface: #12232a;
-  --surface-2: #1a2f36;
-  --border: #243d45;
-  --text: #edf2ef;
-  --muted: #93a7ac;
-  --accent: #7cc3cd;
-  --accent-soft: #173a43;
-  --accent-text: #08171b;
-  --chord: #e9b866;
-  --gold: #e3b866;
-  --cat-himnos: #7cc3cd;
-  --cat-alabanzas: #e3b866;
-  --cat-coros: #9ccaa7;
+  --bg: #091315;
+  --surface: #0f1c1f;
+  --surface-2: #152529;
+  --border: #213438;
+  --text: #e8eeec;
+  --muted: #93a3a6;
+  --faint: #6b7c80;
+  --accent: #72b8c4;
+  --accent-strong: #93cad3;
+  --accent-soft: #12292e;
+  --accent-text: #061114;
+  --deep: #0c2830;
+  --on-deep: #e8eeec;
+  --on-deep-muted: #8fb0b4;
+  --deep-line: rgba(232, 238, 236, 0.1);
+  --chord: #f0a074;
+  --gold: #f0a074;
+  --cat-himnos: #72b8c4;
+  --cat-alabanzas: #d8a95a;
+  --cat-coros: #92c19b;
 }
 
 @theme {
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-serif: 'Lora Variable', ui-serif, Georgia, serif;
+  --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Newsreader', ui-serif, Georgia, serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-line: var(--border);
   --color-ink: var(--text);
   --color-muted: var(--muted);
+  --color-faint: var(--faint);
   --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
   --color-on-accent: var(--accent-text);
+  --color-deep: var(--deep);
+  --color-on-deep: var(--on-deep);
+  --color-on-deep-muted: var(--on-deep-muted);
+  --color-deep-line: var(--deep-line);
   --color-chord: var(--chord);
   --color-gold: var(--gold);
 }
@@ -56,24 +81,50 @@
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
 }
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
   overscroll-behavior-y: none;
 }
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+  border-radius: 4px;
 }
 ::selection {
   background: var(--accent-soft);
 }
 
+/* Tipografía del sistema */
+.display {
+  font-family: var(--font-serif);
+  font-weight: 450;
+  letter-spacing: -0.022em;
+  font-optical-sizing: auto;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.hairline-b { border-bottom: 1px solid var(--border); }
+.hairline-t { border-top: 1px solid var(--border); }
+
 .pt-safe { padding-top: env(safe-area-inset-top); }
 .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
-.bottom-nav-space { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom)); }
+.bottom-nav-space { padding-bottom: calc(4.75rem + env(safe-area-inset-bottom)); }
 
 /* Letra con acordes */
 .song-line {
@@ -88,13 +139,14 @@ body {
   white-space: pre;
 }
 .song-chord {
-  font-family: var(--font-sans);
-  font-weight: 650;
+  font-family: var(--font-mono);
+  font-weight: 600;
   color: var(--chord);
-  font-size: 0.82em;
-  line-height: 1.25;
-  padding-right: 0.35em;
-  min-height: 1.25em;
+  font-size: 0.74em;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  padding-right: 0.45em;
+  min-height: 1.35em;
 }
 .song-chord:empty::after { content: '\00a0'; }
 .stanza { break-inside: avoid; }
@@ -102,12 +154,14 @@ body {
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
-@keyframes sheet-in { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes sheet-in { from { transform: translateY(24px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes rise { from { transform: translateY(6px); opacity: 0; } to { transform: none; opacity: 1; } }
+.animate-rise { animation: rise 320ms cubic-bezier(.2,.8,.2,1) both; }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes toast-in { from { opacity: 0; transform: translate(-50%, 8px); } to { opacity: 1; transform: translate(-50%, 0); } }
-.animate-sheet { animation: sheet-in 220ms cubic-bezier(.2,.8,.2,1); }
+.animate-sheet { animation: sheet-in 240ms cubic-bezier(.2,.8,.2,1); }
 .animate-fade { animation: fade-in 180ms ease-out; }
 .animate-toast { animation: toast-in 200ms ease-out; }
 @media (prefers-reduced-motion: reduce) {
-  .animate-sheet, .animate-fade, .animate-toast { animation: none; }
+  .animate-sheet, .animate-fade, .animate-toast, .animate-rise { animation: none; }
 }

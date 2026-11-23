@@ -11,19 +11,19 @@ import { useToast } from '../state/toast';
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="px-4 pt-6 md:px-8">
-      <h2 className="mb-2 px-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted">{title}</h2>
-      <div className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-surface">{children}</div>
+    <section className="px-5 pt-8 first-of-type:pt-2 md:px-10">
+      <h2 className="eyebrow border-b border-line pb-2.5 text-muted">{title}</h2>
+      <div className="divide-y divide-line">{children}</div>
     </section>
   );
 }
 
 function Row({ label, hint, children }: { label: string; hint?: ReactNode; children?: ReactNode }) {
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3.5">
+    <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 py-4">
       <div className="min-w-0 flex-1">
-        <div className="font-medium">{label}</div>
-        {hint && <div className="text-sm text-muted">{hint}</div>}
+        <div className="text-[15px] font-medium tracking-[-0.01em]">{label}</div>
+        {hint && <div className="mt-0.5 text-[13px] leading-relaxed text-muted">{hint}</div>}
       </div>
       {children}
     </div>
@@ -32,13 +32,13 @@ function Row({ label, hint, children }: { label: string; hint?: ReactNode; child
 
 function LinkRow({ to, icon, label, hint }: { to: string; icon: ReactNode; label: string; hint?: string }) {
   return (
-    <Link to={to} className="flex items-center gap-3 px-4 py-3.5 hover:bg-surface-2">
-      <span className="text-accent">{icon}</span>
+    <Link to={to} className="group flex items-center gap-4 py-4">
+      <span className="text-accent [&_svg]:stroke-[1.6]">{icon}</span>
       <span className="min-w-0 flex-1">
-        <span className="block font-medium">{label}</span>
-        {hint && <span className="block text-sm text-muted">{hint}</span>}
+        <span className="block text-[15px] font-medium tracking-[-0.01em] group-hover:text-accent">{label}</span>
+        {hint && <span className="mt-0.5 block text-[13px] text-muted">{hint}</span>}
       </span>
-      <ChevronRight size={18} className="text-muted" />
+      <ChevronRight size={17} strokeWidth={1.6} className="text-faint transition-transform group-hover:translate-x-0.5" />
     </Link>
   );
 }
@@ -80,7 +80,7 @@ export default function Settings() {
 
   return (
     <div className="pt-safe mx-auto max-w-3xl pb-6">
-      <PageHeader title="Ajustes" />
+      <PageHeader eyebrow="Preferencias" title="Ajustes" />
 
       <Section title="Apariencia">
         <Row label="Tema">
@@ -106,10 +106,10 @@ export default function Settings() {
             ]}
           />
         </Row>
-        <div className="px-4 py-3.5">
+        <div className="py-4">
           <div className="flex items-center justify-between">
-            <span className="font-medium">Tamaño de letra</span>
-            <span className="text-sm tabular-nums text-muted">{settings.fontSize} px</span>
+            <span className="text-[15px] font-medium">Tamaño de letra</span>
+            <span className="num text-[13px] text-muted">{settings.fontSize} px</span>
           </div>
           <input
             type="range"
@@ -121,7 +121,7 @@ export default function Settings() {
             className="mt-3 w-full accent-[var(--accent)]"
             aria-label="Tamaño de letra"
           />
-          <p className={settings.lyricsFont === 'serif' ? 'mt-2 font-serif' : 'mt-2'} style={{ fontSize: settings.fontSize }}>
+          <p className={settings.lyricsFont === 'serif' ? 'mt-3 font-serif' : 'mt-3'} style={{ fontSize: settings.fontSize }}>
             Cantad alegres al Señor
           </p>
         </div>
@@ -232,7 +232,7 @@ export default function Settings() {
         </Row>
         <Row label="Himnario EA" hint={`Versión ${__APP_VERSION__} · Funciona sin conexión`} />
         <Row label="Creado por" hint="Fernando Silva">
-          <span className="font-serif text-lg text-accent">FS</span>
+          <span className="display text-[22px] italic text-accent">FS</span>
         </Row>
       </Section>
 
